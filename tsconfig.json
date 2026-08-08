@@ -1,0 +1,5 @@
+{
+  // Solution-style root: aggregates app (browser) and node (tooling) projects.
+  "files": [],
+  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+}

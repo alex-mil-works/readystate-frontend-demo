@@ -1,0 +1,18 @@
+# Build and dependencies
+dist
+node_modules
+coverage
+playwright-report
+test-results
+.vite
+
+# Lockfiles
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Local reference materials
+archive
+
+# Generated content output
+dist/generated-content
