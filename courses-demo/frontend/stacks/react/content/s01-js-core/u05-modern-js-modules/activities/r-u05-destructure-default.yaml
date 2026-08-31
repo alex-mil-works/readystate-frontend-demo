@@ -1,0 +1,24 @@
+id: r-u05-destructure-default
+kind: single_choice
+phase: revision
+tags: [destructuring, defaults]
+reinforces: [L014]
+source: original
+prompt: |
+  `const { x = 10 } = { x: undefined }` — чему равен `x`?
+options:
+  - id: a
+    text: '10'
+    correct: true
+  - id: b
+    text: undefined
+  - id: c
+    text: '0'
+  - id: d
+    text: TypeError
+explain: |
+  Default срабатывает при `undefined`. Свойство `x` есть, но его значение `undefined` → default `10` применяется.
+hints:
+  - title: Default и null
+    markdown: |
+      Default **не** срабатывает при `null`: `const { x = 10 } = { x: null }` → `x === null`.

@@ -1,0 +1,12 @@
+# U02 — manifest юнита (порядок уроков).
+id: U02
+stageId: S01
+title: Объекты, массивы и мутация
+titleEn: Objects, Arrays & Mutation
+
+lessons:
+  - lessons/l005
+  - lessons/l006
+  - lessons/l007
+
+activities: activities

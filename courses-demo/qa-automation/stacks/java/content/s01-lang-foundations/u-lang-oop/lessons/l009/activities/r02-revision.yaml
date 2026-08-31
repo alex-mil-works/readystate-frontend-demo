@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Зачем интерфейс в слое тестового фреймворка?
+options:
+  - id: a
+    text: Отделить контракт от Selenium/RA реализации
+    correct: true
+  - id: b
+    text: Ускорить компиляцию в два раза
+  - id: c
+    text: Заменить JUnit
+  - id: d
+    text: Убрать checked exceptions
+explain: |
+  Порты/адаптеры: проще подменять реализации в тестах.
+hints:
+  - title: Ports
+    markdown: |
+      Interface = порт; Selenium/RA = адаптер.

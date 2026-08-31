@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что делает `super(driver)` в конструкторе подкласса?
+options:
+  - id: a
+    text: Вызывает конструктор суперкласса
+    correct: true
+  - id: b
+    text: Создаёт новый суперкласс в heap отдельно
+  - id: c
+    text: Копирует все static поля
+  - id: d
+    text: Удаляет родителя
+explain: |
+  `super(...)` — вызов конструктора родителя.

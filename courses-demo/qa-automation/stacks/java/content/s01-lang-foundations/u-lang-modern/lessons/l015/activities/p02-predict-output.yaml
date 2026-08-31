@@ -1,0 +1,24 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  import java.util.*;
+  class Demo {
+    public static void main(String[] args) {
+      var n = List.of(1,2,3).stream().filter(x -> x > 1).count();
+      System.out.println(n);
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: '2'
+    correct: true
+  - id: b
+    text: '3'
+  - id: c
+    text: '1'
+  - id: d
+    text: '0'
+explain: |
+  Остаются 2 и 3.

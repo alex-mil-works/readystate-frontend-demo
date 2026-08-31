@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  ObjectMapper.readValue нужен чтобы…
+options:
+  - id: a
+    text: Десериализовать JSON в Java-тип
+    correct: true
+  - id: b
+    text: Открыть браузер
+  - id: c
+    text: Скомпилировать тест
+  - id: d
+    text: Сделать Stream parallel
+explain: |
+  JSON → объект.

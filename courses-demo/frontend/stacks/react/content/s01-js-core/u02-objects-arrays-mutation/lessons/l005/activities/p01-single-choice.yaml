@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Как надёжно проверить, что свойство `name` — **own** у объекта `user`?
+options:
+  - id: a
+    text: '`user.name !== undefined`'
+  - id: b
+    text: "`Object.hasOwn(user, 'name')`"
+    correct: true
+  - id: c
+    text: "`'name' in user && typeof user.name === 'string'`"
+  - id: d
+    text: '`user.hasOwnProperty` без вызова'
+explain: |
+  `in` и truthy-check не отличают own от inherited. `Object.hasOwn` — стандартная own-проверка.

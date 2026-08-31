@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `extends` означает…
+options:
+  - id: a
+    text: Подкласс является специализацией суперкласса
+    correct: true
+  - id: b
+    text: Подкласс владеет суперклассом как полем
+  - id: c
+    text: Копию bytecode
+  - id: d
+    text: Только интерфейс
+explain: |
+  Наследование моделирует is-a.
+hints:
+  - title: is-a vs has-a
+    markdown: |
+      extends = is-a; поле другого типа = has-a (composition).

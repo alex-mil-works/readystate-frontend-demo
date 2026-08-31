@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: когда HashMap, а когда TreeMap, и как итерировать.
+rubric: |
+  - порядок/сортировка
+  - equals/hashCode ключей
+  - entrySet
+sampleAnswer: |
+  HashMap — быстрый доступ без порядка. TreeMap — когда нужна сортировка ключей. Итерируйте entrySet. Ключи должны стабильно реализовывать equals/hashCode.

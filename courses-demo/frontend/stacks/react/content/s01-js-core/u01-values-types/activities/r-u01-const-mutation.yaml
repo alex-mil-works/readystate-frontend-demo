@@ -1,0 +1,27 @@
+id: r-u01-const-mutation
+kind: single_choice
+phase: revision
+tags: [const, references, mutation]
+reinforces: [L001]
+source: original
+prompt: |
+  Почему `const obj = {}; obj.x = 1` не вызывает ошибку?
+options:
+  - id: a
+    text: '`const` запрещает только переприсваивание binding, не мутацию объекта по ссылке'
+    correct: true
+  - id: b
+    text: '`const` в JS означает shallow immutable object'
+  - id: c
+    text: Поля объекта можно менять только через `let` на том же объекте
+  - id: d
+    text: Это баг strict mode, в sloppy mode запрещено
+explain: |
+  `const` фиксирует **ссылку**. Содержимое heap-объекта менять можно, пока не делаешь `obj = other`.
+hints:
+  - title: Значение vs переменная
+    markdown: |
+      `const` фиксирует binding (ссылку), не делает объект immutable. Две переменные могут указывать на один object — мутация видна с обеих сторон.
+  - title: Production note
+    markdown: |
+      В React мутация props/state по ссылке — антипаттерн. Обновляйте иммутабельно (`{ ...obj, x: 1 }`).

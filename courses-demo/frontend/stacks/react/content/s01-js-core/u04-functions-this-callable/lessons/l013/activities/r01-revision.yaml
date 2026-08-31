@@ -1,0 +1,32 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Почему arrow function удобна для callback в `setInterval` внутри конструктора?
+options:
+  - id: a
+    text: Arrow берёт this из лексического scope — в конструкторе это экземпляр
+    correct: true
+  - id: b
+    text: Arrow автоматически вызывает bind
+  - id: c
+    text: setInterval специально обрабатывает arrow functions
+  - id: d
+    text: Arrow function получает this = window
+explain: |
+  Arrow function не имеет собственного `this` — берёт из scope, где определена. Внутри конструктора `this` = новый экземпляр, и arrow замыкается на него.
+hints:
+  - title: Arrow vs обычная в callback
+    markdown: |
+      ```js
+      function Timer() {
+        this.sec = 0;
+        // Обычная: this = globalThis (default binding)
+        setInterval(function() { this.sec++; }, 1000);
+        // Arrow: this = экземпляр Timer
+        setInterval(() => { this.sec--; }, 1000);
+      }
+      ```
+  - title: call/apply/bind на arrow
+    markdown: |
+      `call`, `apply`, `bind` **не меняют** `this` у arrow function. Но `bind` может частично применить аргументы.

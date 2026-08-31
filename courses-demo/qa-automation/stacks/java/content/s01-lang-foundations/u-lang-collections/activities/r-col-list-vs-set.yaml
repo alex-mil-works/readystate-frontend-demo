@@ -1,0 +1,20 @@
+id: r-col-list-vs-set
+kind: single_choice
+phase: revision
+tags: [collections]
+reinforces: [L012-java-list-set]
+source: original
+prompt: |
+  Когда для уникальных id в фикстурах выбрать Set, а не List?
+options:
+  - id: a
+    text: Нужна уникальность по equals/hashCode без дубликатов
+    correct: true
+  - id: b
+    text: Set всегда отсортирован как TreeSet
+  - id: c
+    text: List запрещает null всегда
+  - id: d
+    text: Set индексируется как массив
+explain: |
+  Set — uniqueness. List — порядок и индекс. HashSet не гарантирует insertion order (в отличие от LinkedHashSet).

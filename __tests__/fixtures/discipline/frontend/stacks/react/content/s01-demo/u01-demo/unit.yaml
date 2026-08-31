@@ -1,0 +1,10 @@
+id: U01
+stageId: S01
+title: Values (authoring only)
+titleEn: Values
+
+lessons:
+  - lessons/l001
+  - lessons/l002
+
+activities: activities

@@ -1,0 +1,20 @@
+id: L002-java-control-flow
+order: 2
+title: Управляющие конструкции
+titleEn: Control Flow Statements
+essence: >-
+  if / switch / loops и ранний return в тестах и helpers. Switch expressions и
+  `break`/`continue` — predict-output классика.
+depth: mechanism
+required: true
+insights:
+  - insights/01-control-flow.md
+  - insights/02-loops-and-ternary.md
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

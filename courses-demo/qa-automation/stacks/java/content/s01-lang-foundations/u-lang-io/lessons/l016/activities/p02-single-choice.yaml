@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Почему абсолютный путь `/Users/alex/...` плох в тестах?
+options:
+  - id: a
+    text: Ломается на других машинах/CI
+    correct: true
+  - id: b
+    text: Java запрещает абсолютные пути
+  - id: c
+    text: Files не умеет читать
+  - id: d
+    text: Только для Windows
+explain: |
+  Используйте ресурсы модуля/classpath.

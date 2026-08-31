@@ -1,0 +1,10 @@
+id: U-lang-collections
+stageId: S01
+title: Коллекции
+titleEn: Collections
+
+lessons:
+  - lessons/l012
+  - lessons/l013
+
+activities: activities

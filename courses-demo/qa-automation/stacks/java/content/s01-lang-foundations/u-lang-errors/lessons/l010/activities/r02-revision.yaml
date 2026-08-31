@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Checked exception заставляет…
+options:
+  - id: a
+    text: catch или throws на этапе компиляции
+    correct: true
+  - id: b
+    text: Только логировать
+  - id: c
+    text: Ничего — это runtime only
+  - id: d
+    text: Restart JVM
+explain: |
+  Компилятор проверяет обработку checked.
+hints:
+  - title: Why checked
+    markdown: |
+      API сигнализирует: вызывающий обязан учесть сбой I/O и т.п.

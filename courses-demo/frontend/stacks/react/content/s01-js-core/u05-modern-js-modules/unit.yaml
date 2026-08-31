@@ -1,0 +1,11 @@
+id: U05
+stageId: S01
+title: Современный JavaScript и модули
+titleEn: Modern JavaScript & Modules
+
+lessons:
+  - lessons/l014
+  - lessons/l015
+  - lessons/l016
+
+activities: activities

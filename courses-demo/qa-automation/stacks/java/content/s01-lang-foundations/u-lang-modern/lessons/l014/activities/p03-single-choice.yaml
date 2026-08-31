@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  `List<? extends Number>` удобен чтобы…
+options:
+  - id: a
+    text: Безопасно читать Number из списка
+    correct: true
+  - id: b
+    text: Кладсть любой Object
+  - id: c
+    text: Создавать new T()
+  - id: d
+    text: Игнорировать generics
+explain: |
+  extends = producer для чтения.

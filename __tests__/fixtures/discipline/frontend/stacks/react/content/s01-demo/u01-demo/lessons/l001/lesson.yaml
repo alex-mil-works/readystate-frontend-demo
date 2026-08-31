@@ -1,0 +1,13 @@
+id: L001
+order: 1
+title: Fixture lesson
+titleEn: Fixture lesson
+essence: Minimal lesson for discipline compiler tests.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-insight.md
+
+activities:
+  - activities/p01-single-choice.yaml

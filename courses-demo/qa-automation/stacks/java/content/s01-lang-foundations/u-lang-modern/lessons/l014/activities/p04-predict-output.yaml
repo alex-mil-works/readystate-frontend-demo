@@ -1,0 +1,24 @@
+id: p04
+kind: predict_output
+phase: practice
+code: |
+  import java.util.*;
+  class Demo {
+    static <T> T first(List<T> list) { return list.get(0); }
+    public static void main(String[] args) {
+      System.out.println(first(List.of("x", "y")));
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: x
+    correct: true
+  - id: b
+    text: y
+  - id: c
+    text: 'null'
+  - id: d
+    text: ошибка
+explain: |
+  Generic method выводит T=String.

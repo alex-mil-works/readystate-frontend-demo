@@ -1,0 +1,23 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  const obj = {
+    name: 'Cat',
+    say() { return this.name; }
+  };
+  const fn = obj.say;
+  console.log(fn());
+question: Что выведет в strict mode?
+choices:
+  - id: a
+    text: "'Cat'"
+  - id: b
+    text: undefined (TypeError при чтении name)
+    correct: true
+  - id: c
+    text: "''"
+  - id: d
+    text: ReferenceError
+explain: |
+  Извлечение метода теряет implicit binding. В strict mode `this === undefined`, обращение к `undefined.name` бросает TypeError.

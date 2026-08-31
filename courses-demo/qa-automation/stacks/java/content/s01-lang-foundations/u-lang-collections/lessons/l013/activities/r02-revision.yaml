@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  get отсутствующего ключа в HashMap возвращает…
+options:
+  - id: a
+    text: 'null (если null не клали как value — всё равно null)'
+    correct: true
+  - id: b
+    text: Optional.empty всегда
+  - id: c
+    text: Исключение всегда
+  - id: d
+    text: '0'
+explain: |
+  get → null; различайте containsKey.
+hints:
+  - title: containsKey
+    markdown: |
+      Нужно отличить отсутствующий ключ от value=null.

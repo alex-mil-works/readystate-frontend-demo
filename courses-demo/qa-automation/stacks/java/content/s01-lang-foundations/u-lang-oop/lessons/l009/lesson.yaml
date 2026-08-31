@@ -1,0 +1,22 @@
+id: L009-java-oop-iface
+order: 9
+title: Интерфейсы и abstract classes
+titleEn: Interfaces and Abstract Classes
+essence: >-
+  Контракт без реализации (interface) vs частичная реализация (abstract). В тестах — Wait, ExpectedCondition, свои порты.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-interfaces.md
+  - insights/02-abstract.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/p05-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

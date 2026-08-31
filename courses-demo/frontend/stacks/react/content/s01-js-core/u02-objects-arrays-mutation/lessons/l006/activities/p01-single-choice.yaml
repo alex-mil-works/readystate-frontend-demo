@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Какой метод **не мутирует** исходный массив?
+options:
+  - id: a
+    text: '`arr.sort()`'
+  - id: b
+    text: '`arr.splice(0, 1)`'
+  - id: c
+    text: '`arr.filter(fn)`'
+    correct: true
+  - id: d
+    text: '`arr.push(x)`'
+explain: |
+  `filter` возвращает новый массив. `sort`, `splice`, `push` мутируют `arr`.

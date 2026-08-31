@@ -1,0 +1,26 @@
+id: r-u01-object-is-nan
+kind: single_choice
+phase: revision
+tags: [equality, Object.is, NaN]
+reinforces: [L003]
+source: original
+prompt: |
+  Когда `Object.is(a, b)` может отличаться от `a === b`?
+options:
+  - id: a
+    text: Никогда — это синонимы
+  - id: b
+    text: Для NaN и для различения +0 / -0
+    correct: true
+  - id: c
+    text: Только при сравнении строк разной длины
+  - id: d
+    text: Только для сравнения массивов
+explain: |
+  `Object.is` согласован с SameValue: NaN равен NaN; +0 и -0 различаются.
+hints:
+  - title: Object.is
+    markdown: |
+      `Object.is(NaN, NaN) === true`, а `NaN === NaN` — `false`.
+      `Object.is(+0, -0) === false`, а `+0 === -0` — `true`.
+      В React / Map / Set чаще SameValueZero (`+0` и `-0` равны).

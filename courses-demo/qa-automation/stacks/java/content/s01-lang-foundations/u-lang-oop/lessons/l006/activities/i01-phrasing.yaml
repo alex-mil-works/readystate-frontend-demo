@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: инкапсуляция в Page Object и зачем record как DTO.
+rubric: |
+  - private state + public actions
+  - record = immutable value type
+  - связь с assertions
+sampleAnswer: |
+  Инкапсуляция прячет поля и открывает поведение. В Page Object локаторы private, наружу — действия. Record даёт immutable DTO с корректным equals — удобно сравнивать ответы API.

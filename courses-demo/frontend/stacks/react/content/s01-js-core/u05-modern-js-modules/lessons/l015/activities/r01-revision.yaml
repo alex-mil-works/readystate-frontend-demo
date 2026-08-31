@@ -1,0 +1,24 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Какой метод должен реализовать объект, чтобы быть iterable?
+options:
+  - id: a
+    text: '[Symbol.iterator](), возвращающий iterator с next()'
+    correct: true
+  - id: b
+    text: '.forEach()'
+  - id: c
+    text: '.next() напрямую'
+  - id: d
+    text: '.values()'
+explain: |
+  Протокол итерации требует `[Symbol.iterator]()` → iterator (`{ next() → { value, done } }`). Без него `for...of` и spread не работают.
+hints:
+  - title: Iterable protocol
+    markdown: |
+      `[Symbol.iterator]()` возвращает iterator. Iterator — объект с `next()`, который возвращает `{ value, done }`.
+  - title: Встроенные iterable
+    markdown: |
+      Array, String, Map, Set, arguments, NodeList — все реализуют iterable protocol.

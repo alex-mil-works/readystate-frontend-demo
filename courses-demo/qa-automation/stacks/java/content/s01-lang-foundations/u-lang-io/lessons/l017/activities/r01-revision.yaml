@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Парсить JSON через substring в API-тестах — это…
+options:
+  - id: a
+    text: Хрупкий anti-pattern
+    correct: true
+  - id: b
+    text: Лучше Jackson всегда хуже
+  - id: c
+    text: Обязательный стиль
+  - id: d
+    text: Нужен для Path
+explain: |
+  DTO + mapper устойчивее.
+hints:
+  - title: Contract tests
+    markdown: |
+      Структурный mapping ловит изменения схемы.

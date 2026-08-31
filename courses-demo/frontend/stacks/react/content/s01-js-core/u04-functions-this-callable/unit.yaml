@@ -1,0 +1,11 @@
+id: U04
+stageId: S01
+title: 'Функции, this и callable objects'
+titleEn: 'Functions, this & Callable Objects'
+
+lessons:
+  - lessons/l011
+  - lessons/l012
+  - lessons/l013
+
+activities: activities

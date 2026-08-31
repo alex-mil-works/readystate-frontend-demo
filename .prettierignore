@@ -1,4 +1,4 @@
-# Build and dependencies
+# Сборка и зависимости (build / dependencies)
 dist
 node_modules
 coverage
@@ -6,13 +6,13 @@ playwright-report
 test-results
 .vite
 
-# Lockfiles
+# Lockfile'ы — не форматировать Prettier'ом
 yarn.lock
 package-lock.json
 pnpm-lock.yaml
 
-# Local reference materials
-archive
+# Developer scratch (not part of the product)
+.local
 
-# Generated content output
+# Сгенерированный контент (generated content)
 dist/generated-content

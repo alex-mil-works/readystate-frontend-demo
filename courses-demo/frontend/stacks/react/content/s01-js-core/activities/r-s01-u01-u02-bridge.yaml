@@ -1,0 +1,24 @@
+id: r-s01-u01-u02-bridge
+kind: single_choice
+phase: revision
+tags: [const, references, mutation]
+reinforces: [L001, L007]
+source: original
+prompt: |
+  `const state = { count: 0 }; state.count++` — ошибка?
+options:
+  - id: a
+    text: Нет — `const` не запрещает мутацию по ссылке; для React нужен immutable update
+    correct: true
+  - id: b
+    text: Да — `const` делает объект frozen
+  - id: c
+    text: Да — только `let` для полей
+  - id: d
+    text: Зависит от `use strict`
+explain: |
+  Связка U01 (`const` = binding) и U02 (mutation + React): инкремент поля мутирует объект; setState требует новой reference.
+hints:
+  - title: U01 → U02
+    markdown: |
+      `const` фиксирует ссылку; immutability для UI — отдельное правило (новый объект/spread).

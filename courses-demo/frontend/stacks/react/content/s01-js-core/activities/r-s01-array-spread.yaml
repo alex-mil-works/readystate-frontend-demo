@@ -1,0 +1,20 @@
+id: r-s01-array-spread
+kind: single_choice
+phase: revision
+tags: [arrays, spread]
+reinforces: [L006, L007]
+source: original
+prompt: |
+  `[...arr, x]` vs `arr.push(x)` в контексте React state?
+options:
+  - id: a
+    text: Spread создаёт новый массив; push мутирует in-place
+    correct: true
+  - id: b
+    text: Эквивалентны для React
+  - id: c
+    text: push быстрее и React это понимает
+  - id: d
+    text: Spread работает только с объектами
+explain: |
+  Immutable list update — новая reference массива.

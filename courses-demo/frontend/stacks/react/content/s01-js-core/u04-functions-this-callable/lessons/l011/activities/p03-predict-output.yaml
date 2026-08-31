@@ -1,0 +1,23 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  function changeName(obj) {
+    obj.name = 'Bob';
+  }
+  const user = { name: 'Alice' };
+  changeName(user);
+  console.log(user.name);
+question: Что выведет?
+choices:
+  - id: a
+    text: "'Alice'"
+  - id: b
+    text: "'Bob'"
+    correct: true
+  - id: c
+    text: undefined
+  - id: d
+    text: TypeError
+explain: |
+  Объекты передаются по ссылке. `obj` внутри функции — та же ссылка на объект в heap, что и `user`. Мутация видна снаружи.

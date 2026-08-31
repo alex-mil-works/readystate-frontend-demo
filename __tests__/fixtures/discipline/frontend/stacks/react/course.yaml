@@ -1,0 +1,9 @@
+stackId: react
+title: React Frontend (fixture)
+titleEn: React Frontend (fixture)
+description: Synthetic discipline stack for compiler tests.
+status: preview
+statusLabel: Preview
+
+stages:
+  - s01-demo

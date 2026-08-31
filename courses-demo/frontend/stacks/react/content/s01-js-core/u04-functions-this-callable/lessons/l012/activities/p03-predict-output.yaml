@@ -1,0 +1,20 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  function greet() { return this.name; }
+  const bound = greet.bind({ name: 'Alice' });
+  console.log(bound.call({ name: 'Bob' }));
+question: Что выведет?
+choices:
+  - id: a
+    text: "'Alice'"
+    correct: true
+  - id: b
+    text: "'Bob'"
+  - id: c
+    text: undefined
+  - id: d
+    text: TypeError
+explain: |
+  `bind` создаёт функцию с жёстко привязанным `this`. Повторный `call` не может его перезаписать.

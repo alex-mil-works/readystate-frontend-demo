@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Какой идиомой часто проверяют «`null` или `undefined`» одной операцией?
+options:
+  - id: a
+    text: '`value === null || value === undefined`'
+  - id: b
+    text: '`value == null`'
+    correct: true
+  - id: c
+    text: '`!value`'
+  - id: d
+    text: "`typeof value === 'nullish'`"
+explain: |
+  `value == null` true только для `null` и `undefined` (не для 0, '', false). `!value` — все falsy.

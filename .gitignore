@@ -1,4 +1,4 @@
-# Logs
+# Логи (logs)
 logs
 *.log
 npm-debug.log*
@@ -7,28 +7,35 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
+# Зависимости (dependencies)
 node_modules
 
-# Build / generated
+# Сборка / генерация (build / generated)
 dist
 dist-ssr
 dist/generated-content
 *.local
 
-# Test / coverage artifacts
+# Developer scratch (not part of the product)
+.local/
+
+# Local curriculum (authoring + compiled bundles — do not commit)
+.courses
+src/shared/content/generated/**/*.json
+
+# Артефакты тестов и coverage
 coverage
 playwright-report
 playwright/.cache
 test-results
 *.tsbuildinfo
 
-# Env
+# Переменные окружения (env) — секреты не коммитить
 .env
 .env.*
 !.env.example
 
-# Editor / OS
+# Редактор / ОС (editor / OS)
 .vscode/*
 !.vscode/extensions.json
 .idea
@@ -40,11 +47,19 @@ test-results
 *.sw?
 Thumbs.db
 
-# Vite
+# Кэш Vite
 .vite
 
-# Local reference materials (workbooks, Enki curriculum, roadmap PDF)
-/archive/
+# Vercel CLI link (local only; CI writes from secrets)
+.vercel
 
-# Misc caches
+# Yarn Berry (локальный install state; node_modules-linker)
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# Прочие кэши
 .cache

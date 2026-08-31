@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  `IOException` — это…
+options:
+  - id: a
+    text: Checked exception
+    correct: true
+  - id: b
+    text: Unchecked всегда
+  - id: c
+    text: Error
+  - id: d
+    text: Не exception
+explain: |
+  IOException наследует Exception, не RuntimeException.

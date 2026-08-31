@@ -1,0 +1,17 @@
+id: r-u01-01
+kind: single_choice
+phase: revision
+prompt: |
+  В чём ключевая разница между `int x = 5` и `Integer x = 5`?
+options:
+  - id: a
+    text: '`int` — примитив (stack), `Integer` — объект-обёртка (heap)'
+    correct: true
+  - id: b
+    text: Разницы нет — компилятор заменяет одно другим
+  - id: c
+    text: '`Integer` быстрее, потому что кэшируется'
+  - id: d
+    text: '`int` нельзя использовать в коллекциях, но можно в массивах — это единственная разница'
+explain: |
+  `int` — примитив, хранит значение напрямую. `Integer` — boxed-объект; autoboxing/unboxing преобразует между ними, но это не бесплатно.

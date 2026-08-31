@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Когда уместнее abstract class, чем interface?
+options:
+  - id: a
+    text: Нужны общие поля/конструктор и частичная реализация
+    correct: true
+  - id: b
+    text: Нужна множественная реализация контрактов без состояния
+  - id: c
+    text: Всегда вместо interface
+  - id: d
+    text: Только для records
+explain: |
+  Общее состояние и код — сила abstract class.

@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Type erasure означает…
+options:
+  - id: a
+    text: Параметры типа стираются в bytecode до raw types
+    correct: true
+  - id: b
+    text: Generics живут в runtime как reified всегда
+  - id: c
+    text: Нельзя использовать List
+  - id: d
+    text: Только для arrays
+explain: |
+  Информация о T почти не доступна в runtime.

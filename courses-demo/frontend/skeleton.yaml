@@ -1,0 +1,27 @@
+roleId: frontend
+
+stages:
+  - id: S01
+    title: Ядро языка JavaScript
+    titleEn: JavaScript Language Core
+  - id: S02
+    title: Async JS и runtime браузера
+    titleEn: Async JS & Browser Runtime
+  - id: S03
+    title: TypeScript для frontend
+    titleEn: TypeScript for Frontend
+  - id: S04
+    title: Framework core
+    titleEn: Framework Core
+  - id: S05
+    title: HTML, CSS и accessible UI
+    titleEn: HTML, CSS & Accessible UI
+  - id: S06
+    title: Tooling, VCS и тесты
+    titleEn: Tooling, VCS & Testing
+  - id: S07
+    title: Сеть, security и auth
+    titleEn: Network, Security & Auth
+  - id: S08
+    title: Performance, rendering и platform
+    titleEn: Performance, Rendering & Platform

@@ -1,0 +1,22 @@
+id: L015-java-streams
+order: 15
+title: Lambda, Stream API, Optional
+titleEn: Lambda, Streams & Optional
+essence: >-
+  Функциональная обработка коллекций и Optional вместо null. В тестах — map/filter ожидаемых id.
+depth: application
+required: true
+
+insights:
+  - insights/01-lambda-stream.md
+  - insights/02-optional.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-single-choice.yaml
+  - activities/p05-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

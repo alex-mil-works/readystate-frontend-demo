@@ -1,0 +1,24 @@
+id: r-u02-map-vs-push
+kind: single_choice
+phase: revision
+tags: [arrays, immutability]
+reinforces: [L006]
+source: original
+prompt: |
+  После `const items = [1]; items.push(2); setItems(items)` список может не обновиться. Почему?
+options:
+  - id: a
+    text: '`push` мутирует массив, reference `items` не меняется'
+    correct: true
+  - id: b
+    text: '`push` запрещён в strict mode'
+  - id: c
+    text: React не поддерживает числа в массивах
+  - id: d
+    text: Нужен `useMemo`
+explain: |
+  Новая reference обязательна для корректного update; используйте `[...items, 2]`.
+hints:
+  - title: Immutable list update
+    markdown: |
+      `setItems((prev) => [...prev, item])` — безопасный паттерн.

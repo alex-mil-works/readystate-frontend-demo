@@ -1,0 +1,24 @@
+id: r-u05-class-sugar
+kind: single_choice
+phase: revision
+tags: [class, prototype]
+reinforces: [L016]
+source: original
+prompt: |
+  `typeof MyClass` для `class MyClass {}` — что вернёт?
+options:
+  - id: a
+    text: "'function'"
+    correct: true
+  - id: b
+    text: "'class'"
+  - id: c
+    text: "'object'"
+  - id: d
+    text: "'undefined'"
+explain: |
+  class — синтаксический сахар. Под капотом это функция-конструктор с prototype.
+hints:
+  - title: Prototype chain
+    markdown: |
+      `MyClass.prototype` существует. `new MyClass()` создаёт объект с `__proto__ === MyClass.prototype`.

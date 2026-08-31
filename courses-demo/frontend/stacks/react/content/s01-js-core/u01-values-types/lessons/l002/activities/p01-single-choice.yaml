@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что вернёт `typeof null`?
+options:
+  - id: a
+    text: '"null"'
+  - id: b
+    text: '"object"'
+    correct: true
+  - id: c
+    text: '"undefined"'
+  - id: d
+    text: Throws TypeError
+explain: |
+  Известный исторический баг спецификации. `null` — примитив, но `typeof` возвращает `"object"`.

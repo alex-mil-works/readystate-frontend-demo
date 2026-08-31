@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Когда результат `Object.is(a, b)` может отличаться от `a === b`?
+options:
+  - id: a
+    text: Когда оба операнда — строки
+  - id: b
+    text: Когда один из операндов — NaN или пара +0 / -0
+    correct: true
+  - id: c
+    text: Когда оба — plain objects с одинаковыми полями
+  - id: d
+    text: Никогда — это синонимы
+explain: |
+  `Object.is` согласован с SameValue: NaN равен NaN; +0 и -0 различаются.

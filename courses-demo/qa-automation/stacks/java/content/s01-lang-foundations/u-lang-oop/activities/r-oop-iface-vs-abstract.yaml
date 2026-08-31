@@ -1,0 +1,20 @@
+id: r-oop-iface-vs-abstract
+kind: single_choice
+phase: revision
+tags: [oop, interface]
+reinforces: [L009-java-oop-iface]
+source: original
+prompt: |
+  Когда в тестовом фреймворке чаще выбирают interface, а не abstract class?
+options:
+  - id: a
+    text: Нужен контракт без общей реализации; класс может реализовать несколько interface
+    correct: true
+  - id: b
+    text: Interface всегда быстрее abstract
+  - id: c
+    text: Abstract запрещён в Java 17+
+  - id: d
+    text: Только для enum
+explain: |
+  Interface — контракт (+ default methods). Abstract — когда нужна общая state/реализация и одно наследование.

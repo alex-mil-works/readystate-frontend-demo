@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  CME при for-each чаще значит…
+options:
+  - id: a
+    text: Коллекцию структурно меняли во время итерации
+    correct: true
+  - id: b
+    text: Нехватка heap
+  - id: c
+    text: Ошибка equals
+  - id: d
+    text: Проблема только с TreeMap
+explain: |
+  Fail-fast iterator детектит concurrent structural modification.

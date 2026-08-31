@@ -1,0 +1,14 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: shallow copy, reference identity и один пример immutable update вложенного state.
+rubric: |
+  - spread = один уровень
+  - `===` для объектов
+  - пример update nested field
+  - связь с React re-render
+sampleAnswer: |
+  Spread и assign делают shallow copy: вложенные объекты общие. `===` сравнивает ссылки.
+  Чтобы обновить вложенное поле immutably, копируем каждый уровень на пути.
+  React полагается на новую reference корня state, чтобы запланировать re-render.

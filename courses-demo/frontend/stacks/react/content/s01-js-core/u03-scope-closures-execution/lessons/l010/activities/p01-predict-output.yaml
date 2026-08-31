@@ -1,0 +1,20 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  for (var i = 0; i < 3; i++) {
+    setTimeout(() => console.log(i), 0);
+  }
+question: Что выведет этот код?
+choices:
+  - id: a
+    text: 0, 1, 2
+  - id: b
+    text: 3, 3, 3
+    correct: true
+  - id: c
+    text: 0, 0, 0
+  - id: d
+    text: undefined, undefined, undefined
+explain: |
+  `var i` — одна переменная на всю функцию. Три замыкания ссылаются на один binding. К моменту выполнения setTimeout цикл завершён, `i === 3`.

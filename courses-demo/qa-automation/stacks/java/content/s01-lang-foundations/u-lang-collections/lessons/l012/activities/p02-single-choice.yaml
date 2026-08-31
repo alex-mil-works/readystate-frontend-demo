@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Типичная реализация List по умолчанию в тестах?
+options:
+  - id: a
+    text: ArrayList
+    correct: true
+  - id: b
+    text: HashMap
+  - id: c
+    text: TreeSet
+  - id: d
+    text: EnumSet для строк
+explain: |
+  ArrayList — общий выбор для упорядоченных данных.

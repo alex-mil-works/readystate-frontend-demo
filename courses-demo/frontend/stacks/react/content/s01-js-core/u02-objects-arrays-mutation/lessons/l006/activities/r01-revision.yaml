@@ -1,0 +1,24 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Что безопаснее для React state: `items.push(x)` или `setItems([...items, x])`?
+options:
+  - id: a
+    text: '`push` — быстрее и React сам отследит'
+  - id: b
+    text: '`[...items, x]` — новая ссылка, immutability'
+    correct: true
+  - id: c
+    text: Оба эквивалентны при functional update
+  - id: d
+    text: '`push` только в class components'
+explain: |
+  Мутация массива in-place не меняет reference → React может не перерендерить. Spread/concat дают новую ссылку.
+hints:
+  - title: Immutable update
+    markdown: |
+      `setItems([...items, x])` или `setItems((prev) => [...prev, x])` — типичный паттерн.
+  - title: Anti-pattern
+    markdown: |
+      `items.push(x); setItems(items)` — та же ссылка, баг в списках и memo.

@@ -1,0 +1,14 @@
+roleId: qa-automation
+title: QA Automation
+titleEn: QA Automation
+
+stacks:
+  - id: java
+    label: Java
+    available: true
+  - id: python
+    label: Python
+    available: false
+  - id: typescript
+    label: TypeScript
+    available: false

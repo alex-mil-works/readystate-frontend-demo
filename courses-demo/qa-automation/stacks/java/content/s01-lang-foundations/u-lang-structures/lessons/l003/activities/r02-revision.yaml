@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Что делает `Arrays.sort(arr)`?
+options:
+  - id: a
+    text: Сортирует массив in-place и ничего не возвращает
+    correct: true
+  - id: b
+    text: Возвращает новый отсортированный массив
+  - id: c
+    text: Сортирует только первые 10 элементов
+  - id: d
+    text: Работает только с String[]
+explain: |
+  `Arrays.sort()` — void-метод, сортирует исходный массив in-place. Для копии: `Arrays.copyOf()` + `sort()`.
+hints:
+  - title: parallelSort
+    markdown: |
+      `Arrays.parallelSort()` использует fork-join и эффективнее для массивов > 8192 элементов.

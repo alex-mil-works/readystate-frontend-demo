@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Зачем писать `this.email = email` в конструкторе?
+options:
+  - id: a
+    text: Чтобы отличить поле от параметра с тем же именем
+    correct: true
+  - id: b
+    text: Без this конструктор не вызовется
+  - id: c
+    text: this делает deep copy
+  - id: d
+    text: Только для final-полей
+explain: |
+  Параметр затеняет поле; `this.email` явно указывает на поле.

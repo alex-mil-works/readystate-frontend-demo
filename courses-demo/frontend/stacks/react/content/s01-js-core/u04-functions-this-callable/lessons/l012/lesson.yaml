@@ -1,0 +1,19 @@
+id: L012-js-this-binding
+order: 12
+title: 'this: implicit, explicit, bound и constructor'
+titleEn: 'this: Implicit, Explicit, Bound & Constructor'
+essence: >-
+  Четыре правила определения this в обычных функциях. Strict mode, method, call/apply, new.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-this-rules.md
+  - insights/02-bind-and-constructor.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

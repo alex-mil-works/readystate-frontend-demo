@@ -1,0 +1,11 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "vite",
+  "installCommand": "corepack enable && yarn install --immutable",
+  "buildCommand": "yarn content:compile:demo && yarn build",
+  "outputDirectory": "dist",
+  "git": {
+    "deploymentEnabled": false
+  },
+  "rewrites": [{ "source": "/((?!assets/).*)", "destination": "/index.html" }]
+}

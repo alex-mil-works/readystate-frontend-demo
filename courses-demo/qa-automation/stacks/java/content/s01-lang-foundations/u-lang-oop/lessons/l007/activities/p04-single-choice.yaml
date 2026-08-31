@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Анти-паттерн наследования в тестах?
+options:
+  - id: a
+    text: Глубокая иерархия Page Object на 4+ уровня
+    correct: true
+  - id: b
+    text: Один BasePage с общим driver
+  - id: c
+    text: Composition для header
+  - id: d
+    text: final на классе утилиты
+explain: |
+  Глубокие иерархии хрупки при изменениях UI.

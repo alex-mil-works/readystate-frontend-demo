@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Когда composition предпочтительнее inheritance для Page Object?
+options:
+  - id: a
+    text: Когда страница собирается из независимых блоков
+    correct: true
+  - id: b
+    text: Всегда запрещён extends
+  - id: c
+    text: Только для records
+  - id: d
+    text: Когда нет WebDriver
+explain: |
+  Header/modal/table лучше как компоненты, чем глубокий extends.

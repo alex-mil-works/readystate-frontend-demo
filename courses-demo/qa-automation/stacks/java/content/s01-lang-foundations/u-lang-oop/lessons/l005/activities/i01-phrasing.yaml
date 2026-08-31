@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: class vs object и роль `this` в конструкторе Page Object.
+rubric: |
+  - class vs object
+  - this = текущий экземпляр
+  - пример с driver
+sampleAnswer: |
+  Class описывает структуру. Object — экземпляр в heap. В конструкторе Page Object пишем this.driver = driver, чтобы сохранить WebDriver в поле экземпляра.

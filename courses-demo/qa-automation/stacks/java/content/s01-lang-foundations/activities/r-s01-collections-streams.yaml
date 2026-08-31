@@ -1,0 +1,20 @@
+id: r-s01-collections-streams
+kind: single_choice
+phase: revision
+tags: [bridge, streams]
+reinforces: [L012-java-list-set, L015-java-streams]
+source: original
+prompt: |
+  Как безопасно отфильтровать List фикстур по предикату в современном Java?
+options:
+  - id: a
+    text: stream().filter(...).toList() / collect — без мутации исходного списка в for-each
+    correct: true
+  - id: b
+    text: list.remove внутри for-each всегда ок
+  - id: c
+    text: Только через reflection
+  - id: d
+    text: Streams запрещены в тестах
+explain: |
+  Stream не мутирует источник; CME часто из remove в for-each. Для уникальности — Set или distinct().

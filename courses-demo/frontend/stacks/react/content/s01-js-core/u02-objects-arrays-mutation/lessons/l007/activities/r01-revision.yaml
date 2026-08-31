@@ -1,0 +1,24 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Почему `setState(obj)` с тем же `obj` после мутации полей может не обновить UI?
+options:
+  - id: a
+    text: React сравнивает reference; ссылка не изменилась
+    correct: true
+  - id: b
+    text: React всегда deep-equal сравнивает
+  - id: c
+    text: Strict mode блокирует мутации
+  - id: d
+    text: '`setState` клонирует автоматически'
+explain: |
+  In-place mutation + та же reference → bail-out. Нужен новый объект (или functional update с новой структурой).
+hints:
+  - title: Shallow vs deep
+    markdown: |
+      `{ ...state, nested: { ...state.nested, x: 1 } }` — типичный shallow path.
+  - title: structuredClone
+    markdown: |
+      `structuredClone(state)` — deep copy для редких случаев; не замена точечных updates в hot paths.

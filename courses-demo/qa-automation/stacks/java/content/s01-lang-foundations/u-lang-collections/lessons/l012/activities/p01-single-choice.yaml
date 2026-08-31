@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Чем Set отличается от List?
+options:
+  - id: a
+    text: Set не допускает дубликаты (по equals/hashCode)
+    correct: true
+  - id: b
+    text: Set всегда отсортирован
+  - id: c
+    text: List запрещает null всегда
+  - id: d
+    text: Set индексируется как массив
+explain: |
+  Уникальность — контракт Set.

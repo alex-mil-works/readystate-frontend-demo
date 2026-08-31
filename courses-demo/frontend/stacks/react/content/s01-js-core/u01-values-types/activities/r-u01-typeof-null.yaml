@@ -1,0 +1,28 @@
+id: r-u01-typeof-null
+kind: single_choice
+phase: revision
+tags: [typeof, 'null', primitives]
+reinforces: [L002]
+source: original
+prompt: |
+  Что вернёт `typeof null`?
+options:
+  - id: a
+    text: '"null"'
+  - id: b
+    text: '"object"'
+    correct: true
+  - id: c
+    text: '"undefined"'
+  - id: d
+    text: '"primitive"'
+explain: |
+  Известный исторический баг спецификации. `null` — примитив, но `typeof` возвращает `"object"`.
+hints:
+  - title: typeof null
+    markdown: |
+      `typeof null === 'object'` — исторический баг. Безопасная проверка объекта:
+
+      ```js
+      x !== null && typeof x === 'object'
+      ```

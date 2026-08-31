@@ -1,0 +1,20 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  const sym1 = Symbol('x');
+  const sym2 = Symbol('x');
+  console.log(sym1 === sym2);
+question: Что выведет?
+choices:
+  - id: a
+    text: 'false'
+    correct: true
+  - id: b
+    text: 'true'
+  - id: c
+    text: TypeError
+  - id: d
+    text: undefined
+explain: |
+  Каждый вызов `Symbol()` создаёт уникальное значение, даже с одинаковым описанием.

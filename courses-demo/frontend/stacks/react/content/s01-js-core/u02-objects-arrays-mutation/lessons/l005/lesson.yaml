@@ -1,0 +1,19 @@
+id: L005-js-objects-ownership
+order: 5
+title: Объекты, доступ к свойствам и ownership
+titleEn: Objects, Property Access & Ownership
+essence: >-
+  Own vs inherited, dot vs bracket, prototype lookup. Интервьюер проверяет, понимаете ли вы, откуда берётся свойство.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-own-vs-inherited.md
+  - insights/02-dot-vs-bracket.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

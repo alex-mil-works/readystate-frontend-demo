@@ -1,0 +1,20 @@
+id: L013-js-arrow-call-bind
+order: 13
+title: 'Arrow functions, call/apply/bind и ловушки'
+titleEn: 'Arrow Functions, call/apply/bind & Pitfalls'
+essence: >-
+  Arrow function не имеет собственного this. call/apply/bind на arrow — noop для this. Partial application через bind.
+depth: application
+required: true
+
+insights:
+  - insights/01-arrow-this.md
+  - insights/02-call-apply-bind.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

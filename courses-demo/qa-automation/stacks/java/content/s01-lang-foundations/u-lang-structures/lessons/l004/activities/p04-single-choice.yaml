@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Когда стоит делать test helper метод `static`?
+options:
+  - id: a
+    text: Когда метод не зависит от состояния экземпляра (pure utility)
+    correct: true
+  - id: b
+    text: Всегда — все helper-методы должны быть static
+  - id: c
+    text: Только для private методов
+  - id: d
+    text: Никогда — static нарушает ООП
+explain: |
+  Static подходит для stateless utility (форматирование, генерация данных). Если helper нуждается в конфигурации или shared state — лучше instance-метод.

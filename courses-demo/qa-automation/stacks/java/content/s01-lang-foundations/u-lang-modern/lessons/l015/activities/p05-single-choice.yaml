@@ -1,0 +1,17 @@
+id: p05
+kind: single_choice
+phase: practice
+prompt: |
+  Анти-паттерн Optional?
+options:
+  - id: a
+    text: Вызывать get() без isPresent/orElse
+    correct: true
+  - id: b
+    text: orElseThrow с понятной ошибкой
+  - id: c
+    text: ifPresent для side-effect
+  - id: d
+    text: empty() для отсутствия
+explain: |
+  get() без проверки = тот же NPE-риск.

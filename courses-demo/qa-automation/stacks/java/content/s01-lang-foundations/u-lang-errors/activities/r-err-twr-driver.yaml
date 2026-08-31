@@ -1,0 +1,20 @@
+id: r-err-twr-driver
+kind: single_choice
+phase: revision
+tags: [twr, resources]
+reinforces: [L011-java-errors-twr]
+source: original
+prompt: |
+  Зачем WebDriver / Closeable оборачивать в try-with-resources (или эквивалент teardown)?
+options:
+  - id: a
+    text: Гарантировать close даже при падении теста — иначе утекают процессы браузера
+    correct: true
+  - id: b
+    text: Иначе Java не компилирует Selenium
+  - id: c
+    text: Только для ускорения assertions
+  - id: d
+    text: Нужно только для JSON
+explain: |
+  AutoCloseable.close() вызывается в finally-семантике TWR. В UI-тестах это критично для драйверов.

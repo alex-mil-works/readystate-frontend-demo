@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Метод-референс `String::toUpperCase` — это…
+options:
+  - id: a
+    text: Сокращённая запись lambda
+    correct: true
+  - id: b
+    text: Новый тип в heap всегда отдельный класс вручную
+  - id: c
+    text: Только для static void main
+  - id: d
+    text: Замена Stream
+explain: |
+  Синтаксический сахар для совместимых лямбд.

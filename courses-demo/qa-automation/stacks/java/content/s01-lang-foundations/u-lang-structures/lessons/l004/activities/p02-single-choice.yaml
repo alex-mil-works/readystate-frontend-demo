@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Какой метод в test helper предпочтительнее?
+options:
+  - id: a
+    text: '`void runEverything()` на 150 строк — login, API, DB, assert'
+  - id: b
+    text: '`loginAs(user)` + `fetchOrder(id)` + отдельные asserts в тесте'
+    correct: true
+  - id: c
+    text: Один static метод с 12 boolean флагами поведения
+  - id: d
+    text: Копипаста одного блока в каждый тест без helpers
+explain: |
+  Мелкие методы с ясной ответственностью проще читать, переиспользовать и чинить при падении.

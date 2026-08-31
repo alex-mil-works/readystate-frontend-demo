@@ -1,0 +1,22 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Что сравнивает `==` для reference-объектов в Java?
+options:
+  - id: a
+    text: Содержимое объектов
+  - id: b
+    text: Identity (ссылки)
+    correct: true
+  - id: c
+    text: Только классы (тип без полей)
+  - id: d
+    text: Ничего — будет ошибка компиляции
+explain: |
+  `==` для объектов сравнивает **ссылки (references / identity)**.
+hints:
+  - title: Identity vs value
+    markdown: |
+      Для объектов значение обычно сравнивают через `equals()`.
+      `==` — это проверка, что ссылки указывают на один и тот же object.

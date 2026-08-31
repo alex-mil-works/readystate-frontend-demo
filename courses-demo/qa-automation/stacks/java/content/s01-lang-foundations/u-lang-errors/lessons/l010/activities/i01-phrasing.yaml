@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: checked vs unchecked и как проверять исключения в тестах.
+rubric: |
+  - RuntimeException vs checked
+  - throw/throws
+  - assertThrows
+sampleAnswer: |
+  Unchecked (RuntimeException) можно не объявлять. Checked требуют catch или throws. В тестах ожидаемые ошибки проверяют assertThrows, а не пустым catch.

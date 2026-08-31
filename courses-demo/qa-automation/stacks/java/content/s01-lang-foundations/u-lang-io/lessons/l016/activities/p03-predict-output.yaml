@@ -1,0 +1,23 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  import java.nio.file.*;
+  class Demo {
+    public static void main(String[] args) {
+      System.out.println(Path.of("a", "b").getFileName());
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: b
+    correct: true
+  - id: b
+    text: a
+  - id: c
+    text: a/b
+  - id: d
+    text: 'null'
+explain: |
+  getFileName — последний компонент.

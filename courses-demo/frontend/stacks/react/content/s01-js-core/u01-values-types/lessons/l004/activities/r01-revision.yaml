@@ -1,0 +1,26 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `{items.length && <List />}` — при `items = []` что увидит пользователь?
+options:
+  - id: a
+    text: Ничего — пустой массив falsy
+  - id: b
+    text: 'Число `0` на экране'
+    correct: true
+  - id: c
+    text: '`<List />` с пустым массивом'
+  - id: d
+    text: Ошибку React
+explain: |
+  `0 && …` даёт `0`. React рендерит число 0. Используй `items.length > 0 && …`.
+hints:
+  - title: Truthiness и falsy
+    markdown: |
+      Falsy: `false`, `0`, `-0`, `0n`, `''`, `null`, `undefined`, `NaN`. `[]` и `{}` — **truthy**.
+
+      Антипаттерн в React: `{count && <Badge />}` при `count === 0` рисует **`0`**. Лучше `{count > 0 && <Badge />}`.
+  - title: '?? vs ||'
+    markdown: |
+      `||` смотрит на falsy; `??` — только на `null` / `undefined`. Для дефолтов, где `0` или `''` валидны, предпочитай **`??`**.

@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Fail on unknown properties полезен чтобы…
+options:
+  - id: a
+    text: Заметить неожиданные поля в ответе API
+    correct: true
+  - id: b
+    text: Ускорить Selenium
+  - id: c
+    text: Игнорировать схему
+  - id: d
+    text: Заменить HTTPS
+explain: |
+  Ломает тест при дрейфе контракта — часто желательно.

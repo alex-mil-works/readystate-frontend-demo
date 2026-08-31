@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  HashMap гарантирует порядок ключей?
+options:
+  - id: a
+    text: Нет
+    correct: true
+  - id: b
+    text: Да, всегда insertion
+  - id: c
+    text: Да, sorted
+  - id: d
+    text: Только для String
+explain: |
+  Порядок у HashMap не специфицирован.

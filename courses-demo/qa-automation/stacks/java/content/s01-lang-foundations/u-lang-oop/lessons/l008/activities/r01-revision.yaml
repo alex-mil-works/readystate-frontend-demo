@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `Animal a = new Dog()` — какой runtime-тип у объекта?
+options:
+  - id: a
+    text: Dog
+    correct: true
+  - id: b
+    text: Animal
+  - id: c
+    text: Object только
+  - id: d
+    text: 'null'
+explain: |
+  Compile-time тип ссылки Animal; runtime тип объекта Dog.
+hints:
+  - title: Static vs runtime type
+    markdown: |
+      Тип переменной проверяет компилятор; метод выбирается по объекту.

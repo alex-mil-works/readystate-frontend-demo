@@ -1,0 +1,20 @@
+id: r-s01-lang-oop-bridge
+kind: single_choice
+phase: revision
+tags: [bridge, oop]
+reinforces: [L004-java-methods, L005-java-oop-classes]
+source: original
+prompt: |
+  Метод экземпляра vs static: что верно для Page Object?
+options:
+  - id: a
+    text: Действия над страницей — instance-методы; утилиты без драйвера могут быть static
+    correct: true
+  - id: b
+    text: Весь POM должен быть static
+  - id: c
+    text: Instance-методы запрещены в тестах
+  - id: d
+    text: static обязателен для @Test
+explain: |
+  Драйвер и состояние страницы живут в экземпляре. Чистые helpers — отдельно, часто static.

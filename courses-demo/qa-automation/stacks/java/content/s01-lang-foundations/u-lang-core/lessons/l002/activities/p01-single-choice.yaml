@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что обычно лучше для раннего выхода в тест-хелпере?
+options:
+  - id: a
+    text: Глубокая вложенность без return
+  - id: b
+    text: Ранний `return` после проверки условия
+    correct: true
+  - id: c
+    text: Использовать `break` везде вместо return
+  - id: d
+    text: '`continue` как замена `return`'
+explain: |
+  Ранний `return` уменьшает ветвления и делает flow предсказуемым.

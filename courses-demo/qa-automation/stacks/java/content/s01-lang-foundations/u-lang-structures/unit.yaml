@@ -1,0 +1,10 @@
+id: U-lang-structures
+stageId: S01
+title: Массивы и методы
+titleEn: Arrays & Methods
+
+lessons:
+  - lessons/l003
+  - lessons/l004
+
+activities: activities

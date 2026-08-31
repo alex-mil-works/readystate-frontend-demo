@@ -1,0 +1,24 @@
+id: r-u04-this-implicit
+kind: single_choice
+phase: revision
+tags: [this, implicit, method]
+reinforces: [L012]
+source: original
+prompt: |
+  `const fn = obj.method; fn();` — что произойдёт с `this` в strict mode?
+options:
+  - id: a
+    text: '`this === undefined` — implicit binding потерян'
+    correct: true
+  - id: b
+    text: '`this === obj`'
+  - id: c
+    text: '`this === window`'
+  - id: d
+    text: TypeError при присваивании
+explain: |
+  Извлечение метода в переменную теряет контекст. При вызове `fn()` без объекта слева срабатывает default binding → `undefined` в strict.
+hints:
+  - title: Решение
+    markdown: |
+      Используйте `bind`: `const fn = obj.method.bind(obj)` или arrow function.

@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: try-with-resources и закрытие ресурсов в автотестах.
+rubric: |
+  - AutoCloseable
+  - порядок close
+  - WebDriver lifecycle
+sampleAnswer: |
+  try-with-resources гарантирует close для AutoCloseable. В тестах так же критично закрывать файлы и браузерные драйверы, иначе остаются процессы и флаки.

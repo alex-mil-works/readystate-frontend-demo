@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  @JsonProperty помогает когда…
+options:
+  - id: a
+    text: Имя поля Java ≠ имя в JSON
+    correct: true
+  - id: b
+    text: Нужен checked exception
+  - id: c
+    text: Отключаем equals
+  - id: d
+    text: Только для XML
+explain: |
+  Явный binding имён.

@@ -1,0 +1,24 @@
+id: r-oop-this-vs-static
+kind: single_choice
+phase: revision
+tags: [oop, this, static]
+reinforces: [L005-java-oop-classes, L006-java-oop-encap]
+source: original
+prompt: |
+  Когда уместен `static` метод в тестовом хелпере?
+options:
+  - id: a
+    text: Для чистой утилиты без состояния экземпляра (например, parseId)
+    correct: true
+  - id: b
+    text: Всегда вместо instance-методов Page Object
+  - id: c
+    text: Только для конструкторов
+  - id: d
+    text: Только внутри interface default
+explain: |
+  static подходит для stateless helpers. Page Object / ApiClient с состоянием драйвера или клиента — instance.
+hints:
+  - title: Anti-pattern
+    markdown: |
+      Огромный `TestHelper` со static на всё — сложно тестировать и сопровождать.

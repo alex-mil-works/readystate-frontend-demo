@@ -1,0 +1,12 @@
+id: S01
+title: Ядро языка JavaScript
+titleEn: JavaScript Language Core
+
+units:
+  - u01-values-types
+  - u02-objects-arrays-mutation
+  - u03-scope-closures-execution
+  - u04-functions-this-callable
+  - u05-modern-js-modules
+
+activities: activities

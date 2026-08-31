@@ -1,0 +1,23 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  record Point(int x, int y) {}
+  class Demo {
+    public static void main(String[] args) {
+      System.out.println(new Point(1, 2).equals(new Point(1, 2)));
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: 'true'
+    correct: true
+  - id: b
+    text: 'false'
+  - id: c
+    text: '1'
+  - id: d
+    text: ошибка компиляции
+explain: |
+  Records сравнивают по компонентам, не по identity.

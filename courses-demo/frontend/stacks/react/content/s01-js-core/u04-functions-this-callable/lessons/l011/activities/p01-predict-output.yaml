@@ -1,0 +1,21 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  function mult(x, y) {
+    let z = x * y;
+  }
+  console.log(mult(2, 3));
+question: Что выведет?
+choices:
+  - id: a
+    text: '6'
+  - id: b
+    text: undefined
+    correct: true
+  - id: c
+    text: NaN
+  - id: d
+    text: TypeError
+explain: |
+  Функция не содержит `return` — результат вызова `undefined`. Вычисление `x * y` произошло, но результат никуда не вернулся.

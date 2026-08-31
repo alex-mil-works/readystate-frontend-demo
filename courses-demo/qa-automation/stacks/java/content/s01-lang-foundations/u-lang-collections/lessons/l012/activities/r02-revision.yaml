@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  LinkedHashSet сохраняет…
+options:
+  - id: a
+    text: Порядок вставки
+    correct: true
+  - id: b
+    text: Сортировку по compareTo всегда
+  - id: c
+    text: Только один элемент
+  - id: d
+    text: Никакого порядка
+explain: |
+  LinkedHashSet = уникальность + insertion order.
+hints:
+  - title: TreeSet
+    markdown: |
+      TreeSet сортирует по Comparable/Comparator.

@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  В чём разница между `const` и `Object.freeze()`?
+options:
+  - id: a
+    text: '`const` фиксирует binding, `Object.freeze` делает объект shallow-immutable'
+    correct: true
+  - id: b
+    text: '`const` делает объект deep-immutable, `Object.freeze` — shallow'
+  - id: c
+    text: Они делают одно и то же
+  - id: d
+    text: '`Object.freeze` фиксирует binding, `const` — содержимое'
+explain: |
+  `const` запрещает переприсваивание: `const x = {}; x = other` → TypeError. Но `x.prop = 1` работает. `Object.freeze` запрещает добавление и изменение свойств (shallow).

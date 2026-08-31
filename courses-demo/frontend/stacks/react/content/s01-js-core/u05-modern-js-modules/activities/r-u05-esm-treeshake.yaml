@@ -1,0 +1,24 @@
+id: r-u05-esm-treeshake
+kind: single_choice
+phase: revision
+tags: [modules, esm, treeshaking]
+reinforces: [L016]
+source: original
+prompt: |
+  Почему tree-shaking работает с ES Modules, но не с CommonJS?
+options:
+  - id: a
+    text: ES Modules статически анализируемы — bundler знает зависимости до runtime
+    correct: true
+  - id: b
+    text: CommonJS не поддерживает export
+  - id: c
+    text: ES Modules быстрее загружаются
+  - id: d
+    text: Tree-shaking работает с обоими
+explain: |
+  `import`/`export` — статические декларации. Bundler (Vite, webpack) определяет неиспользуемый код и удаляет его. `require()` — runtime, зависимости могут быть условными.
+hints:
+  - title: ESM vs CJS
+    markdown: |
+      ESM: static, strict mode, singleton. CJS: runtime, dynamic require, нет tree-shaking.

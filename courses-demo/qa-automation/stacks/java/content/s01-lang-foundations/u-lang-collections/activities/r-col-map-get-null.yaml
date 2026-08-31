@@ -1,0 +1,24 @@
+id: r-col-map-get-null
+kind: single_choice
+phase: revision
+tags: [collections, map]
+reinforces: [L013-java-map]
+source: original
+prompt: |
+  `map.get(missingKey)` для HashMap возвращает…
+options:
+  - id: a
+    text: 'null (если только сами не клали null как value — тоже null)'
+    correct: true
+  - id: b
+    text: Optional.empty всегда
+  - id: c
+    text: Исключение всегда
+  - id: d
+    text: '0'
+explain: |
+  get не бросает на отсутствующий ключ. Для различения «нет ключа» vs «value=null» смотрите containsKey / getOrDefault.
+hints:
+  - title: ConcurrentModificationException
+    markdown: |
+      Не удаляйте из коллекции внутри for-each без Iterator.remove / copy-on-write подхода.

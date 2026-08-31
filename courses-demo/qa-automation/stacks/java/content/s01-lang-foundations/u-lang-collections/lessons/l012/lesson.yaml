@@ -1,0 +1,22 @@
+id: L012-java-list-set
+order: 12
+title: 'List и Set: реализации и CME'
+titleEn: 'List & Set: Implementations & CME'
+essence: >-
+  List vs Set, ArrayList/LinkedList/HashSet, ConcurrentModificationException при итерации.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-list-set.md
+  - insights/02-cme.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/p05-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

@@ -1,0 +1,17 @@
+id: r-u01-03
+kind: single_choice
+phase: revision
+prompt: |
+  Чем отличается overloading от overriding?
+options:
+  - id: a
+    text: 'Overloading — разные параметры в одном классе; overriding — переопределение в подклассе'
+    correct: true
+  - id: b
+    text: Overloading меняет return type; overriding — параметры
+  - id: c
+    text: Overloading работает только в runtime
+  - id: d
+    text: Разницы нет — это синонимы
+explain: |
+  Overloading — compile-time полиморфизм (одно имя, разные сигнатуры). Overriding — runtime полиморфизм (@Override в подклассе).

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Demo / private trainer — do not index. Soft gate is not security.

@@ -1,0 +1,28 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  function makeCounter() {
+    let count = 0;
+    return {
+      inc: () => ++count,
+      get: () => count,
+    };
+  }
+  const c = makeCounter();
+  c.inc();
+  c.inc();
+  console.log(c.get());
+question: Что выведет `c.get()`?
+choices:
+  - id: a
+    text: '0'
+  - id: b
+    text: '1'
+  - id: c
+    text: '2'
+    correct: true
+  - id: d
+    text: NaN
+explain: |
+  Обе функции (`inc` и `get`) замкнуты на один и тот же binding `count`. Два вызова `inc()` увеличили `count` до 2.

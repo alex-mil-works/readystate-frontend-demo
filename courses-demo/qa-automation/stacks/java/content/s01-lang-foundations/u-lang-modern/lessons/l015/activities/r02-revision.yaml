@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Зачем Stream в тестах данных?
+options:
+  - id: a
+    text: Фильтровать/проецировать фикстуры без ручных циклов
+    correct: true
+  - id: b
+    text: Заменить JUnit
+  - id: c
+    text: Ускорить Selenium waits
+  - id: d
+    text: Отключить generics
+explain: |
+  Удобно готовить expected lists.
+hints:
+  - title: Readable tests
+    markdown: |
+      map/filter часто читаемее вложенных for.

@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  `multiply.bind(null, 2)` — что делает этот вызов?
+options:
+  - id: a
+    text: Создаёт новую функцию с первым аргументом предустановленным в 2 (partial application)
+    correct: true
+  - id: b
+    text: Вызывает multiply(null, 2) немедленно
+  - id: c
+    text: Устанавливает this = 2
+  - id: d
+    text: Удаляет первый параметр функции
+explain: |
+  `bind` возвращает новую функцию с привязанным `this` (null) и первым аргументом (2). Остальные аргументы передаются при вызове. Это partial application.

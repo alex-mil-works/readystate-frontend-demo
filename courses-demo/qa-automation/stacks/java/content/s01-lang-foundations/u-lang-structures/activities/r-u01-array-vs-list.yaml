@@ -1,0 +1,20 @@
+id: r-u01-array-vs-list
+kind: single_choice
+phase: revision
+tags: [arrays, collections]
+reinforces: [L003-java-arrays, L012-java-list-set]
+source: original
+prompt: |
+  Когда оставить массив `T[]`, а когда взять `List<T>` в тестовых данных?
+options:
+  - id: a
+    text: Массив — фиксированный размер/vararg; List — рост, удобные API, generics-коллекции
+    correct: true
+  - id: b
+    text: Массивы всегда лучше List
+  - id: c
+    text: List нельзя передать в метод
+  - id: d
+    text: Массивы поддерживают только Object
+explain: |
+  Arrays.asList / List.of — мосты. Для CME и filter удобнее коллекции + Stream.

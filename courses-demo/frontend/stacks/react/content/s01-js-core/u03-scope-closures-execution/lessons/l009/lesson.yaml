@@ -1,0 +1,19 @@
+id: L009-js-closures
+order: 9
+title: Замыкания и захваченные bindings
+titleEn: Closures & Captured Bindings
+essence: >-
+  Замыкание — функция плюс её лексическое окружение. Как и зачем внутренняя функция удерживает переменные внешней.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-closure-model.md
+  - insights/02-practical-closures.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

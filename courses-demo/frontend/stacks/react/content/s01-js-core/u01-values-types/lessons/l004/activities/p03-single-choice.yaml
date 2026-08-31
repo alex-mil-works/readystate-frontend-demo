@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Как корректно проверить, что результат `Number(input)` — именно NaN?
+options:
+  - id: a
+    text: '`result === NaN`'
+  - id: b
+    text: '`Number.isNaN(result)`'
+    correct: true
+  - id: c
+    text: '`!result`'
+  - id: d
+    text: '`result == null`'
+explain: |
+  `=== NaN` всегда false. `!result` true и для 0. `Number.isNaN` без coercion.

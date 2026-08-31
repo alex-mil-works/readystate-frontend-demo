@@ -1,0 +1,15 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: чем массив отличается от `ArrayList` и когда что использовать в test data.
+rubric: |
+  - fixed length vs dynamic
+  - примитивы vs boxed
+  - for-each
+  - связь с DataProvider
+sampleAnswer: |
+  Массив имеет фиксированную длину и может хранить примитивы напрямую.
+  ArrayList растёт динамически и работает с объектами.
+  For-each одинаково удобен для обхода.
+  В TestNG DataProvider часто используют Object[][] — каждая строка параметров для одного test run.

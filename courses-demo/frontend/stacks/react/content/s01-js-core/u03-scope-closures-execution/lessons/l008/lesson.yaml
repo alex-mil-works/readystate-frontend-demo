@@ -1,0 +1,19 @@
+id: L008-js-lexical-scope-tdz
+order: 8
+title: Lexical scope, hoisting и TDZ
+titleEn: Lexical Scope, Hoisting & TDZ
+essence: >-
+  Как движок находит переменную: цепочка scope, поднятие объявлений и temporal dead zone для let/const.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-lexical-scope.md
+  - insights/02-hoisting-and-tdz.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

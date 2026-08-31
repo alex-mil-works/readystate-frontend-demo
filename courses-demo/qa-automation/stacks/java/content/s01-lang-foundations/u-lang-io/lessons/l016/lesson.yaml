@@ -1,0 +1,21 @@
+id: L016-java-nio
+order: 16
+title: Files, Path, properties
+titleEn: Files, Path & Properties
+essence: >-
+  NIO.2 для чтения фикстур и конфигов. В тестах — classpath resources и Path.of.
+depth: application
+required: true
+
+insights:
+  - insights/01-path-files.md
+  - insights/02-properties.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

@@ -1,0 +1,25 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  class Animal { String speak() { return "…"; } }
+  class Dog extends Animal { String speak() { return "woof"; } }
+  class Demo {
+    public static void main(String[] args) {
+      Animal a = new Dog();
+      System.out.println(a.speak());
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: woof
+    correct: true
+  - id: b
+    text: …
+  - id: c
+    text: 'null'
+  - id: d
+    text: ошибка
+explain: |
+  Ссылка Animal, объект Dog → вызывается Dog.speak().

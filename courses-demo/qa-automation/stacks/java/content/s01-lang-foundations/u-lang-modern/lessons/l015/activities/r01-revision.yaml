@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Можно ли переиспользовать один Stream дважды?
+options:
+  - id: a
+    text: Нет, после терминальной операции Stream «потрачен»
+    correct: true
+  - id: b
+    text: Да, бесконечно
+  - id: c
+    text: Только parallel
+  - id: d
+    text: Только empty stream
+explain: |
+  Нужен новый stream()
+hints:
+  - title: Stream lifecycle
+    markdown: |
+      Один pipeline — одна терминальная операция.

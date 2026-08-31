@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Какое преимущество `for-each` перед классическим `for` с индексом?
+options:
+  - id: a
+    text: Нет off-by-one ошибок и лишнего индекса
+    correct: true
+  - id: b
+    text: Работает быстрее на больших коллекциях
+  - id: c
+    text: Позволяет модифицировать коллекцию во время обхода
+  - id: d
+    text: Поддерживает только массивы, не List
+explain: |
+  for-each скрывает индекс, исключая off-by-one. Производительность аналогична. Модифицировать коллекцию в for-each нельзя (ConcurrentModificationException).

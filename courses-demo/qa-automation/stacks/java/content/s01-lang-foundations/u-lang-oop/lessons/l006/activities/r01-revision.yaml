@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Какой модификатор самый узкий для поля класса?
+options:
+  - id: a
+    text: private
+    correct: true
+  - id: b
+    text: protected
+  - id: c
+    text: public
+  - id: d
+    text: default шире private
+explain: |
+  `private` — только внутри класса.
+hints:
+  - title: Access ladder
+    markdown: |
+      private < package < protected < public

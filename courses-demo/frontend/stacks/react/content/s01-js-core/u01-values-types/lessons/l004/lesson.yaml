@@ -1,0 +1,19 @@
+id: L004-js-truthiness-nullish
+order: 4
+title: Truthiness, nullish values и NaN
+titleEn: Truthiness, Nullish Values & NaN
+essence: >-
+  `||` vs `??`, falsy-список и `NaN !== NaN`. Связка с дефолтами в React props.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-truthiness-falsy.md
+  - insights/02-nullish-coalescing.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

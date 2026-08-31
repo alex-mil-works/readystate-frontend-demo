@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: когда BasePage с extends уместен, а когда лучше composition.
+rubric: |
+  - is-a vs has-a
+  - один уровень BasePage ок
+  - компоненты страницы
+sampleAnswer: |
+  BasePage с общим driver — нормальный is-a. Блоки UI (header, table) лучше composition: страница имеет компоненты, а не наследует всё дерево.

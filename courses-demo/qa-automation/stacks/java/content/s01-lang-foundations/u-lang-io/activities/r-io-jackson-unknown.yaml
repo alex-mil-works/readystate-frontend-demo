@@ -1,0 +1,20 @@
+id: r-io-jackson-unknown
+kind: single_choice
+phase: revision
+tags: [jackson, json]
+reinforces: [L017-java-jackson]
+source: original
+prompt: |
+  Зачем в API-тестах включать FAIL_ON_UNKNOWN_PROPERTIES?
+options:
+  - id: a
+    text: Рано ловить неожиданные поля в ответе (контракт «поплыл»)
+    correct: true
+  - id: b
+    text: Ускорить Selenium
+  - id: c
+    text: Игнорировать схему намеренно
+  - id: d
+    text: Заменить HTTPS
+explain: |
+  Строгий ObjectMapper помогает заметить breaking changes. @JsonProperty — когда имя Java ≠ JSON key.

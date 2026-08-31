@@ -1,0 +1,20 @@
+id: L006-js-arrays-iteration
+order: 6
+title: Массивы, iteration и transformations
+titleEn: Arrays, Iteration & Transformations
+essence: >-
+  `map`/`filter`/`reduce` vs мутирующие методы; holes vs empty. Выбор метода и побочные эффекты.
+depth: trace
+required: true
+
+insights:
+  - insights/01-immutable-iterators.md
+  - insights/02-holes-vs-empty.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

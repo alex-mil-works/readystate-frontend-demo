@@ -1,0 +1,30 @@
+id: r-u03-function-vs-block
+kind: single_choice
+phase: revision
+tags: [scope, var, let, block]
+reinforces: [L008, L010]
+source: original
+prompt: |
+  ```js
+  function test() {
+    if (true) { var a = 1; let b = 2; }
+    console.log(a, b);
+  }
+  ```
+  Что произойдёт?
+options:
+  - id: a
+    text: '1, 2'
+  - id: b
+    text: '1, затем ReferenceError для b'
+    correct: true
+  - id: c
+    text: 'undefined, undefined'
+  - id: d
+    text: ReferenceError для обоих
+explain: |
+  `var a` — function scope, видна за пределами if. `let b` — block scope, не видна вне блока if → ReferenceError.
+hints:
+  - title: Function vs block scope
+    markdown: |
+      `var` видна во всей функции. `let`/`const` — только в ближайшем блоке `{}`.

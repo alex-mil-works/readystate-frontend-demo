@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Когда срабатывает default parameter `function f(x = 5)`?
+options:
+  - id: a
+    text: Когда аргумент `undefined` (включая отсутствие аргумента)
+    correct: true
+  - id: b
+    text: Когда аргумент `null` или `undefined`
+  - id: c
+    text: Когда аргумент falsy
+  - id: d
+    text: Только когда аргумент явно не передан
+explain: |
+  Default срабатывает при `undefined`. `null` — не `undefined`, поэтому default НЕ подставляется для null.

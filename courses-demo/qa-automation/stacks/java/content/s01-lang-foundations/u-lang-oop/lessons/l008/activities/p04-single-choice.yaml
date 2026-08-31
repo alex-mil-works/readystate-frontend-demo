@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Чрезмерные цепочки instanceof обычно значат…
+options:
+  - id: a
+    text: Пора вынести поведение в полиморфные методы
+    correct: true
+  - id: b
+    text: Нужно больше static
+  - id: c
+    text: instanceof запрещён в Java
+  - id: d
+    text: Нужен только reflection
+explain: |
+  Повторяющийся type-switch — запах дизайна.

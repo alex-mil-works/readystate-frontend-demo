@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  `instanceof` проверяет…
+options:
+  - id: a
+    text: Совместимость объекта с типом
+    correct: true
+  - id: b
+    text: Только равенство class-литералов
+  - id: c
+    text: Размер объекта
+  - id: d
+    text: static поля
+explain: |
+  true, если объект можно привести к типу.
+hints:
+  - title: 'null'
+    markdown: |
+      null instanceof T всегда false.

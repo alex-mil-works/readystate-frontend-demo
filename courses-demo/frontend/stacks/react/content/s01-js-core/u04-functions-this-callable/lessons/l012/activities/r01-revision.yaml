@@ -1,0 +1,31 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Что произойдёт при вызове обычной функции без объекта слева в strict mode?
+options:
+  - id: a
+    text: '`this === undefined`'
+    correct: true
+  - id: b
+    text: '`this === window`'
+  - id: c
+    text: '`this === null`'
+  - id: d
+    text: TypeError
+explain: |
+  В strict mode default binding устанавливает `this = undefined`. В sloppy mode — `globalThis` (window в браузере).
+hints:
+  - title: Четыре правила
+    markdown: |
+      1. **new** — `this` = новый объект
+      2. **call/apply/bind** — `this` = переданный объект
+      3. **Метод** (`obj.fn()`) — `this` = obj
+      4. **Default** — `undefined` (strict) / `globalThis` (sloppy)
+  - title: Потеря контекста
+    markdown: |
+      ```js
+      const fn = obj.method;
+      fn(); // this потерян — default binding
+      ```
+      Решение: `bind`, arrow function или вызов через объект.

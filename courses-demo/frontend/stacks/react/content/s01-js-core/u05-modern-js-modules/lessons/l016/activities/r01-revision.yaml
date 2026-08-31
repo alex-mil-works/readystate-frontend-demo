@@ -1,0 +1,27 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `class` в JavaScript — это...
+options:
+  - id: a
+    text: Синтаксический сахар поверх prototype chain
+    correct: true
+  - id: b
+    text: Новая модель наследования, не связанная с прототипами
+  - id: c
+    text: Копирование свойств, как в Java
+  - id: d
+    text: Шаблон для создания объектов без наследования
+explain: |
+  `class` не вводит новую модель — `typeof MyClass` → 'function', `MyClass.prototype` существует. Это чистый синтаксис над prototype chain.
+hints:
+  - title: Prototype chain
+    markdown: |
+      `class Dog extends Animal` → `Object.getPrototypeOf(Dog.prototype) === Animal.prototype`.
+      `instanceof` проходит по этой цепочке.
+  - title: ES Modules
+    markdown: |
+      - Статическая структура → tree-shaking
+      - Strict mode по умолчанию
+      - Модуль исполняется один раз (singleton)

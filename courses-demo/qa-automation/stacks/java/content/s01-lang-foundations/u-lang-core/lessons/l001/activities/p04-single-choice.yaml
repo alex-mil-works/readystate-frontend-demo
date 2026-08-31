@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Что произойдёт при выполнении `double d = 42;`?
+options:
+  - id: a
+    text: Widening cast — `int` 42 автоматически станет `double` 42.0
+    correct: true
+  - id: b
+    text: Ошибка компиляции — нужен суффикс `d`
+  - id: c
+    text: Narrowing cast — потеря точности
+  - id: d
+    text: Runtime exception ClassCastException
+explain: |
+  Widening (int → double) безопасен и выполняется неявно. Суффикс `d` не обязателен для целых литералов.

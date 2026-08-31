@@ -1,0 +1,20 @@
+id: L016-js-classes-modules
+order: 16
+title: Classes, prototypes и ES Modules
+titleEn: Classes, Prototypes & ES Modules
+essence: >-
+  class — синтаксический сахар поверх прототипов. extends/super, static. ES Modules: export/import, named vs default.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-classes-prototypes.md
+  - insights/02-es-modules.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

@@ -1,0 +1,25 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  class Demo {
+    static int f() {
+      try { throw new RuntimeException("x"); }
+      catch (RuntimeException e) { return 1; }
+      finally { return 2; }
+    }
+    public static void main(String[] args) { System.out.println(f()); }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: '1'
+  - id: b
+    text: '2'
+    correct: true
+  - id: c
+    text: x
+  - id: d
+    text: ошибка
+explain: |
+  return в finally перекрывает return из catch.

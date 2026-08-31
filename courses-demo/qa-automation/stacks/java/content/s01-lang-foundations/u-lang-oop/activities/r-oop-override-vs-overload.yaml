@@ -1,0 +1,24 @@
+id: r-oop-override-vs-overload
+kind: single_choice
+phase: revision
+tags: [oop, polymorphism]
+reinforces: [L008-java-oop-poly, L004-java-methods]
+source: original
+prompt: |
+  Чем overriding отличается от overloading?
+options:
+  - id: a
+    text: Overriding — та же сигнатура в подклассе (runtime); overloading — разные параметры (compile-time)
+    correct: true
+  - id: b
+    text: Overriding меняет только return type; overloading — имя метода
+  - id: c
+    text: Разницы нет — синонимы в Java
+  - id: d
+    text: Overloading работает только с interface
+explain: |
+  Overload выбирается компилятором по сигнатуре. Override — динамический dispatch по фактическому типу объекта.
+hints:
+  - title: '@Override'
+    markdown: |
+      Аннотация ловит опечатки в имени/параметрах при переопределении.

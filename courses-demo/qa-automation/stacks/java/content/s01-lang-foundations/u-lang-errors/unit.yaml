@@ -1,0 +1,10 @@
+id: U-lang-errors
+stageId: S01
+title: Исключения
+titleEn: Exceptions
+
+lessons:
+  - lessons/l010
+  - lessons/l011
+
+activities: activities

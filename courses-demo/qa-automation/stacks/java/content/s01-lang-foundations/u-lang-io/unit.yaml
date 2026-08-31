@@ -1,0 +1,10 @@
+id: U-lang-io
+stageId: S01
+title: I/O и JSON
+titleEn: I/O & JSON
+
+lessons:
+  - lessons/l016
+  - lessons/l017
+
+activities: activities

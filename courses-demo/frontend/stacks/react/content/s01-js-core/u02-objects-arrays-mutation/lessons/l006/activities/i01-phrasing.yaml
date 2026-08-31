@@ -1,0 +1,13 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: чем `map`/`filter` отличаются от `push`/`splice` и почему это важно в React.
+rubric: |
+  - non-mutating vs mutating
+  - новая ссылка для reconciliation
+  - holes vs dense arrays (кратко)
+sampleAnswer: |
+  `map` и `filter` возвращают новые массивы и не меняют исходник; `push` и `splice` мутируют.
+  В React обновление state должно давать новую reference, иначе компонент может не увидеть изменение.
+  Sparse holes в массивах ведут себя иначе в `forEach` и spread — в данных UI лучше явные значения.

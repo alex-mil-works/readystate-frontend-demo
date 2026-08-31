@@ -1,0 +1,28 @@
+id: p04
+kind: predict_output
+phase: practice
+code: |
+  class Counter {
+    static int created;
+    Counter() { created++; }
+  }
+  class Demo {
+    public static void main(String[] args) {
+      new Counter();
+      new Counter();
+      System.out.println(Counter.created);
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: '0'
+  - id: b
+    text: '1'
+  - id: c
+    text: '2'
+    correct: true
+  - id: d
+    text: 'null'
+explain: |
+  Static поле общее для всех экземпляров.

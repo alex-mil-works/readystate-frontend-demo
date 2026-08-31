@@ -1,0 +1,26 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Function declaration и function expression: какое из утверждений верно?
+options:
+  - id: a
+    text: Function declaration поднимается целиком (имя + тело), function expression — нет
+    correct: true
+  - id: b
+    text: Оба поднимаются целиком
+  - id: c
+    text: Оба поднимаются только как имя
+  - id: d
+    text: Ни одно не поднимается
+explain: |
+  `function foo() {}` поднимается целиком. `var foo = function() {}` — поднимается только `var foo` (как undefined).
+hints:
+  - title: Hoisting declarations vs expressions
+    markdown: |
+      **Function declaration** (`function foo() {}`) поднимается с телом — вызов до строки объявления работает.
+
+      **Function expression** (`var foo = function() {}`) поднимается только как `var foo = undefined` — вызов до инициализации → `TypeError`.
+  - title: let/const и TDZ
+    markdown: |
+      `let` и `const` тоже поднимаются, но обращение до строки инициализации → `ReferenceError` (Temporal Dead Zone).

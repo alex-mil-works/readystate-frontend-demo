@@ -1,0 +1,23 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  var x = 1;
+  function foo() {
+    console.log(x);
+    var x = 2;
+  }
+  foo();
+question: Что выведет `foo()`?
+choices:
+  - id: a
+    text: undefined
+    correct: true
+  - id: b
+    text: '1'
+  - id: c
+    text: '2'
+  - id: d
+    text: ReferenceError
+explain: |
+  Внутри `foo` объявление `var x` поднимается в начало функции, перезатеняя внешний `x`. К моменту `console.log` локальный `x` объявлен, но не инициализирован → `undefined`.

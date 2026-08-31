@@ -1,0 +1,29 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  class Box {
+    int n;
+    Box(int n) { this.n = n; }
+  }
+  class Demo {
+    public static void main(String[] args) {
+      Box a = new Box(3);
+      Box b = a;
+      b.n = 9;
+      System.out.println(a.n);
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: '3'
+  - id: b
+    text: '9'
+    correct: true
+  - id: c
+    text: '0'
+  - id: d
+    text: ошибка компиляции
+explain: |
+  `a` и `b` — одна reference на один object.

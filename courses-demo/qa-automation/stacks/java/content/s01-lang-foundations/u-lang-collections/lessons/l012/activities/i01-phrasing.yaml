@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: List vs Set и почему возникает CME.
+rubric: |
+  - дубликаты/порядок
+  - fail-fast iterator
+  - безопасное удаление
+sampleAnswer: |
+  List хранит порядок и дубликаты, Set — уникальность. CME появляется при структурном изменении во время for-each; удаляйте через Iterator или копируйте список кандидатов.

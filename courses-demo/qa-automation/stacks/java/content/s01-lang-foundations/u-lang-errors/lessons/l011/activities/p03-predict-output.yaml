@@ -1,0 +1,26 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  class R implements AutoCloseable {
+    public void close() { System.out.print("c"); }
+  }
+  class Demo {
+    public static void main(String[] args) {
+      try (R r = new R()) { System.out.print("b"); }
+      System.out.print("a");
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: bca
+    correct: true
+  - id: b
+    text: bac
+  - id: c
+    text: cba
+  - id: d
+    text: ba
+explain: |
+  Сначала тело try (b), затем close (c), затем после блока (a).

@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Безопасный immutable update `user.profile.city` в state?
+options:
+  - id: a
+    text: "`state.user.profile.city = 'X'; return state`"
+  - id: b
+    text: 'Spread на каждом уровне до `city`'
+    correct: true
+  - id: c
+    text: '`JSON.parse(JSON.stringify(state))` всегда лучший путь'
+  - id: d
+    text: '`Object.freeze(state)` перед setState'
+explain: |
+  Нужны новые объекты на пути от root до изменённого поля; freeze не создаёт копию для React.

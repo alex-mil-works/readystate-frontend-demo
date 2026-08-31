@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Как получить длину массива `int[] arr`?
+options:
+  - id: a
+    text: '`arr.length`'
+    correct: true
+  - id: b
+    text: '`arr.size()`'
+  - id: c
+    text: '`arr.length()`'
+  - id: d
+    text: '`Array.length(arr)`'
+explain: |
+  У массива — поле `length`. Метод `size()` у коллекций List.

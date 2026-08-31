@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Секреты в репозитории…
+options:
+  - id: a
+    text: Не коммитить; брать из CI secrets/env
+    correct: true
+  - id: b
+    text: Класть в properties в git ок
+  - id: c
+    text: Только в README
+  - id: d
+    text: В имени класса
+explain: |
+  Безопасность конфигурации.
+hints:
+  - title: '12-factor'
+    markdown: |
+      Config via environment.

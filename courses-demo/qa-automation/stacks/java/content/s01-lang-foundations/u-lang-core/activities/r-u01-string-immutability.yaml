@@ -1,0 +1,20 @@
+id: r-u01-string-immutability
+kind: single_choice
+phase: revision
+tags: [string, primitives]
+reinforces: [L001-java-syntax-primitives]
+source: original
+prompt: |
+  Почему `s.toUpperCase()` не меняет исходную переменную `String s`?
+options:
+  - id: a
+    text: String неизменяем — метод возвращает новый объект
+    correct: true
+  - id: b
+    text: toUpperCase работает только на StringBuilder
+  - id: c
+    text: Компилятор запрещает вызов
+  - id: d
+    text: Меняет, но только в debug
+explain: |
+  Иммутабельность String важна для ключей Map и безопасности. Для накопления текста — StringBuilder.

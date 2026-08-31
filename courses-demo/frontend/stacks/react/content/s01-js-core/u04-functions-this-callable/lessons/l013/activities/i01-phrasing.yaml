@@ -1,0 +1,17 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: как arrow function обрабатывает this и чем call/apply/bind отличаются друг от друга.
+rubric: |
+  - arrow берёт this лексически
+  - call/apply — явный вызов с this; разница в формате аргументов
+  - bind — новая функция с привязанным this
+  - call/apply/bind на arrow — noop для this
+  - partial application через bind
+sampleAnswer: |
+  Arrow function не имеет собственного this — берёт из лексического scope, где определена.
+  call и apply вызывают функцию с явным this, разница только в формате аргументов: call
+  принимает по одному, apply — массивом. bind не вызывает, а возвращает новую функцию с
+  привязанным this. На arrow call/apply/bind не влияют на this, но bind может частично
+  применить аргументы.

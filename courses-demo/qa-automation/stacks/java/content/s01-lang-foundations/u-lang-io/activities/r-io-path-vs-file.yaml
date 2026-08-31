@@ -1,0 +1,24 @@
+id: r-io-path-vs-file
+kind: single_choice
+phase: revision
+tags: [nio, files]
+reinforces: [L016-java-nio]
+source: original
+prompt: |
+  Чем `Path` отличается от «файла на диске»?
+options:
+  - id: a
+    text: Path — объект пути; файл может ещё не существовать
+    correct: true
+  - id: b
+    text: Path всегда создаёт файл при new
+  - id: c
+    text: Path только для URL
+  - id: d
+    text: Синоним InputStream
+explain: |
+  Path.resolve / Files.exists / Files.readString — отдельные шаги. Абсолютные пути в тестах ломают CI.
+hints:
+  - title: Secrets
+    markdown: |
+      Не коммитьте credentials в properties; берите из env / CI secrets.

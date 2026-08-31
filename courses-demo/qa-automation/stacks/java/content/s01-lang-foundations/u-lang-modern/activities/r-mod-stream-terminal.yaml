@@ -1,0 +1,24 @@
+id: r-mod-stream-terminal
+kind: single_choice
+phase: revision
+tags: [streams, optional]
+reinforces: [L015-java-streams]
+source: original
+prompt: |
+  Можно ли повторно использовать тот же Stream после `collect(...)`?
+options:
+  - id: a
+    text: Нет — после терминальной операции Stream «потрачен»
+    correct: true
+  - id: b
+    text: Да, бесконечно
+  - id: c
+    text: Только parallel
+  - id: d
+    text: Только empty stream
+explain: |
+  Intermediate ops ленивы; terminal запускает pipeline один раз. Для повторного прохода создайте новый stream из источника.
+hints:
+  - title: Optional.get
+    markdown: |
+      Anti-pattern: get() без isPresent/orElse — риск NPE. Предпочитайте orElseThrow / ifPresent.

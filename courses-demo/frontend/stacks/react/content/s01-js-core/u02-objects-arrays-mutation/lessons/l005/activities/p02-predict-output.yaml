@@ -1,0 +1,21 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  const base = { x: 1 };
+  const child = Object.create(base);
+  child.y = 2;
+  console.log(child.x, Object.hasOwn(child, 'x'));
+question: Что выведет?
+choices:
+  - id: a
+    text: '1 false'
+    correct: true
+  - id: b
+    text: '1 true'
+  - id: c
+    text: 'undefined false'
+  - id: d
+    text: '2 false'
+explain: |
+  `x` читается из прототипа, но не own у `child`. `Object.hasOwn(child, 'x')` → `false`.

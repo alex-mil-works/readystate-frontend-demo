@@ -1,0 +1,21 @@
+id: L007-java-oop-inherit
+order: 7
+title: Наследование, super, composition vs inheritance
+titleEn: Inheritance, super, Composition vs Inheritance
+essence: >-
+  extends и super для переиспользования. В тестах чаще composition (BasePage + components), чем глубокие иерархии.
+depth: application
+required: true
+
+insights:
+  - insights/01-inheritance-super.md
+  - insights/02-composition.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Чем named export отличается от default export?
+options:
+  - id: a
+    text: 'Named — несколько на модуль, импорт по имени. Default — один, имя при импорте произвольное'
+    correct: true
+  - id: b
+    text: Default может быть несколько, named — только один
+  - id: c
+    text: Named экспортирует только функции, default — только классы
+  - id: d
+    text: Разницы нет — это синонимы
+explain: |
+  Named: `export { a, b }`, импорт `{ a, b }`. Default: `export default X`, импорт `import AnyName`. Один default на модуль.

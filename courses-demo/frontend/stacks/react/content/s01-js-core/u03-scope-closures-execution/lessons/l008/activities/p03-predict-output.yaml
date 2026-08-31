@@ -1,0 +1,19 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  greet();
+  var greet = function() { return 'hi'; };
+question: Что произойдёт?
+choices:
+  - id: a
+    text: Выведет 'hi'
+  - id: b
+    text: 'TypeError: greet is not a function'
+    correct: true
+  - id: c
+    text: ReferenceError
+  - id: d
+    text: undefined
+explain: |
+  Поднимается только объявление `var greet` (значение `undefined`). Вызов `undefined()` бросает TypeError. Function expressions не поднимаются как function declarations.

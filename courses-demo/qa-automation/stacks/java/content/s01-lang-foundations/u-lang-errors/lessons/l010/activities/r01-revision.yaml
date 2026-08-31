@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Пустой catch без логирования/assert — это…
+options:
+  - id: a
+    text: 'Anti-pattern: глотает ошибку'
+    correct: true
+  - id: b
+    text: Best practice всегда
+  - id: c
+    text: Обязателен для NPE
+  - id: d
+    text: Нужен для record
+explain: |
+  Скрывает регрессии.
+hints:
+  - title: Empty catch
+    markdown: |
+      Либо обработайте осмысленно, либо дайте упасть тесту.

@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Класс может реализовать…
+options:
+  - id: a
+    text: Несколько интерфейсов
+    correct: true
+  - id: b
+    text: Только один интерфейс за жизнь JVM
+  - id: c
+    text: Только interface или только extends, никогда оба
+  - id: d
+    text: Только default методы без implements
+explain: |
+  Java допускает multiple interface implementation.

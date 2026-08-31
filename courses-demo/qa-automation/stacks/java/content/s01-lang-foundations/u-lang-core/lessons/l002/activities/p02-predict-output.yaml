@@ -1,0 +1,24 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  int n = 3;
+  int sum = 0;
+  for (int i = 0; i < n; i++) {
+    if (i == 1) continue;
+    sum += i;
+  }
+  System.out.println(sum);
+question: Что выведет?
+choices:
+  - id: a
+    text: '2'
+    correct: true
+  - id: b
+    text: '3'
+  - id: c
+    text: '1'
+  - id: d
+    text: '0'
+explain: |
+  `continue` пропускает итерацию при `i == 1`. Суммируются 0 и 2 → 2.

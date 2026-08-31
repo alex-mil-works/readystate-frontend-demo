@@ -1,0 +1,26 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Что из перечисленного **нельзя** сделать с arrow function?
+options:
+  - id: a
+    text: Использовать как конструктор (`new`)
+    correct: true
+  - id: b
+    text: Передать как callback
+  - id: c
+    text: Присвоить переменной
+  - id: d
+    text: Вернуть из другой функции
+explain: |
+  Arrow function не имеет `prototype` и `[[Construct]]` — вызов `new (() => {})` бросит TypeError.
+hints:
+  - title: Три формы
+    markdown: |
+      - **Declaration**: `function foo() {}` — hoisting целиком.
+      - **Expression**: `const foo = function() {}` — hoisting только binding.
+      - **Arrow**: `const foo = () => {}` — нет `this`, `arguments`, `new`.
+  - title: Функции — объекты
+    markdown: |
+      Функция — вызываемый объект с `.name`, `.length`, `.call`, `.apply`, `.bind`. Можно передавать как значение.

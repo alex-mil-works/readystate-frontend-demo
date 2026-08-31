@@ -1,0 +1,20 @@
+id: L003-js-equality-coercion
+order: 3
+title: Равенство, coercion и sameness
+titleEn: Equality, Coercion & Sameness
+essence: >-
+  `==` vs `===` vs `Object.is` и таблица sameness. Predict-output и abstract equality.
+depth: application
+required: true
+
+insights:
+  - insights/01-strict-vs-loose.md
+  - insights/02-object-is.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

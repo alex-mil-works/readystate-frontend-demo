@@ -1,0 +1,17 @@
+id: p05
+kind: single_choice
+phase: practice
+prompt: |
+  Чем `throw` отличается от `throws`?
+options:
+  - id: a
+    text: throw бросает, throws объявляет в сигнатуре
+    correct: true
+  - id: b
+    text: Это синонимы
+  - id: c
+    text: throws только для Error
+  - id: d
+    text: throw только в static
+explain: |
+  Разные ключевые слова с разной ролью.

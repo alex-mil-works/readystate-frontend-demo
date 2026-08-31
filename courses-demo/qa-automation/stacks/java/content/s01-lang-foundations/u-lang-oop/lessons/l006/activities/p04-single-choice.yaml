@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  В Page Object локатор лучше держать как…
+options:
+  - id: a
+    text: private поле + публичные действия
+    correct: true
+  - id: b
+    text: public WebElement наружу всегда
+  - id: c
+    text: static String на весь suite
+  - id: d
+    text: package-private в тестовом классе
+explain: |
+  Скрывайте детали локаторов; снаружи — намерение пользователя.

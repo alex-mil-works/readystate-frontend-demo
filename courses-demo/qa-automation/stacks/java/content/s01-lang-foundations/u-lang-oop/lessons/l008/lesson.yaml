@@ -1,0 +1,21 @@
+id: L008-java-oop-poly
+order: 8
+title: Полиморфизм, instanceof, dynamic dispatch
+titleEn: Polymorphism, instanceof, Dispatch
+essence: >-
+  Один тип-ссылка — разное поведение в runtime. Важно для драйверов, waits и assert-хелперов.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-polymorphism.md
+  - insights/02-instanceof.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

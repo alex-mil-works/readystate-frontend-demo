@@ -1,0 +1,17 @@
+id: p05
+kind: single_choice
+phase: practice
+prompt: |
+  default-метод в interface…
+options:
+  - id: a
+    text: Даёт реализацию по умолчанию в интерфейсе
+    correct: true
+  - id: b
+    text: Делает интерфейс abstract class
+  - id: c
+    text: Запрещён с Java 8
+  - id: d
+    text: Работает только в records
+explain: |
+  default позволяет эволюционировать API без ломки всех implementors.

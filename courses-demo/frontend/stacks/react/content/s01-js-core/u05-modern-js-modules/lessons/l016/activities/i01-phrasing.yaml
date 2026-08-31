@@ -1,0 +1,17 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: class в JS, prototype chain, и разницу между ES Modules и CommonJS.
+rubric: |
+  - class = сахар над prototype chain
+  - extends, super, static
+  - typeof class → function
+  - ESM: static, tree-shaking, strict
+  - CJS: runtime require, нет tree-shaking
+sampleAnswer: |
+  class в JS — синтаксический сахар. typeof class → 'function', наследование через
+  prototype chain. extends устанавливает связь прототипов, super вызывает родительский
+  конструктор или метод. ES Modules — статические import/export, анализируемые до runtime,
+  что позволяет tree-shaking. CommonJS — runtime require(), условные зависимости возможны,
+  но tree-shaking невозможен.

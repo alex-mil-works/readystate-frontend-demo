@@ -1,0 +1,24 @@
+id: r-s01-null-object-access
+kind: single_choice
+phase: revision
+tags: [typeof, objects]
+reinforces: [L002, L005]
+source: original
+prompt: |
+  Безопасный доступ к `user?.address?.city` когда `user` может быть `null`?
+options:
+  - id: a
+    text: Optional chaining (`?.`) коротко и без лишних typeof
+    correct: true
+  - id: b
+    text: "`typeof user === 'object'` достаточно — null object"
+  - id: c
+    text: '`user && user.address.city` — то же что ?. без разницы'
+  - id: d
+    text: '`JSON.parse` перед доступом'
+explain: |
+  `typeof null === 'object'` — помните из U01; optional chaining — production pattern для nested access.
+hints:
+  - title: typeof null
+    markdown: |
+      `user != null && user.address?.city` — явная guard-форма без optional chaining на root.

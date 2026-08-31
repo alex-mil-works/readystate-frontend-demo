@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Зачем custom exception в API-клиенте тестов?
+options:
+  - id: a
+    text: Явно отличить доменный сбой от прочих runtime
+    correct: true
+  - id: b
+    text: Ускорить JSON parse
+  - id: c
+    text: Заменить HTTP статусы
+  - id: d
+    text: Отключить GC
+explain: |
+  Тип исключения несёт смысл для assert и логов.

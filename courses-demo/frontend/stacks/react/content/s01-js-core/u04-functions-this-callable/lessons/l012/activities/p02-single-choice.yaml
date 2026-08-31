@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Каков приоритет правил определения `this`?
+options:
+  - id: a
+    text: 'new > bind > call/apply > implicit > default'
+    correct: true
+  - id: b
+    text: 'call/apply > new > bind > implicit > default'
+  - id: c
+    text: 'implicit > explicit > new > default'
+  - id: d
+    text: 'Все правила равноприоритетны'
+explain: |
+  `new` перебивает даже `bind`. `bind`/`call`/`apply` перебивают implicit (метод объекта). Default — самый низкий приоритет.

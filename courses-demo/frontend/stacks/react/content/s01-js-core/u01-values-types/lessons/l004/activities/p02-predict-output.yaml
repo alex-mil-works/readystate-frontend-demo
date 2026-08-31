@@ -1,0 +1,20 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  const a = 0 || 100;
+  const b = 0 ?? 100;
+  console.log(a, b);
+question: Вывод `console.log`?
+choices:
+  - id: a
+    text: '100 0'
+    correct: true
+  - id: b
+    text: '0 100'
+  - id: c
+    text: '100 100'
+  - id: d
+    text: '0 0'
+explain: |
+  `||` заменяет falsy `0` на `100`. `??` оставляет `0`.

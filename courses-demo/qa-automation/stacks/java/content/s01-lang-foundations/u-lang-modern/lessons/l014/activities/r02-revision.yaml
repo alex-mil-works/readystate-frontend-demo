@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Можно ли сделать `new T()` внутри generic метода?
+options:
+  - id: a
+    text: Нет из-за erasure (без Class токена)
+    correct: true
+  - id: b
+    text: Да всегда
+  - id: c
+    text: Только для int
+  - id: d
+    text: Только в interface
+explain: |
+  Нужен Class<T> или factory.
+hints:
+  - title: Reification
+    markdown: |
+      Java generics не reified как в некоторых языках.

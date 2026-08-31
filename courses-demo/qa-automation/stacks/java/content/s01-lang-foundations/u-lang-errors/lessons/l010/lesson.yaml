@@ -1,0 +1,22 @@
+id: L010-java-errors-checked
+order: 10
+title: Checked vs unchecked, throw/throws
+titleEn: Checked vs Unchecked Exceptions
+essence: >-
+  Различие checked/unchecked, throw vs throws. В тестах — assertThrows и когда оборачивать checked.
+depth: application
+required: true
+
+insights:
+  - insights/01-checked-unchecked.md
+  - insights/02-throw-throws.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/p05-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

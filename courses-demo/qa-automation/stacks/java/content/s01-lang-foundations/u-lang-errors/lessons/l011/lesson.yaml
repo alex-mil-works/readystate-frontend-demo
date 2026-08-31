@@ -1,0 +1,21 @@
+id: L011-java-errors-twr
+order: 11
+title: try-with-resources и custom exceptions
+titleEn: try-with-resources & Custom Exceptions
+essence: >-
+  Автозакрытие AutoCloseable и свои exceptions. В тестах — не оставлять открытые потоки/драйверы.
+depth: application
+required: true
+
+insights:
+  - insights/01-twr.md
+  - insights/02-custom-ex.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

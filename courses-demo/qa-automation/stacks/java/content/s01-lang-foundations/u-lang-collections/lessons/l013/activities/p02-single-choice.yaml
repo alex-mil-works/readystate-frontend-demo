@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  TreeMap упорядочивает ключи по…
+options:
+  - id: a
+    text: Comparable/Comparator
+    correct: true
+  - id: b
+    text: hashCode только
+  - id: c
+    text: Порядку put всегда как LinkedList
+  - id: d
+    text: Размеру value
+explain: |
+  Красно-чёрное дерево по компаратору.

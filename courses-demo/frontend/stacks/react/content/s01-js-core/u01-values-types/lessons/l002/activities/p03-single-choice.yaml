@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Как надёжно проверить, что `value` — non-null object (не массив)?
+options:
+  - id: a
+    text: "`typeof value === 'object'`"
+  - id: b
+    text: "`value !== null && typeof value === 'object' && !Array.isArray(value)`"
+    correct: true
+  - id: c
+    text: '`value instanceof Object` — достаточно для plain object'
+  - id: d
+    text: "`Object.prototype.toString.call(value) === '[object Object]'` всегда для любого object"
+explain: |
+  Нужно отсечь `null`, при необходимости — массивы и другие встроенные типы. `instanceof Object` true и для массивов.

@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  writeValueAsString делает…
+options:
+  - id: a
+    text: Сериализацию объекта в JSON-строку
+    correct: true
+  - id: b
+    text: Чтение файла Path
+  - id: c
+    text: Запуск Chrome
+  - id: d
+    text: Compile annotation processor
+explain: |
+  Обратная операция к readValue.
+hints:
+  - title: Round-trip
+    markdown: |
+      Иногда проверяют serialize→deserialize idempotency.

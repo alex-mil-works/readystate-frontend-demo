@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Что даёт `record UserDto(String email)` «из коробки»?
+options:
+  - id: a
+    text: equals/hashCode/toString по компонентам
+    correct: true
+  - id: b
+    text: Только private конструктор без accessors
+  - id: c
+    text: Mutable поля по умолчанию
+  - id: d
+    text: Автоматический JPA mapping
+explain: |
+  Record генерирует канонический конструктор, accessors и value equality.

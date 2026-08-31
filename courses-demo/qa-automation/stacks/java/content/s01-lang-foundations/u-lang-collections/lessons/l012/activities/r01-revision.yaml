@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  HashSet опирается на…
+options:
+  - id: a
+    text: hashCode и equals элементов
+    correct: true
+  - id: b
+    text: Только порядок вставки как List
+  - id: c
+    text: Индексы int
+  - id: d
+    text: synchronized всегда
+explain: |
+  Корректные equals/hashCode критичны для Set/Map keys.
+hints:
+  - title: Contracts
+    markdown: |
+      Нарушенный equals/hashCode ломает Set.contains.

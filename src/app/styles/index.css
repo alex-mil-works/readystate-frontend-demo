@@ -1,48 +1,106 @@
+@import 'tailwindcss';
+@import './tokens.css';
+
+/*
+  Bind ReadyState tokens (--rs-*) to shadcn CSS variables.
+  Change colors in tokens.css; this file only maps names.
+*/
 :root {
-  color-scheme: light dark;
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --background: var(--rs-background);
+  --foreground: var(--rs-foreground);
 
-  --color-bg: #f3f1ea;
-  --color-fg: #171a1d;
-  --color-muted: #61686c;
-  --color-border: #d2cfc6;
-  --color-primary: #626a47;
+  --card: var(--rs-surface);
+  --card-foreground: var(--rs-foreground);
+
+  --popover: var(--rs-surface);
+  --popover-foreground: var(--rs-foreground);
+
+  --primary: var(--rs-primary);
+  --primary-foreground: var(--rs-primary-foreground);
+
+  --secondary: var(--rs-secondary);
+  --secondary-foreground: var(--rs-secondary-foreground);
+
+  --muted: var(--rs-surface-muted);
+  --muted-foreground: var(--rs-muted-foreground);
+
+  --accent: var(--rs-accent);
+  --accent-foreground: var(--rs-accent-foreground);
+
+  --destructive: var(--rs-destructive);
+  --destructive-foreground: var(--rs-destructive-foreground);
+
+  --border: var(--rs-border);
+  --input: var(--rs-input);
+  --ring: var(--rs-ring);
+
+  --success: var(--rs-success);
+  --success-foreground: var(--rs-success-foreground);
+
+  --radius: var(--rs-radius);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-bg: #0b0d0e;
-    --color-fg: #e7e5df;
-    --color-muted: #a7adb0;
-    --color-border: #32393d;
-    --color-primary: #7c8460;
+/* Tailwind v4: semantic colors from CSS variables */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+
+  --radius-sm: calc(var(--radius) * 0.75);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) * 1.5);
+  --radius-xl: calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 2.5);
+  --radius-4xl: calc(var(--radius) * 3.5);
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-}
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+  html {
+    font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 
-html,
-body,
-#root {
-  min-height: 100%;
-}
+  body {
+    @apply bg-background text-foreground min-h-svh antialiased;
+    margin: 0;
+  }
 
-body {
-  margin: 0;
-  color: var(--color-fg);
-  background: var(--color-bg);
-}
-
-#root {
-  min-height: 100vh;
+  #root {
+    @apply min-h-svh;
+  }
 }

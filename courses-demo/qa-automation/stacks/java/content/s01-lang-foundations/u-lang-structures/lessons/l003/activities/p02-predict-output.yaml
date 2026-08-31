@@ -1,0 +1,21 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  int[] a = { 1, 2, 3 };
+  int[] b = a;
+  b[0] = 9;
+  System.out.println(a[0]);
+question: Что выведет?
+choices:
+  - id: a
+    text: '9'
+    correct: true
+  - id: b
+    text: '1'
+  - id: c
+    text: '0'
+  - id: d
+    text: 'TypeError'
+explain: |
+  `b = a` копирует ссылку; `a` и `b` — один массив в heap. Мутация через `b` видна в `a`.

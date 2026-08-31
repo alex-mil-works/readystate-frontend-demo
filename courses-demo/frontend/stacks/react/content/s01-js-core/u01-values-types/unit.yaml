@@ -1,0 +1,17 @@
+# U01 — manifest юнита (порядок уроков).
+# Тела: lessons/*/
+# Repeat-pool (позже): activities/
+
+id: U01
+stageId: S01
+title: Значения, типы и равенство
+titleEn: Values, Types & Equality
+
+lessons:
+  - lessons/l001
+  - lessons/l002
+  - lessons/l003
+  - lessons/l004
+
+# Пул активностей уровня unit — см. activities/ (repeat mode, позже)
+activities: activities

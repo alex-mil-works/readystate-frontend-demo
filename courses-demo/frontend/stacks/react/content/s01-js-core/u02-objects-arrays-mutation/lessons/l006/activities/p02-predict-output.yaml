@@ -1,0 +1,21 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  const a = [1, 2, 3];
+  const b = a.map((n) => n * 2);
+  a.push(4);
+  console.log(b.length, a.length);
+question: Что выведет?
+choices:
+  - id: a
+    text: '3 4'
+    correct: true
+  - id: b
+    text: '4 4'
+  - id: c
+    text: '3 3'
+  - id: d
+    text: '4 3'
+explain: |
+  `map` создал новый массив длиной 3; `push` мутировал только `a`.

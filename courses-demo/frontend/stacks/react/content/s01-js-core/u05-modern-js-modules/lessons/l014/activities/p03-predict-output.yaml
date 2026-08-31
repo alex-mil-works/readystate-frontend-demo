@@ -1,0 +1,19 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  const { name: n, age = 25 } = { name: 'Alice' };
+  console.log(n, age);
+question: Что выведет?
+choices:
+  - id: a
+    text: "'Alice' 25"
+    correct: true
+  - id: b
+    text: 'undefined 25'
+  - id: c
+    text: "'Alice' undefined"
+  - id: d
+    text: TypeError
+explain: |
+  `name: n` переименовывает `name` в `n`. `age` отсутствует в объекте → срабатывает default `25`.

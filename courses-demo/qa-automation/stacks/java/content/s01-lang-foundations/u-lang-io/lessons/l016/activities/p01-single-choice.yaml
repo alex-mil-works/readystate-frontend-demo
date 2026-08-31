@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  `Path.of("a","b")` создаёт…
+options:
+  - id: a
+    text: Объект пути, не обязательно существующий файл
+    correct: true
+  - id: b
+    text: Сразу файл на диске
+  - id: c
+    text: Только URL
+  - id: d
+    text: InputStream
+explain: |
+  Path — абстракция пути.

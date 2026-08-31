@@ -1,0 +1,27 @@
+id: r-u04-bind-partial
+kind: single_choice
+phase: revision
+tags: [bind, partial, application]
+reinforces: [L013]
+source: original
+prompt: |
+  `const add5 = sum.bind(null, 5);` — что делает `bind` здесь?
+options:
+  - id: a
+    text: Создаёт функцию с первым аргументом = 5 (partial application)
+    correct: true
+  - id: b
+    text: Вызывает sum(null, 5)
+  - id: c
+    text: Устанавливает this = 5
+  - id: d
+    text: Ничего — null означает отмену bind
+explain: |
+  bind возвращает новую функцию. Первый аргумент — this (null здесь не важен). Второй аргумент (5) фиксируется как первый параметр. При вызове `add5(3)` → `sum(5, 3)`.
+hints:
+  - title: Partial application
+    markdown: |
+      ```js
+      const double = multiply.bind(null, 2);
+      double(10); // 20
+      ```

@@ -1,0 +1,24 @@
+id: r-u02-has-own
+kind: single_choice
+phase: revision
+tags: [objects, prototype]
+reinforces: [L005]
+source: original
+prompt: |
+  Чем `Object.hasOwn(obj, 'k')` отличается от `'k' in obj`?
+options:
+  - id: a
+    text: '`hasOwn` — только own; `in` — own или inherited'
+    correct: true
+  - id: b
+    text: Эквивалентны в ES2022+
+  - id: c
+    text: '`in` только для массивов'
+  - id: d
+    text: '`hasOwn` проверяет значение, не ключ'
+explain: |
+  `in` обходит prototype chain; `hasOwn` — только собственные свойства.
+hints:
+  - title: Own vs inherited
+    markdown: |
+      Для сериализации и merge конфигов часто нужны только own keys: `Object.keys`, `hasOwn`.

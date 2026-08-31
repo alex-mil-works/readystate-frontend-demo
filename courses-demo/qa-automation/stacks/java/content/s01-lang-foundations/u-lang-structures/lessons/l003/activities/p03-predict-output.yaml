@@ -1,0 +1,20 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  List<String> list = Arrays.asList("x", "y");
+  list.add("z");
+  System.out.println(list);
+question: Что произойдёт?
+choices:
+  - id: a
+    text: UnsupportedOperationException
+    correct: true
+  - id: b
+    text: '[x, y, z]'
+  - id: c
+    text: '[x, y]'
+  - id: d
+    text: NullPointerException
+explain: |
+  `Arrays.asList()` возвращает fixed-size list (view массива). Попытка `add()` бросает UnsupportedOperationException.

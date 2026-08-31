@@ -1,0 +1,26 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  function example() {
+    if (true) {
+      var a = 1;
+      let b = 2;
+    }
+    console.log(a);
+    console.log(b);
+  }
+  example();
+question: Что произойдёт?
+choices:
+  - id: a
+    text: '1, 2'
+  - id: b
+    text: '1, затем ReferenceError'
+    correct: true
+  - id: c
+    text: 'undefined, undefined'
+  - id: d
+    text: 'ReferenceError на первом console.log'
+explain: |
+  `var a` видна во всей функции → `console.log(a)` выведет 1. `let b` ограничена блоком if → обращение снаружи → ReferenceError.

@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Чем `.call` отличается от `.apply`?
+options:
+  - id: a
+    text: '`.call` принимает аргументы по одному, `.apply` — массивом'
+    correct: true
+  - id: b
+    text: '`.apply` привязывает this навсегда, `.call` — только на один вызов'
+  - id: c
+    text: '`.call` работает только с arrow functions'
+  - id: d
+    text: Они полностью идентичны
+explain: |
+  Единственная разница — формат аргументов. `.call(ctx, a, b)` vs `.apply(ctx, [a, b])`. Мнемоника: **a**pply → **a**rray.

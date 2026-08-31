@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что означает `final int x = 1` в Java?
+options:
+  - id: a
+    text: Переменную нельзя переназначить после инициализации
+    correct: true
+  - id: b
+    text: Значение гарантированно deep-immutable для объектов
+  - id: c
+    text: Компилятор заменяет переменную на константу всегда
+  - id: d
+    text: В Java final работает только для классов, не для переменных
+explain: |
+  `final` фиксирует binding на уровне переменной: после присваивания `x` нельзя переназначить.

@@ -1,0 +1,25 @@
+id: r-u04-function-forms
+kind: single_choice
+phase: revision
+tags: [functions, declaration, expression, arrow]
+reinforces: [L011]
+source: original
+prompt: |
+  Какая форма функции поднимается (hoisting) целиком — имя и тело?
+options:
+  - id: a
+    text: Function declaration
+    correct: true
+  - id: b
+    text: Function expression
+  - id: c
+    text: Arrow function
+  - id: d
+    text: Все три
+explain: |
+  Только `function foo() {}` поднимается целиком. Expression и arrow поднимаются только как binding (var → undefined, let/const → TDZ).
+hints:
+  - title: Hoisting форм функций
+    markdown: |
+      - Declaration: hoisting целиком.
+      - Expression/Arrow: hoisting только binding.

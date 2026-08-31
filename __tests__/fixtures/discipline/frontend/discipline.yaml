@@ -1,0 +1,11 @@
+roleId: fixture-role
+title: Fixture Role
+titleEn: Fixture Role
+
+stacks:
+  - id: react
+    label: React
+    available: true
+  - id: angular
+    label: Angular
+    available: false

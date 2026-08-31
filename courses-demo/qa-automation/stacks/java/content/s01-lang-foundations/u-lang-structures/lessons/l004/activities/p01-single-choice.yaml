@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что такое overloading методов?
+options:
+  - id: a
+    text: Переопределение метода в подклассе (@Override)
+  - id: b
+    text: Несколько методов с одним именем и разными параметрами
+    correct: true
+  - id: c
+    text: Вызов private метода из другого пакета
+  - id: d
+    text: Рекурсия без base case
+explain: |
+  Overloading — compile-time: одно имя, разные сигнатуры. Override — runtime polymorphism в иерархии классов.

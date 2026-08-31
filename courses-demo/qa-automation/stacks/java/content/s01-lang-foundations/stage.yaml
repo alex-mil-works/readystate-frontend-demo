@@ -1,0 +1,14 @@
+id: S01
+title: Основы языка
+titleEn: Language Foundations
+
+units:
+  - u-lang-core
+  - u-lang-structures
+  - u-lang-oop
+  - u-lang-errors
+  - u-lang-collections
+  - u-lang-modern
+  - u-lang-io
+
+activities: activities

@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Что произойдёт при обращении к `let`-переменной до её объявления?
+options:
+  - id: a
+    text: Вернётся `undefined`, как у `var`
+  - id: b
+    text: ReferenceError — переменная в Temporal Dead Zone
+    correct: true
+  - id: c
+    text: Вернётся `null`
+  - id: d
+    text: Движок проигнорирует обращение
+explain: |
+  `let` и `const` поднимаются (движок знает о них), но обращение до строки инициализации бросает ReferenceError. Эта зона — TDZ.

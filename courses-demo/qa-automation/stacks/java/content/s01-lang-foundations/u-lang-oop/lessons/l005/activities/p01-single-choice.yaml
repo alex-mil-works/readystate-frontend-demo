@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что такое `this` внутри метода экземпляра?
+options:
+  - id: a
+    text: Ссылка на текущий объект
+    correct: true
+  - id: b
+    text: Ссылка на Class object
+  - id: c
+    text: Ссылка на суперкласс
+  - id: d
+    text: Ключевое слово только для static
+explain: |
+  `this` — reference на текущий instance.

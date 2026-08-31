@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Почему record удобен как Jackson DTO?
+options:
+  - id: a
+    text: Компактный immutable тип с accessors
+    correct: true
+  - id: b
+    text: Jackson не работает с class
+  - id: c
+    text: Не нужен ObjectMapper
+  - id: d
+    text: Только для UI
+explain: |
+  Меньше boilerplate для DTO.

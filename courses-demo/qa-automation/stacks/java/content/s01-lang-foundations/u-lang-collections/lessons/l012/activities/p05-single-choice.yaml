@@ -1,0 +1,17 @@
+id: p05
+kind: single_choice
+phase: practice
+prompt: |
+  Как безопасно удалять при обходе?
+options:
+  - id: a
+    text: Iterator.remove() или отдельный список на удаление
+    correct: true
+  - id: b
+    text: list.remove внутри for-each всегда ок
+  - id: c
+    text: Только через reflection
+  - id: d
+    text: Никогда нельзя удалять
+explain: |
+  Iterator API поддерживает безопасное удаление текущего элемента.

@@ -1,0 +1,29 @@
+id: r-u03-closure-capture
+kind: single_choice
+phase: revision
+tags: [closures, bindings, reference]
+reinforces: [L009]
+source: original
+prompt: |
+  Замыкание захватывает переменную внешней функции. Что оно хранит?
+options:
+  - id: a
+    text: Ссылку на binding — изменения переменной видны в замыкании
+    correct: true
+  - id: b
+    text: Копию значения на момент создания замыкания
+  - id: c
+    text: Копию для примитивов, ссылку для объектов
+  - id: d
+    text: Ничего — замыкание каждый раз заново ищет переменную по имени
+explain: |
+  Замыкание удерживает ссылку на binding (переменную), а не копию значения. Если значение меняется после создания замыкания, внутренняя функция увидит новое значение.
+hints:
+  - title: Ссылка на binding
+    markdown: |
+      ```js
+      let x = 1;
+      const f = () => x;
+      x = 2;
+      f(); // 2 — захвачена ссылка
+      ```

@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  try-with-resources требует, чтобы ресурс…
+options:
+  - id: a
+    text: Реализовал AutoCloseable (или Closeable)
+    correct: true
+  - id: b
+    text: Был только String
+  - id: c
+    text: Был static
+  - id: d
+    text: Был record
+explain: |
+  Компилятор вставит вызов close().

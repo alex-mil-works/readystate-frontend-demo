@@ -1,0 +1,24 @@
+id: r-u02-shallow-spread
+kind: single_choice
+phase: revision
+tags: [mutation, spread]
+reinforces: [L007]
+source: original
+prompt: |
+  `const b = { ...a }; b.nested.x = 1` — что мутируется?
+options:
+  - id: a
+    text: '`a.nested` и `b.nested` — одна ссылка'
+    correct: true
+  - id: b
+    text: Только `b`, `a` изолирован
+  - id: c
+    text: Ошибка runtime
+  - id: d
+    text: Копируется deep автоматически
+explain: |
+  Shallow spread не клонирует `nested`; мутация затрагивает оба объекта.
+hints:
+  - title: Nested update
+    markdown: |
+      `{ ...a, nested: { ...a.nested, x: 1 } }` — immutable path.

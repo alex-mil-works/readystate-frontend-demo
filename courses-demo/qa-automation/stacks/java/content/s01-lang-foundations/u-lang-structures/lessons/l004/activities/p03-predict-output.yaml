@@ -1,0 +1,21 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  static void greet(String... names) {
+    System.out.println(names.length);
+  }
+  greet("Alice", "Bob", "Carol");
+question: Что выведет?
+choices:
+  - id: a
+    text: '3'
+    correct: true
+  - id: b
+    text: '1'
+  - id: c
+    text: Ошибка компиляции
+  - id: d
+    text: '[Alice, Bob, Carol]'
+explain: |
+  Varargs `String...` оборачивается в массив. Три аргумента → `names.length == 3`.

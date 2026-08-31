@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Почему `String` в Java immutable?
+options:
+  - id: a
+    text: Безопасность (ключи HashMap), кэширование hashCode, thread safety
+    correct: true
+  - id: b
+    text: Потому что String — примитивный тип
+  - id: c
+    text: Только для экономии памяти в string pool
+  - id: d
+    text: Это ограничение JVM, не дизайн-решение
+explain: |
+  Immutability String — сознательное решение: безопасные ключи коллекций, кэшируемый hashCode(), безопасность в многопоточности без synchronized.
+hints:
+  - title: String pool
+    markdown: |
+      String pool оптимизирует память, повторно используя литералы, но это следствие immutability, а не причина.

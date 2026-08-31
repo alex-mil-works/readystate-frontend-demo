@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Suppressed exceptions появляются когда…
+options:
+  - id: a
+    text: close() бросает после исключения из тела try
+    correct: true
+  - id: b
+    text: Только при OutOfMemory
+  - id: c
+    text: Всегда вместо primary
+  - id: d
+    text: Только в checked
+explain: |
+  Primary — из тела; close может добавить suppressed.

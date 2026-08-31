@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: как читать тестовые фикстуры через NIO и почему не hardcode absolute paths.
+rubric: |
+  - Path/Files
+  - resources
+  - portability CI
+sampleAnswer: |
+  Path и Files читают содержимое. Фикстуры держите в test resources и грузите относительно classpath, иначе пути разъедутся между ноутбуком и CI.

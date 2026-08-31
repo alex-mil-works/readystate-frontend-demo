@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Что произойдёт, если в конструкторе дочернего класса обратиться к `this` до вызова `super()`?
+options:
+  - id: a
+    text: ReferenceError
+    correct: true
+  - id: b
+    text: this будет undefined
+  - id: c
+    text: this будет пустым объектом
+  - id: d
+    text: Ничего — super необязателен
+explain: |
+  В дочернем конструкторе `this` не инициализирован до `super()`. Обращение до вызова → ReferenceError.

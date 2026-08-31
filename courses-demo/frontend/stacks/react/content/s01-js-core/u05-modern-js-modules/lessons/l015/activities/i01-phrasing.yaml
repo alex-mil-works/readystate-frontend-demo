@@ -1,0 +1,17 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: Map vs object, Set, Symbol и протокол итерации.
+rubric: |
+  - Map: произвольные ключи, insertion order, .size
+  - Set: уникальные значения, дедупликация
+  - Symbol: уникальный примитив, Symbol.iterator
+  - iterable protocol: [Symbol.iterator] → iterator → { value, done }
+  - потребители: for...of, spread, destructuring
+sampleAnswer: |
+  Map хранит пары ключ-значение с ключами любого типа, в отличие от object. Set — коллекция
+  уникальных значений, полезна для дедупликации. Symbol — новый примитив, каждый экземпляр
+  уникален. Symbol.iterator — ключ протокола итерации: объект iterable, если у него есть
+  метод [Symbol.iterator](), возвращающий iterator с next(). Это основа for...of, spread,
+  деструктуризации.

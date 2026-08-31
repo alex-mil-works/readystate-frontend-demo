@@ -1,0 +1,20 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  console.log(typeof []);
+  console.log(typeof null);
+  console.log(typeof (() => {}));
+question: Какая тройка выводов (по порядку)?
+choices:
+  - id: a
+    text: object, object, function
+    correct: true
+  - id: b
+    text: array, null, function
+  - id: c
+    text: object, null, object
+  - id: d
+    text: array, object, function
+explain: |
+  Массив — object; `typeof null` — `"object"`; функции имеют отдельный typeof `"function"`.

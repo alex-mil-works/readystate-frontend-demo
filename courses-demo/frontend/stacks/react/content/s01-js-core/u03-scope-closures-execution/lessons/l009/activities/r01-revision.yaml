@@ -1,0 +1,41 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `makeGreeter` создаёт `greet`, затем меняет `name`. Что вернёт `greet()`?
+  ```js
+  function makeGreeter() {
+    let name = 'Alice';
+    const greet = () => name;
+    name = 'Bob';
+    return greet;
+  }
+  ```
+options:
+  - id: a
+    text: "'Alice'"
+  - id: b
+    text: "'Bob'"
+    correct: true
+  - id: c
+    text: undefined
+  - id: d
+    text: ReferenceError
+explain: |
+  Замыкание удерживает ссылку на binding `name`. К моменту вызова `greet()` значение уже 'Bob'.
+hints:
+  - title: Ссылка, не копия
+    markdown: |
+      Замыкание захватывает **ссылку** на переменную, а не её значение на момент создания функции.
+
+      ```js
+      let x = 1;
+      const f = () => x;
+      x = 2;
+      f(); // 2
+      ```
+  - title: React и stale closures
+    markdown: |
+      В React каждый render создаёт новое замыкание. Если handler или effect запоминает props/state
+      предыдущего рендера и не обновляется — это *stale closure*. Dependency arrays в `useEffect`
+      существуют именно для этого.

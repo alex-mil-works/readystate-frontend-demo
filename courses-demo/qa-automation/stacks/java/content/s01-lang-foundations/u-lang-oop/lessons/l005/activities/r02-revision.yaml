@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Какой anti-pattern типичен для test helpers?
+options:
+  - id: a
+    text: Один god-класс Utils на всё
+    correct: true
+  - id: b
+    text: Page Object с одной ответственностью
+  - id: c
+    text: Конструктор с явным WebDriver
+  - id: d
+    text: Маленькие immutable DTO
+explain: |
+  God-класс смешивает UI, API и assertions.
+hints:
+  - title: SRP
+    markdown: |
+      Делите Page Object, API client и assertions.

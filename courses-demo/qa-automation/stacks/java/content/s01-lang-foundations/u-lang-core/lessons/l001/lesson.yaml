@@ -1,0 +1,22 @@
+id: L001-java-syntax-primitives
+order: 1
+title: Основы синтаксиса Java
+titleEn: Java Syntax Basics
+essence: >-
+  Примитивы, `final`, casting и String — база для любого Java-кода в автотестах.
+  На собеседовании: отличить reference от value и не путать `==` с `equals`.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-java-syntax.md
+  - insights/02-casting-and-strings.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

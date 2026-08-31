@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что вернёт `const n = 0 ?? 10;`?
+options:
+  - id: a
+    text: '0'
+    correct: true
+  - id: b
+    text: '10'
+  - id: c
+    text: 'undefined'
+  - id: d
+    text: Throws
+explain: |
+  `0` не nullish. `??` не смотрит на truthiness.

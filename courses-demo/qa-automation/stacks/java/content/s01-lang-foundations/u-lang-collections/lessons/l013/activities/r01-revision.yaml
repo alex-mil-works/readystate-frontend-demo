@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  LinkedHashMap сохраняет…
+options:
+  - id: a
+    text: Порядок вставки (по умолчанию)
+    correct: true
+  - id: b
+    text: Сортировку как TreeMap
+  - id: c
+    text: Только один entry
+  - id: d
+    text: Ничего
+explain: |
+  Удобно для предсказуемого порядка в тестах.
+hints:
+  - title: When
+    markdown: |
+      Фикстуры с фиксированным порядком headers/params.

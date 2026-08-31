@@ -1,0 +1,27 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  interface Greeter { String hi(); }
+  class En implements Greeter {
+    public String hi() { return "hi"; }
+  }
+  class Demo {
+    public static void main(String[] args) {
+      Greeter g = new En();
+      System.out.println(g.hi());
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: hi
+    correct: true
+  - id: b
+    text: 'null'
+  - id: c
+    text: Greeter
+  - id: d
+    text: ошибка
+explain: |
+  Вызов через интерфейсную ссылку идёт в En.hi().

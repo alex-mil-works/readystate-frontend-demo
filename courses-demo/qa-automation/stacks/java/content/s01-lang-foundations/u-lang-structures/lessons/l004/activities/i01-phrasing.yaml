@@ -1,0 +1,14 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: overloading vs overriding и как вы структурируете helpers в automation проекте.
+rubric: |
+  - overloading = разные параметры, один класс
+  - overriding = подкласс, @Override
+  - маленькие методы, одна задача
+  - пример helper для UI или API
+sampleAnswer: |
+  Overloading — несколько методов с одним именем и разными параметрами в одном классе; выбор на этапе компиляции.
+  Overriding — переопределение метода родителя в подклассе с @Override.
+  В automation helpers делают узкими: отдельно login, отдельно build request, asserts остаются в тесте или в assert-утилитах.

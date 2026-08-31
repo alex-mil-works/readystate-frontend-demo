@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Где живёт объект, созданный через `new`?
+options:
+  - id: a
+    text: В heap
+    correct: true
+  - id: b
+    text: Только в stack frame
+  - id: c
+    text: В Method Area
+  - id: d
+    text: В .class на диске
+explain: |
+  Экземпляр в heap; локальная переменная на stack хранит reference.
+hints:
+  - title: Stack vs heap
+    markdown: |
+      Reference на stack указывает на object в heap.

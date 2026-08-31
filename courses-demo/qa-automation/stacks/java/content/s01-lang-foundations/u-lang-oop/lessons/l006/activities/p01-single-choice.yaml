@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Зачем делать поля `private`?
+options:
+  - id: a
+    text: Контролировать изменение состояния через методы
+    correct: true
+  - id: b
+    text: Ускорить garbage collector
+  - id: c
+    text: Запретить наследование
+  - id: d
+    text: Сделать класс abstract
+explain: |
+  Инкапсуляция ограничивает прямой доступ к состоянию.

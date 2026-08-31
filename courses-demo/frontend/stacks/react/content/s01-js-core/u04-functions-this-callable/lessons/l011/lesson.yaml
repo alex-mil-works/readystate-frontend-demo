@@ -1,0 +1,20 @@
+id: L011-js-function-forms
+order: 11
+title: Формы функций и способы вызова
+titleEn: Function Forms & Invocation Patterns
+essence: >-
+  Declaration vs expression vs arrow; functions are objects; arguments, defaults и return undefined.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-function-forms.md
+  - insights/02-invocation-and-arguments.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

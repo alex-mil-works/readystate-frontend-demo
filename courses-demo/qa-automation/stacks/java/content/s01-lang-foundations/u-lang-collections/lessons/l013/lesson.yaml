@@ -1,0 +1,22 @@
+id: L013-java-map
+order: 13
+title: 'Map: HashMap vs TreeMap, итерация'
+titleEn: 'Map: HashMap vs TreeMap & Iteration'
+essence: >-
+  Ключ-значение для тестовых данных и JSON-подобных структур. Итерация entrySet.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-map-impl.md
+  - insights/02-iterate.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/p05-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

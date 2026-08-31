@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Терминальная операция Stream…
+options:
+  - id: a
+    text: Запускает pipeline и даёт результат/side-effect
+    correct: true
+  - id: b
+    text: Только описывает filter без выполнения
+  - id: c
+    text: Всегда бесконечна
+  - id: d
+    text: Запрещена в Java
+explain: |
+  map/filter — промежуточные; collect/forEach — терминальные.

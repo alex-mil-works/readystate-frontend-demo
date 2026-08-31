@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Как удобнее итерировать ключ и значение вместе?
+options:
+  - id: a
+    text: entrySet()
+    correct: true
+  - id: b
+    text: Только keySet() и потом get дважды
+  - id: c
+    text: values() даёт ключи
+  - id: d
+    text: map[i] как массив
+explain: |
+  entrySet избегает лишних lookup.

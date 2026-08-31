@@ -1,0 +1,21 @@
+id: L005-java-oop-classes
+order: 5
+title: Классы, поля, конструкторы, this
+titleEn: Classes, Fields, Constructors, this
+essence: >-
+  Класс как чертёж объекта: поля, конструкторы, this. В тестах — Page Object и helper-классы без god-class.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-classes-objects.md
+  - insights/02-constructors-this.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

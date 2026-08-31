@@ -1,0 +1,15 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: три формы функций в JS и их ключевые различия.
+rubric: |
+  - declaration vs expression vs arrow
+  - hoisting различия
+  - arrow: нет this, arguments, new
+  - функции — объекты (first-class)
+sampleAnswer: |
+  Function declaration поднимается целиком — можно вызвать до строки объявления.
+  Function expression поднимается только как binding. Arrow function — короткий синтаксис,
+  но без собственного this, arguments и не может быть конструктором. Все функции в JS —
+  объекты первого класса: можно передавать как аргументы, возвращать, хранить в переменных.

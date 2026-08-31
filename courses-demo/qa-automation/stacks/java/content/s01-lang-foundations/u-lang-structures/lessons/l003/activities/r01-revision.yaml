@@ -1,0 +1,26 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Зачем TestNG `@DataProvider` часто возвращает `Object[][]`?
+options:
+  - id: a
+    text: 'Каждая строка — набор аргументов для одного вызова `@Test`'
+    correct: true
+  - id: b
+    text: Только для параллельного запуска браузеров
+  - id: c
+    text: Чтобы хранить JSON без парсинга
+  - id: d
+    text: Это требование JUnit 5
+explain: |
+  DataProvider даёт таблицу параметров: одна строка массива → один прогон теста с этими args.
+hints:
+  - title: Data-driven tests
+    markdown: |
+      ```java
+      @DataProvider
+      Object[][] users() {
+        return new Object[][] { {"ann"}, {"bob"} };
+      }
+      ```

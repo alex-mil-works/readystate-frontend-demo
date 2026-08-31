@@ -1,0 +1,17 @@
+id: p05
+kind: single_choice
+phase: practice
+prompt: |
+  Плохой ключ для HashMap?
+options:
+  - id: a
+    text: Mutable объект, который меняет поля из hashCode
+    correct: true
+  - id: b
+    text: Immutable String
+  - id: c
+    text: Integer
+  - id: d
+    text: enum
+explain: |
+  Изменение ключа ломает бакеты HashMap.

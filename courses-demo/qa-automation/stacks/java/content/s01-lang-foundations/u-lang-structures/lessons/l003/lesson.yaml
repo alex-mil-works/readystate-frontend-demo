@@ -1,0 +1,21 @@
+id: L003-java-arrays
+order: 3
+title: Массивы
+titleEn: Java Arrays
+essence: >-
+  Массивы vs `List`: length, for-each, `Arrays` utils. Мост к Collections и
+  `@DataProvider` массивам в TestNG.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-arrays.md
+  - insights/02-arrays-utils.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

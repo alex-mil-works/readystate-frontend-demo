@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  PECS расшифровывается как…
+options:
+  - id: a
+    text: Producer Extends, Consumer Super
+    correct: true
+  - id: b
+    text: Public Extends Class Static
+  - id: c
+    text: Put Every Collection Sorted
+  - id: d
+    text: Private Erasure Checked Super
+explain: |
+  Подсказка для wildcards.
+hints:
+  - title: PECS
+    markdown: |
+      extends когда читаете; super когда пишете.

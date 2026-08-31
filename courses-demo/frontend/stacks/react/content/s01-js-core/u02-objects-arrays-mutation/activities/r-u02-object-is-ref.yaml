@@ -1,0 +1,24 @@
+id: r-u02-object-is-ref
+kind: single_choice
+phase: revision
+tags: [references, equality]
+reinforces: [L007]
+source: original
+prompt: |
+  `{} === {}` — результат?
+options:
+  - id: a
+    text: 'true'
+  - id: b
+    text: 'false'
+    correct: true
+  - id: c
+    text: 'TypeError'
+  - id: d
+    text: 'undefined'
+explain: |
+  Разные объекты в heap — разные ссылки, даже при одинаковой структуре.
+hints:
+  - title: Reference identity
+    markdown: |
+      Deep equality — отдельные утилиты (`lodash.isEqual`) или сравнение полей вручную.

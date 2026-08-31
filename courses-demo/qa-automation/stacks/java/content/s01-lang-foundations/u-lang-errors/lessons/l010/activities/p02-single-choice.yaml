@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  `NullPointerException` — это…
+options:
+  - id: a
+    text: Unchecked (RuntimeException)
+    correct: true
+  - id: b
+    text: Checked
+  - id: c
+    text: Error
+  - id: d
+    text: Нельзя поймать
+explain: |
+  NPE — RuntimeException.

@@ -1,0 +1,38 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Как до ES2015 решали проблему замыкания `var` в цикле?
+options:
+  - id: a
+    text: Через IIFE — немедленно вызываемую функцию, создающую новый scope
+    correct: true
+  - id: b
+    text: Через `Object.freeze(i)`
+  - id: c
+    text: Через `arguments` объект
+  - id: d
+    text: Проблема не решалась до let
+explain: |
+  IIFE `(function(j) { ... })(i)` создаёт новый scope с параметром `j`, который фиксирует значение `i` текущей итерации.
+hints:
+  - title: var в цикле
+    markdown: |
+      `var` в цикле `for` создаёт **одну** переменную на всю функцию. Все замыкания видят итоговое значение.
+
+      ```js
+      for (var i = 0; i < 3; i++) {
+        setTimeout(() => console.log(i), 0);
+      }
+      // 3, 3, 3
+      ```
+  - title: let решает
+    markdown: |
+      `let` в `for` создаёт новый binding на каждую итерацию:
+
+      ```js
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => console.log(i), 0);
+      }
+      // 0, 1, 2
+      ```

@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Почему record удобен для API assertions?
+options:
+  - id: a
+    text: Value equality без ручного equals
+    correct: true
+  - id: b
+    text: Он всегда mutable
+  - id: c
+    text: Заменяет REST Assured
+  - id: d
+    text: Нельзя создать два одинаковых
+explain: |
+  Сравнение DTO через equals упрощает проверки JSON.
+hints:
+  - title: DTO in tests
+    markdown: |
+      Ожидаемый и фактический UserDto сравнивают через equals/AssertJ.

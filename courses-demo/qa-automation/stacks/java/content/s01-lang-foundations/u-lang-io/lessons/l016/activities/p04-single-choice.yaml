@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Properties удобны для…
+options:
+  - id: a
+    text: Простых конфигурационных пар ключ/значение
+    correct: true
+  - id: b
+    text: Замены JSON Schema
+  - id: c
+    text: Хранения бинарных драйверов
+  - id: d
+    text: Компиляции Selenium
+explain: |
+  Лёгкий конфиг, не сложный документ.

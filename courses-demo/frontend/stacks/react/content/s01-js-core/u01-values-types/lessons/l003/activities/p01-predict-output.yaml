@@ -1,0 +1,20 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  console.log('5' == 5);
+  console.log('5' === 5);
+  console.log(null == undefined);
+question: Три результата по порядку?
+choices:
+  - id: a
+    text: true, false, true
+    correct: true
+  - id: b
+    text: true, true, false
+  - id: c
+    text: false, false, true
+  - id: d
+    text: true, false, false
+explain: |
+  Loose equality приводит string к number; strict — нет. `null == undefined` — специальное правило abstract equality.

@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Где можно расположить varargs-параметр в сигнатуре метода?
+options:
+  - id: a
+    text: Только на последнем месте
+    correct: true
+  - id: b
+    text: В любом месте списка параметров
+  - id: c
+    text: Только на первом месте
+  - id: d
+    text: Varargs не разрешён в Java
+explain: |
+  Компилятор требует varargs как последний параметр, чтобы однозначно определить границу переменных аргументов.
+hints:
+  - title: Varargs внутри
+    markdown: |
+      Внутри метода varargs — обычный массив. `String... args` компилируется в `String[] args`.

@@ -1,0 +1,20 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  const prev = { items: [1] };
+  const next = { ...prev, items: [...prev.items, 2] };
+  console.log(prev.items === next.items, prev === next);
+question: Какие два boolean?
+choices:
+  - id: a
+    text: 'false false'
+    correct: true
+  - id: b
+    text: 'true false'
+  - id: c
+    text: 'false true'
+  - id: d
+    text: 'true true'
+explain: |
+  Новый массив `items` → `prev.items !== next.items`; новый объект `next` → `prev !== next`.

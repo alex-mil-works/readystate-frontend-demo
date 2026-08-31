@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  В JUnit 5 ожидаемое исключение лучше проверить через…
+options:
+  - id: a
+    text: assertThrows
+    correct: true
+  - id: b
+    text: Пустой catch в тесте без assert
+  - id: c
+    text: System.exit
+  - id: d
+    text: Только Thread.sleep
+explain: |
+  assertThrows проверяет тип и позволяет ассертить сообщение.

@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  `Optional.of(null)` …
+options:
+  - id: a
+    text: Бросает NullPointerException
+    correct: true
+  - id: b
+    text: Возвращает empty
+  - id: c
+    text: Кладет null внутрь ок
+  - id: d
+    text: Компилируется только в preview
+explain: |
+  Для nullable используйте ofNullable.

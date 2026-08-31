@@ -1,0 +1,13 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Fixture question?
+options:
+  - id: a
+    text: Yes
+    correct: true
+  - id: b
+    text: No
+explain: |
+  Fixture explain.

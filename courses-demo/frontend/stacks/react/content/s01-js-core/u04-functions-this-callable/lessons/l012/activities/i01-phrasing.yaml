@@ -1,0 +1,14 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: четыре правила определения this в обычных функциях JS.
+rubric: |
+  - new, explicit (call/apply/bind), implicit (метод), default
+  - порядок приоритета
+  - strict vs sloppy для default
+  - пример потери контекста при извлечении метода
+sampleAnswer: |
+  this определяется способом вызова. Приоритет: new создаёт новый объект; call/apply/bind
+  явно задают this; вызов как метод объекта (obj.fn()) — this = obj; просто вызов fn() —
+  this = undefined в strict mode. Типичная ловушка: извлечение метода теряет контекст.

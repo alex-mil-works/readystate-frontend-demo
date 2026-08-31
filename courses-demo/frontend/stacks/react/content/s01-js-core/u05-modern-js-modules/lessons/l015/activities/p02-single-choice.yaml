@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Чем ключи `Map` отличаются от ключей plain object?
+options:
+  - id: a
+    text: Map принимает ключи любого типа, object — только string и symbol
+    correct: true
+  - id: b
+    text: Object принимает любые ключи, Map — только строки
+  - id: c
+    text: Ключи одинаковые, разница только в синтаксисе
+  - id: d
+    text: Map не поддерживает объекты как ключи
+explain: |
+  Plain object приводит ключи к строке (`[object Object]` для объектов). Map хранит ключи по identity — объект, число, функция.

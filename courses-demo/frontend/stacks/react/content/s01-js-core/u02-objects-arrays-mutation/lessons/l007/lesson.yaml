@@ -1,0 +1,20 @@
+id: L007-js-mutation-copies
+order: 7
+title: Mutation, shallow copies и reference identity
+titleEn: Mutation, Shallow Copies & Reference Identity
+essence: >-
+  Почему `{...obj}` не глубокая копия и как identity ломает React state. Immutable update вложенного объекта.
+depth: application
+required: true
+
+insights:
+  - insights/01-shallow-copy.md
+  - insights/02-reference-identity.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

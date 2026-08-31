@@ -1,5 +1,6 @@
 import { defineConfig } from 'oxlint';
 
+/** Lint rules for app + tools. Formatting stays with Prettier. */
 export default defineConfig({
   plugins: ['react', 'typescript', 'oxc', 'import', 'unicorn'],
 
@@ -7,7 +8,7 @@ export default defineConfig({
     correctness: 'error',
     suspicious: 'warn',
     pedantic: 'off',
-    style: 'off',
+    style: 'off', // Prettier owns formatting
     restriction: 'off',
   },
 
@@ -21,10 +22,9 @@ export default defineConfig({
     },
   },
 
-  ignorePatterns: ['dist/**', 'node_modules/**', 'archive/**', 'coverage/**', 'content-demo/**'],
+  ignorePatterns: ['dist/**', 'node_modules/**', '.local/**', 'coverage/**', 'content-demo/**'],
 
   rules: {
-    // React 17+ JSX transform — no React import required
     'react/react-in-jsx-scope': 'off',
     'react/rules-of-hooks': 'error',
     'react/only-export-components': ['warn', { allowConstantExport: true }],
@@ -40,7 +40,6 @@ export default defineConfig({
     ],
 
     'import/no-cycle': 'error',
-    // CSS and similar side-effect imports are expected at app bootstrap
     'import/no-unassigned-import': [
       'error',
       {
@@ -49,6 +48,7 @@ export default defineConfig({
     ],
 
     'typescript/no-explicit-any': 'warn',
+    // Prefer `import type` when a symbol is only used in types
     'typescript/consistent-type-imports': [
       'error',
       { prefer: 'type-imports', fixStyle: 'separate-type-imports' },
@@ -57,13 +57,32 @@ export default defineConfig({
 
   overrides: [
     {
-      files: ['**/*.{test,spec}.{ts,tsx}'],
+      files: ['__tests__/**/*.{test,spec}.{ts,tsx}', '**/*.{test,spec}.{ts,tsx}'],
       rules: {
         'typescript/no-explicit-any': 'off',
       },
     },
     {
-      files: ['vite.config.ts', 'oxlint.config.ts', 'prettier.config.js'],
+      // kit/primary export both the component and cva variants
+      files: ['src/shared/ui/primary/**/*.{ts,tsx}', 'src/shared/ui/kit/**/*.{ts,tsx}'],
+      rules: {
+        'react/only-export-components': 'off',
+      },
+    },
+    {
+      files: ['__tests__/setup.ts'],
+      rules: {
+        'import/no-unassigned-import': 'off',
+      },
+    },
+    {
+      files: [
+        'vite.config.ts',
+        'vitest.config.ts',
+        'oxlint.config.ts',
+        'prettier.config.js',
+        'tools/**/*.ts',
+      ],
       env: {
         node: true,
       },

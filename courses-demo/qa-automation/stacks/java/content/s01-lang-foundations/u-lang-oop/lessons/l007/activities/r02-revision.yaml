@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  `super.method()` нужен чтобы…
+options:
+  - id: a
+    text: Вызвать реализацию родителя при override
+    correct: true
+  - id: b
+    text: Создать новый объект родителя
+  - id: c
+    text: Сделать метод static
+  - id: d
+    text: Обойти private родителя
+explain: |
+  super обращается к члену суперкласса.
+hints:
+  - title: Override
+    markdown: |
+      Подкласс может расширить поведение, вызвав super.method() внутри override.

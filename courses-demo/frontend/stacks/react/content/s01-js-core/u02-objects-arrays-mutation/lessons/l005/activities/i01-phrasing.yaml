@@ -1,0 +1,15 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: чем own-свойство отличается от inherited и как проверить own.
+rubric: |
+  Ожидаемые пункты (30–60 сек):
+  - prototype chain при чтении
+  - `Object.hasOwn` vs `'key' in obj`
+  - shadowing own-свойством
+  - один короткий пример
+sampleAnswer: |
+  При чтении JS ищет свойство на объекте, затем по цепочке прототипов. Own — только на самом объекте;
+  inherited — с прототипа. `Object.hasOwn` проверяет own; оператор `in` — и own, и inherited.
+  Если записать own-свойство с тем же именем, оно затеняет унаследованное.

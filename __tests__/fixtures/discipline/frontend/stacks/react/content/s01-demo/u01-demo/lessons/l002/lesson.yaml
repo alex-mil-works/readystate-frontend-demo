@@ -1,0 +1,13 @@
+id: L002
+order: 2
+title: Fixture lesson two
+titleEn: Fixture lesson two
+essence: Second lesson so the unit meets min 2.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-insight.md
+
+activities:
+  - activities/p01-single-choice.yaml

@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Зачем generics в `List<UserDto>`?
+options:
+  - id: a
+    text: Проверка типов на компиляции
+    correct: true
+  - id: b
+    text: Ускорение JVM в 10 раз
+  - id: c
+    text: Отключение GC
+  - id: d
+    text: Обязательны только в Android
+explain: |
+  Компилятор предотвращает ClassCastException позже.

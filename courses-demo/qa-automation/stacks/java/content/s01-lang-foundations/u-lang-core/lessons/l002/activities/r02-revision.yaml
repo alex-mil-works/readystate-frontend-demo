@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Чем arrow-form (`->`) в switch expression отличается от классического switch statement?
+options:
+  - id: a
+    text: Не допускает fall-through и возвращает значение
+    correct: true
+  - id: b
+    text: Работает только со строками
+  - id: c
+    text: Требует обязательного `break` после каждого case
+  - id: d
+    text: Доступна только в Java 8+
+explain: |
+  Switch expression (Java 14+) с arrow-form возвращает значение, не допускает fall-through, компилятор проверяет exhaustiveness для enum.
+hints:
+  - title: Fall-through
+    markdown: |
+      В классическом switch без `break` выполнение «проваливается» в следующий case — частый источник багов.

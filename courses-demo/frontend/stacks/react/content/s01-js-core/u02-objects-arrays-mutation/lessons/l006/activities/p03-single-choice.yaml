@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Когда `reduce` предпочтительнее цепочки `filter().map()`?
+options:
+  - id: a
+    text: Никогда — reduce всегда хуже читается
+  - id: b
+    text: Когда нужен один проход и промежуточные массивы лишние
+    correct: true
+  - id: c
+    text: Только для сортировки
+  - id: d
+    text: Только если массив пустой
+explain: |
+  Один проход — меньше аллокаций; но читаемость важнее, пока нет perf-проблемы.

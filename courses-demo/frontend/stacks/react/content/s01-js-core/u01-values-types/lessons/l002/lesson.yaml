@@ -1,0 +1,19 @@
+id: L002-js-typeof-primitives
+order: 2
+title: '`typeof`, primitives, objects и `null`'
+titleEn: '`typeof`, Primitives, Objects & null'
+essence: >-
+  Карта семи typeof-результатов и исторический баг `typeof null`. Отличить primitive от object.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-typeof-map.md
+  - insights/02-null-and-boxed.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-predict-output.yaml
+  - activities/p03-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

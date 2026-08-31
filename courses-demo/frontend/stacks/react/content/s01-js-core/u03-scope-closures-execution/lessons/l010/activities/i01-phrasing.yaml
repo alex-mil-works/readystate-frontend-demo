@@ -1,0 +1,17 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: чем var, let и const отличаются по scoping, и покажите ловушку var в цикле.
+rubric: |
+  - var — function scope, let/const — block scope
+  - var в цикле: все замыкания видят итоговое значение
+  - let создаёт новый binding на итерацию
+  - const = let + нельзя переприсвоить binding
+  - рекомендация: const по умолчанию
+sampleAnswer: |
+  `var` имеет function scope — переменная видна во всей функции, не только в блоке.
+  `let` и `const` — block scope. В цикле `for (var i = ...)` одна переменная `i` на все
+  итерации, поэтому замыкания видят итоговое значение. `let` создаёт новый binding
+  на каждой итерации. `const` работает как `let`, но запрещает переприсваивание.
+  В продуктовом коде — `const` по умолчанию, `let` когда нужно менять binding.

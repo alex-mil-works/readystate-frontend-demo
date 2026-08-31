@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  Почему ES Modules позволяют tree-shaking, а CommonJS — нет?
+options:
+  - id: a
+    text: ES Modules имеют статическую структуру — imports/exports известны до runtime
+    correct: true
+  - id: b
+    text: CommonJS быстрее загружает модули
+  - id: c
+    text: ES Modules компилируются в бинарный код
+  - id: d
+    text: CommonJS не поддерживает exports
+explain: |
+  `import`/`export` анализируются статически — bundler может определить неиспользуемый код и удалить его. `require()` — runtime, зависимости могут быть условными.

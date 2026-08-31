@@ -1,0 +1,24 @@
+id: r-u05-set-dedup
+kind: single_choice
+phase: revision
+tags: [set, deduplication]
+reinforces: [L015]
+source: original
+prompt: |
+  Как дедуплицировать массив одной строкой?
+options:
+  - id: a
+    text: '`[...new Set(arr)]`'
+    correct: true
+  - id: b
+    text: '`arr.filter(unique)`'
+  - id: c
+    text: '`Array.from(arr)`'
+  - id: d
+    text: '`new Map(arr)`'
+explain: |
+  `new Set(arr)` удаляет дубли, spread `[...]` преобразует обратно в массив.
+hints:
+  - title: Set
+    markdown: |
+      Set хранит только уникальные значения. Сравнение по SameValueZero (как `===`, но NaN === NaN).

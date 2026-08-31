@@ -1,0 +1,17 @@
+id: p04
+kind: single_choice
+phase: practice
+prompt: |
+  В чём разница между rest parameters (`...args`) и объектом `arguments`?
+options:
+  - id: a
+    text: '`...args` — настоящий массив, `arguments` — pseudo-array; rest работает в arrow functions'
+    correct: true
+  - id: b
+    text: Они полностью идентичны
+  - id: c
+    text: '`arguments` — настоящий массив, rest — нет'
+  - id: d
+    text: Rest parameters доступны только в strict mode
+explain: |
+  Rest даёт настоящий Array с `.map`, `.filter` и т.д. `arguments` — pseudo-array (объект с length). Arrow functions не имеют `arguments`, но rest работает.

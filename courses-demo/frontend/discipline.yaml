@@ -1,0 +1,14 @@
+roleId: frontend
+title: Frontend
+titleEn: Frontend
+
+stacks:
+  - id: react
+    label: React
+    available: true
+  - id: angular
+    label: Angular
+    available: false
+  - id: vue
+    label: Vue
+    available: false

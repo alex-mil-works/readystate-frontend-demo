@@ -1,0 +1,22 @@
+id: L017-java-jackson
+order: 17
+title: 'Jackson: POJO, @JsonProperty'
+titleEn: 'Jackson: POJO & @JsonProperty'
+essence: >-
+  Сериализация JSON ↔ объекты для API-тестов. Аннотации и строгий mapping.
+depth: application
+required: true
+
+insights:
+  - insights/01-pojo-json.md
+  - insights/02-annotations.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-single-choice.yaml
+  - activities/p05-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

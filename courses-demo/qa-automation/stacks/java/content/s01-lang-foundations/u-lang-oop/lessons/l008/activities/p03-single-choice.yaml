@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Зачем в тестах тип `WebDriver` вместо `ChromeDriver`?
+options:
+  - id: a
+    text: Легче подменить реализацию / запускать в разных браузерах
+    correct: true
+  - id: b
+    text: ChromeDriver нельзя сохранить в поле
+  - id: c
+    text: WebDriver быстрее
+  - id: d
+    text: Так требует JVM
+explain: |
+  Программируйте к интерфейсу драйвера.

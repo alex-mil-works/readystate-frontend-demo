@@ -1,0 +1,21 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  const a = { x: 1 };
+  const b = { x: 1 };
+  const c = a;
+  console.log(a === b, a === c);
+question: Что выведет `console.log`?
+choices:
+  - id: a
+    text: false true
+    correct: true
+  - id: b
+    text: true true
+  - id: c
+    text: false false
+  - id: d
+    text: true false
+explain: |
+  `===` для object — сравнение ссылок. Одинаковая структура не делает объекты равными.

@@ -1,0 +1,15 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: что такое hoisting и TDZ, с примером разницы var и let.
+rubric: |
+  - объявления обрабатываются до исполнения кода
+  - var поднимается как undefined
+  - let/const → TDZ, ReferenceError до инициализации
+  - function declaration поднимается целиком
+sampleAnswer: |
+  Hoisting — движок регистрирует объявления до выполнения кода. var-переменная доступна
+  как undefined с начала scope. let и const тоже «известны» движку, но обращение до
+  строки объявления бросает ReferenceError — это temporal dead zone. Function declaration
+  поднимается целиком, поэтому её можно вызвать до строки объявления.

@@ -1,0 +1,17 @@
+id: r-u01-02
+kind: single_choice
+phase: revision
+prompt: |
+  Что произойдёт при доступе к `arr[arr.length]` для непустого массива?
+options:
+  - id: a
+    text: ArrayIndexOutOfBoundsException
+    correct: true
+  - id: b
+    text: Вернёт последний элемент
+  - id: c
+    text: Вернёт null
+  - id: d
+    text: Ошибка компиляции
+explain: |
+  Индексы массива от 0 до length-1. `arr[arr.length]` — выход за границу → ArrayIndexOutOfBoundsException в runtime.

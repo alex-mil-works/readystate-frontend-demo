@@ -1,0 +1,17 @@
+id: p03
+kind: single_choice
+phase: practice
+prompt: |
+  Когда **обязательно** нужен bracket-доступ?
+options:
+  - id: a
+    text: Для любого string-ключа — dot устарел
+  - id: b
+    text: Когда имя свойства в переменной или содержит недопустимые для dot символы
+    correct: true
+  - id: c
+    text: Только для массивов, объекты всегда через dot
+  - id: d
+    text: Только в strict mode
+explain: |
+  Bracket — для динамических ключей и «нестандартных» имён (`'user id'`, `Symbol`).

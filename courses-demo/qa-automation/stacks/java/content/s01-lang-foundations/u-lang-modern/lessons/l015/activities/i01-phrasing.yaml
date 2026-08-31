@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: Stream pipeline и осторожность с Optional.get().
+rubric: |
+  - intermediate vs terminal
+  - Optional как явный absence
+  - anti-pattern get()
+sampleAnswer: |
+  Stream описывает преобразования и выполняется на терминальной операции. Optional выражает отсутствие значения; get() без проверки опасен — лучше orElse/orElseThrow/ifPresent.

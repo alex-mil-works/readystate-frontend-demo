@@ -1,0 +1,28 @@
+id: r-u03-tdz-let
+kind: single_choice
+phase: revision
+tags: [scope, tdz, let]
+reinforces: [L008]
+source: original
+prompt: |
+  Что произойдёт при выполнении этого кода?
+  ```js
+  console.log(x);
+  let x = 5;
+  ```
+options:
+  - id: a
+    text: Выведет undefined
+  - id: b
+    text: ReferenceError — переменная в TDZ
+    correct: true
+  - id: c
+    text: Выведет 5
+  - id: d
+    text: SyntaxError
+explain: |
+  `let` поднимается, но обращение до строки инициализации попадает в Temporal Dead Zone → ReferenceError.
+hints:
+  - title: TDZ
+    markdown: |
+      Temporal Dead Zone — зона от начала блока до строки `let`/`const`. Обращение к переменной в TDZ → `ReferenceError`.

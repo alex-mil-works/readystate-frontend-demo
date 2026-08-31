@@ -1,0 +1,14 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: когда предпочесть `||`, а когда `??` — с примером из React.
+rubric: |
+  - falsy vs nullish списки
+  - пример с 0 или ''
+  - props default / API guard
+  - упомянуть NaN при парсинге чисел (bonus)
+sampleAnswer: |
+  `||` подставляет default для любого falsy, включая 0 и ''. `??` — только для null/undefined.
+  Для `pageSize` из props, где 0 валиден, беру `props.pageSize ?? 10`. Для optional string
+  `title || 'Untitled'` иногда ок, если пустая строка = «нет заголовка».

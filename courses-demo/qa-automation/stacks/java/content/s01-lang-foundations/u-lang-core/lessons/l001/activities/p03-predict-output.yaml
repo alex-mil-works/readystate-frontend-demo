@@ -1,0 +1,24 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  String a = "test";
+  String b = "test";
+  String c = new String("test");
+  System.out.println(a == b);
+  System.out.println(a == c);
+  System.out.println(a.equals(c));
+question: Какие три вывода (по порядку)?
+choices:
+  - id: a
+    text: 'true false true'
+    correct: true
+  - id: b
+    text: 'true true true'
+  - id: c
+    text: 'false false true'
+  - id: d
+    text: 'true false false'
+explain: |
+  `a` и `b` указывают на один литерал в string pool → `==` true.
+  `new String()` создаёт новый объект вне пула → `==` false, но `equals()` сравнивает содержимое → true.

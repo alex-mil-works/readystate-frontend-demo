@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Что верно про `const copy = { ...original }`?
+options:
+  - id: a
+    text: Глубокая копия всех уровней
+  - id: b
+    text: 'Shallow copy: вложенные объекты shared'
+    correct: true
+  - id: c
+    text: Копирует только enumerable own keys прототипа
+  - id: d
+    text: Всегда быстрее `structuredClone`
+explain: |
+  Spread копирует own enumerable properties первого уровня; nested — по ссылке.

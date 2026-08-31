@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Почему важно закрывать WebDriver?
+options:
+  - id: a
+    text: Иначе утекают процессы браузера
+    correct: true
+  - id: b
+    text: Иначе не компилируется Java
+  - id: c
+    text: Иначе equals ломается
+  - id: d
+    text: Иначе нет generics
+explain: |
+  Незакрытый драйвер оставляет OS-процессы.
+hints:
+  - title: Lifecycle
+    markdown: |
+      @AfterEach driver.quit() или аналог.

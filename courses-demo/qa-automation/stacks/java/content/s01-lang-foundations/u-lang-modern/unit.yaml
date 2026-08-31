@@ -1,0 +1,10 @@
+id: U-lang-modern
+stageId: S01
+title: Generics и Streams
+titleEn: Generics & Streams
+
+lessons:
+  - lessons/l014
+  - lessons/l015
+
+activities: activities

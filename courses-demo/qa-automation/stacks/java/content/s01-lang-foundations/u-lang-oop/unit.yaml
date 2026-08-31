@@ -1,0 +1,13 @@
+id: U-lang-oop
+stageId: S01
+title: ООП Java
+titleEn: Java OOP
+
+lessons:
+  - lessons/l005
+  - lessons/l006
+  - lessons/l007
+  - lessons/l008
+  - lessons/l009
+
+activities: activities

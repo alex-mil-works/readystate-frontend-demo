@@ -1,0 +1,19 @@
+id: L015-js-map-set-symbol
+order: 15
+title: Map, Set, Symbol и iteration protocols
+titleEn: Map, Set, Symbol & Iteration Protocols
+essence: >-
+  Коллекции с произвольными ключами, уникальные значения, символы и протокол итерации — for...of, spread, деструктуризация.
+depth: application
+required: true
+
+insights:
+  - insights/01-map-set.md
+  - insights/02-symbol-iteration.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

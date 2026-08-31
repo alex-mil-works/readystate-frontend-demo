@@ -1,0 +1,11 @@
+id: U03
+stageId: S01
+title: Scope, замыкания и исполнение
+titleEn: Scope, Closures & Execution
+
+lessons:
+  - lessons/l008
+  - lessons/l009
+  - lessons/l010
+
+activities: activities

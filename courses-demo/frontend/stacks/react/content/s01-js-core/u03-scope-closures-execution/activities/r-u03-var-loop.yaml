@@ -1,0 +1,31 @@
+id: r-u03-var-loop
+kind: single_choice
+phase: revision
+tags: [var, closures, loops]
+reinforces: [L010]
+source: original
+prompt: |
+  `for (var i = 0; i < 3; i++) { setTimeout(() => console.log(i), 0); }` — что выведет?
+options:
+  - id: a
+    text: 0, 1, 2
+  - id: b
+    text: 3, 3, 3
+    correct: true
+  - id: c
+    text: undefined, undefined, undefined
+  - id: d
+    text: 0, 0, 0
+explain: |
+  `var i` — одна переменная на всю функцию. Три замыкания видят один binding. К моменту setTimeout цикл завершён, `i === 3`.
+hints:
+  - title: Решение
+    markdown: |
+      Замените `var` на `let` — для каждой итерации создаётся новый binding:
+
+      ```js
+      for (let i = 0; i < 3; i++) {
+        setTimeout(() => console.log(i), 0);
+      }
+      // 0, 1, 2
+      ```

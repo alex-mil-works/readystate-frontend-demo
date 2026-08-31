@@ -1,0 +1,24 @@
+id: r-u04-arrow-noop-this
+kind: single_choice
+phase: revision
+tags: [arrow, this, call]
+reinforces: [L013]
+source: original
+prompt: |
+  Можно ли изменить `this` у arrow function через `.call()`?
+options:
+  - id: a
+    text: Нет — arrow всегда берёт this из лексического scope
+    correct: true
+  - id: b
+    text: Да — call работает одинаково для всех функций
+  - id: c
+    text: Да, но только с apply
+  - id: d
+    text: Только через bind
+explain: |
+  Arrow function не имеет собственного this. call/apply/bind не влияют на её this — только лексический scope.
+hints:
+  - title: Arrow и callbacks
+    markdown: |
+      Именно поэтому arrow удобна для callbacks: this = this из scope, где arrow определена.

@@ -1,0 +1,19 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  const arrow = () => this;
+  console.log(arrow.call({ x: 1 }) === this);
+question: Что выведет (на верхнем уровне модуля)?
+choices:
+  - id: a
+    text: 'true'
+    correct: true
+  - id: b
+    text: 'false'
+  - id: c
+    text: TypeError
+  - id: d
+    text: undefined
+explain: |
+  Arrow function игнорирует `this`, переданный через `call`. Она всегда использует `this` из лексического scope. На уровне модуля оба `this` — одно и то же значение.

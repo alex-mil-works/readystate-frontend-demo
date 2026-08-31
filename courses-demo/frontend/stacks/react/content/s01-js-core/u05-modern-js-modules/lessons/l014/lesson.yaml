@@ -1,0 +1,20 @@
+id: L014-js-destructuring-spread
+order: 14
+title: Destructuring, rest/spread и defaults
+titleEn: Destructuring, Rest/Spread & Defaults
+essence: >-
+  Разборка массивов и объектов, rest parameters, spread operator и default values — ежедневный синтаксис современного JS.
+depth: application
+required: true
+
+insights:
+  - insights/01-destructuring.md
+  - insights/02-rest-spread-defaults.md
+
+activities:
+  - activities/p01-predict-output.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

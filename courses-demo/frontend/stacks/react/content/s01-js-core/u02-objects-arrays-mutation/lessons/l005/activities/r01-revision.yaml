@@ -1,0 +1,24 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Что вернёт `Object.hasOwn({ toString: 1 }, 'toString')`?
+options:
+  - id: a
+    text: 'false — всегда inherited'
+  - id: b
+    text: 'true — own shadowing'
+    correct: true
+  - id: c
+    text: 'TypeError'
+  - id: d
+    text: 'undefined'
+explain: |
+  Own-свойство с тем же именем **затеняет** inherited. `hasOwn` смотрит только на объект, не на prototype.
+hints:
+  - title: Own vs inherited
+    markdown: |
+      `Object.hasOwn(obj, key)` — own only. `'key' in obj` — own или inherited.
+  - title: Shadowing
+    markdown: |
+      Запись `obj.toString = 1` создаёт own-свойство; метод из `Object.prototype` для этого объекта не вызывается.

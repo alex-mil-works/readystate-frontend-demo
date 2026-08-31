@@ -1,0 +1,19 @@
+id: L001-js-values-model
+order: 1
+title: Модель значений и динамическая типизация
+titleEn: JavaScript's Value Model & Dynamic Typing
+essence: >-
+  Как JS хранит значения в runtime и почему тип принадлежит значению, а не переменной.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-values-not-variables.md
+  - insights/02-primitives-vs-objects.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/r01-revision.yaml
+  - activities/i01-phrasing.yaml

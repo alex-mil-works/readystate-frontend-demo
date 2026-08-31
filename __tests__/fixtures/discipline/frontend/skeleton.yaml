@@ -1,0 +1,9 @@
+roleId: fixture-role
+
+stages:
+  - id: S01
+    title: JavaScript Core
+    titleEn: JavaScript Core
+  - id: S02
+    title: Async & Runtime
+    titleEn: Async & Runtime

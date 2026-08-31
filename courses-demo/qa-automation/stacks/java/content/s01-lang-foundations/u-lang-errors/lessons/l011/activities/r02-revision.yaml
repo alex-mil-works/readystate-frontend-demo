@@ -1,0 +1,21 @@
+id: r02
+kind: single_choice
+phase: revision
+prompt: |
+  Closeable относится к…
+options:
+  - id: a
+    text: AutoCloseable (I/O исторически)
+    correct: true
+  - id: b
+    text: Только Thread
+  - id: c
+    text: Только enum
+  - id: d
+    text: Только annotation
+explain: |
+  Closeable extends AutoCloseable.
+hints:
+  - title: TWR
+    markdown: |
+      Оба подходят для try-with-resources.

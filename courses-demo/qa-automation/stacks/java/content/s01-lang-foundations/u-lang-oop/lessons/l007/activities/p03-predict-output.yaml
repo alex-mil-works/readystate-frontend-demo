@@ -1,0 +1,29 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  class A {
+    String name() { return "A"; }
+  }
+  class B extends A {
+    String name() { return "B"; }
+    String parent() { return super.name(); }
+  }
+  class Demo {
+    public static void main(String[] args) {
+      System.out.println(new B().parent());
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: A
+    correct: true
+  - id: b
+    text: B
+  - id: c
+    text: 'null'
+  - id: d
+    text: ошибка
+explain: |
+  `super.name()` вызывает реализацию родителя.

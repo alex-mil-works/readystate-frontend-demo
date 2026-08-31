@@ -1,0 +1,30 @@
+roleId: qa-automation
+
+stages:
+  - id: S01
+    title: Основы языка
+    titleEn: Language Foundations
+  - id: S02
+    title: Инструменты
+    titleEn: Tooling
+  - id: S03
+    title: Тестирование
+    titleEn: Testing Craft
+  - id: S04
+    title: API
+    titleEn: API Automation
+  - id: S05
+    title: UI
+    titleEn: UI Automation
+  - id: S06
+    title: Базы данных
+    titleEn: Databases
+  - id: S07
+    title: Отчётность
+    titleEn: Reporting
+  - id: S08
+    title: DevOps
+    titleEn: DevOps
+  - id: S09
+    title: Advanced
+    titleEn: Advanced Topics

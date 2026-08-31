@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Интерфейс в Java описывает…
+options:
+  - id: a
+    text: Контракт поведения без конкретной реализации (как правило)
+    correct: true
+  - id: b
+    text: Только static утилиты
+  - id: c
+    text: Обязательные private поля
+  - id: d
+    text: Только final классы
+explain: |
+  Interface = API, который реализуют классы.

@@ -1,0 +1,9 @@
+stackId: java
+title: QA Automation (Java)
+titleEn: QA Automation (Java)
+description: Автотесты на Java — Selenium, Maven, TestNG и CI/CD.
+status: preview
+statusLabel: Preview
+
+stages:
+  - s01-lang-foundations

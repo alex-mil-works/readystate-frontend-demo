@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: interface vs abstract class и пример из автотестов.
+rubric: |
+  - контракт vs частичная реализация
+  - multiple implements
+  - пример Wait/BaseTest
+sampleAnswer: |
+  Interface задаёт контракт без состояния. Abstract class может держать общий код и поля. В тестах WebDriver/Wait — интерфейсы; BaseTest с общим setUp — abstract class.

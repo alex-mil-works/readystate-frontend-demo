@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Когда `switch` предпочтительнее длинной цепочки `if-else if`?
+options:
+  - id: a
+    text: Когда сравниваем одно значение с набором дискретных вариантов
+    correct: true
+  - id: b
+    text: Когда нужны сложные диапазоны и комбинации условий
+  - id: c
+    text: Только в многопоточном коде
+  - id: d
+    text: Никогда — switch устарел
+explain: |
+  `switch` читаем для выбора по одному дискретному значению (enum, status code, role).
+hints:
+  - title: Switch expressions
+    markdown: |
+      В modern Java switch может возвращать значение (expression), что удобно для mapping статусов API.

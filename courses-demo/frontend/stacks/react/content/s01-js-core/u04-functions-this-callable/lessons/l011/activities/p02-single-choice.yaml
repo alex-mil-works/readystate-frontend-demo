@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Чем function declaration отличается от function expression с точки зрения hoisting?
+options:
+  - id: a
+    text: Declaration поднимается целиком (имя + тело), expression — только binding
+    correct: true
+  - id: b
+    text: Оба поднимаются целиком
+  - id: c
+    text: Expression поднимается, declaration — нет
+  - id: d
+    text: Ни одна форма не поднимается
+explain: |
+  `function foo() {}` доступна до строки объявления. `const foo = function() {}` — только binding `foo` поднимается (как `undefined` для var или TDZ для const/let).

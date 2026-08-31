@@ -1,0 +1,17 @@
+id: p02
+kind: single_choice
+phase: practice
+prompt: |
+  Что произойдёт при деструктуризации `const { a } = undefined`?
+options:
+  - id: a
+    text: TypeError — нельзя деструктурировать undefined
+    correct: true
+  - id: b
+    text: a === undefined
+  - id: c
+    text: a === null
+  - id: d
+    text: ReferenceError
+explain: |
+  Деструктуризация вызывает `ToObject()` на правой части. `undefined` и `null` не конвертируются → TypeError.

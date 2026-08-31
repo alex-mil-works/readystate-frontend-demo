@@ -1,0 +1,26 @@
+id: p02
+kind: predict_output
+phase: practice
+code: |
+  class Demo {
+    public static void main(String[] args) {
+      Integer a = 1;
+      Integer b = 1;
+      System.out.println(a == b);
+      System.out.println(a.equals(b));
+    }
+  }
+question: Какие два вывода (по порядку)?
+choices:
+  - id: a
+    text: 'true true'
+    correct: true
+  - id: b
+    text: 'false true'
+  - id: c
+    text: 'true false'
+  - id: d
+    text: 'false false'
+explain: |
+  `Integer a = 1` и `Integer b = 1` часто попадают в cache для маленьких значений,
+  поэтому `a == b` становится true (identity), а `equals()` сравнивает value и тоже true.

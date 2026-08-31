@@ -1,0 +1,21 @@
+id: L006-java-oop-encap
+order: 6
+title: Инкапсуляция, access modifiers, records
+titleEn: Encapsulation, Access & Records
+essence: >-
+  Скрыть состояние за API класса: private/public, getters, records как DTO в тестах.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-encapsulation.md
+  - insights/02-records-dto.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

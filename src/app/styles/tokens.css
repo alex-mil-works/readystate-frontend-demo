@@ -1,0 +1,83 @@
+/* ReadyState color tokens — para-military family, navy-led.
+ *
+ * Roles (do not overload):
+ *   primary      → navy   — CTA, selection, brand emphasis
+ *   secondary    → steel  — quiet chrome, badges, secondary controls
+ *   accent       → coyote — warm accent (warmth “держится”, soft highlights)
+ *   success      → field  — done / positive / warmth “свежо”
+ *   destructive  → brick  — danger / warmth “пора повторить”
+ *   olive        → reserved utility; use only when none of the above fit
+ */
+
+:root {
+  color-scheme: light;
+
+  /* Canvas — light cool blue (page wash) */
+  --rs-background: #e8eef5;
+  --rs-foreground: #132033;
+
+  /* Surfaces — near-white panels so UI isn’t only icy blue */
+  --rs-surface: #ffffff;
+  --rs-surface-muted: #e6edf4;
+
+  /* Text */
+  --rs-muted-foreground: #5a6a7c;
+
+  /* Brand */
+  --rs-primary: #1f3d5c; /* navy */
+  --rs-primary-foreground: #f2f6fa;
+  --rs-secondary: #4a5d73; /* steel */
+  --rs-secondary-foreground: #f2f6fa;
+  --rs-accent: #8a6f4e; /* coyote */
+  --rs-accent-foreground: #faf7f2;
+
+  /* Feedback */
+  --rs-success: #3f6b52; /* field */
+  --rs-success-foreground: #f2f8f4;
+  --rs-destructive: #8e514a; /* brick */
+  --rs-destructive-foreground: #faf6f5;
+
+  /* Reserved — not wired to shadcn roles */
+  --rs-olive: #5a6548;
+  --rs-olive-foreground: #f3f5ef;
+
+  /* Chrome */
+  --rs-border: #c8d2de;
+  --rs-input: #c8d2de;
+  --rs-ring: #2a4a6e; /* navy focus */
+
+  --rs-radius: 0.5rem;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Canvas — deep navy (page wash) */
+  --rs-background: #0b1526;
+  --rs-foreground: #e3e9f2;
+
+  /* Surfaces — near-black panels against navy wash */
+  --rs-surface: #070b12;
+  --rs-surface-muted: #121820;
+
+  --rs-muted-foreground: #9aabc0;
+
+  --rs-primary: #6d8fb5; /* navy, lifted for contrast */
+  --rs-primary-foreground: #0b1526;
+  --rs-secondary: #7a90a8; /* steel */
+  --rs-secondary-foreground: #0b1526;
+  --rs-accent: #b5966f; /* coyote */
+  --rs-accent-foreground: #1a140e;
+
+  --rs-success: #6f947a; /* field */
+  --rs-success-foreground: #0f1611;
+  --rs-destructive: #b06a61; /* brick */
+  --rs-destructive-foreground: #1a100f;
+
+  --rs-olive: #8b936f;
+  --rs-olive-foreground: #14160f;
+
+  --rs-border: #243044;
+  --rs-input: #243044;
+  --rs-ring: #8aadcf;
+}

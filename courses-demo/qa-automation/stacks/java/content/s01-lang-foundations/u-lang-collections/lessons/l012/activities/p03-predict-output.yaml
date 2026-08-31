@@ -1,0 +1,25 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  import java.util.*;
+  class Demo {
+    public static void main(String[] args) {
+      Set<Integer> s = new HashSet<>();
+      s.add(1); s.add(1); s.add(2);
+      System.out.println(s.size());
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: '2'
+    correct: true
+  - id: b
+    text: '3'
+  - id: c
+    text: '1'
+  - id: d
+    text: '0'
+explain: |
+  Дубликат 1 не добавляется повторно.

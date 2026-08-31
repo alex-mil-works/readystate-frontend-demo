@@ -1,0 +1,26 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  import java.util.*;
+  class Demo {
+    public static void main(String[] args) {
+      Map<String,Integer> m = new HashMap<>();
+      m.put("a", 1);
+      m.put("a", 2);
+      System.out.println(m.get("a"));
+    }
+  }
+question: Что выведет программа?
+choices:
+  - id: a
+    text: '2'
+    correct: true
+  - id: b
+    text: '1'
+  - id: c
+    text: 'null'
+  - id: d
+    text: a
+explain: |
+  Повторный put с тем же ключом перезаписывает value.

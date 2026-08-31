@@ -1,0 +1,17 @@
+id: p05
+kind: single_choice
+phase: practice
+prompt: |
+  Raw type `List` без параметров — это…
+options:
+  - id: a
+    text: Устаревший стиль, теряет type-safety
+    correct: true
+  - id: b
+    text: Обязателен в Java 21
+  - id: c
+    text: Быстрее parameterized всегда
+  - id: d
+    text: Синоним List<Object> без warnings
+explain: |
+  Избегайте raw types.

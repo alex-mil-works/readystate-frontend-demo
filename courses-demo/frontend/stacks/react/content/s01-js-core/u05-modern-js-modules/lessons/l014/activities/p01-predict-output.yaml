@@ -1,0 +1,19 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  const [a, , b] = [10, 20, 30];
+  console.log(a, b);
+question: Что выведет?
+choices:
+  - id: a
+    text: '10 30'
+    correct: true
+  - id: b
+    text: '10 20'
+  - id: c
+    text: '10 undefined'
+  - id: d
+    text: '20 30'
+explain: |
+  Запятая пропускает второй элемент. `a = 10`, `b = 30`.

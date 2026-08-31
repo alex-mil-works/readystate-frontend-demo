@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: полиморфизм на примере WebDriver и почему это полезно в автотестах.
+rubric: |
+  - ссылка супертипа
+  - runtime dispatch
+  - смена браузера без переписывания Page Object
+sampleAnswer: |
+  Переменная типа WebDriver может указывать на ChromeDriver или FirefoxDriver. Вызовы идут в реализацию runtime. Page Object зависит от WebDriver — проще менять браузер и окружение.

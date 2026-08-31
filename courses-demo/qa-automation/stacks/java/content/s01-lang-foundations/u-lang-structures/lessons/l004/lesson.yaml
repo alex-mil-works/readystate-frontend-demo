@@ -1,0 +1,22 @@
+id: L004-java-methods
+order: 4
+title: Методы
+titleEn: Java Methods
+essence: >-
+  Сигнатуры, overloading, void vs return. В тестах — маленькие helpers без «god
+  methods»; рекурсия — awareness.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-methods.md
+  - insights/02-static-varargs-scope.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-predict-output.yaml
+  - activities/p04-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

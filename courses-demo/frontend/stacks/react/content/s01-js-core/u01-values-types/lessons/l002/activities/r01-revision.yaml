@@ -1,0 +1,31 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `typeof new Number(5)` равно…
+options:
+  - id: a
+    text: '"number"'
+  - id: b
+    text: '"object"'
+    correct: true
+  - id: c
+    text: '"bigint"'
+  - id: d
+    text: '"primitive"'
+explain: |
+  `new Number(5)` создаёт object wrapper. Литерал `5` даёт `"number"`.
+hints:
+  - title: null, undefined и boxed primitives
+    markdown: |
+      `new String` / `new Number` / `new Boolean` создают **object**, не примитив:
+
+      ```js
+      typeof 'a'            // 'string'
+      typeof new String('a') // 'object'
+      ```
+
+      В современном коде wrappers почти не используют. Авто-boxing (`'a'.toUpperCase()`) — другое: временная обёртка, не `new String`.
+  - title: typeof null
+    markdown: |
+      `typeof null === 'object'` — исторический баг. `null` — примитив. Проверка «это объект?»: `x !== null && typeof x === 'object'`.

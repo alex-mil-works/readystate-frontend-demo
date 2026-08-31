@@ -1,0 +1,23 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  int x = 5;
+  String r = switch (x % 2) {
+    case 0 -> "even";
+    default -> "odd";
+  };
+  System.out.println(r);
+question: Что выведет?
+choices:
+  - id: a
+    text: odd
+    correct: true
+  - id: b
+    text: even
+  - id: c
+    text: Ошибка компиляции
+  - id: d
+    text: 'null'
+explain: |
+  `5 % 2 == 1`, не совпадает с `case 0`, идём в `default` → "odd".

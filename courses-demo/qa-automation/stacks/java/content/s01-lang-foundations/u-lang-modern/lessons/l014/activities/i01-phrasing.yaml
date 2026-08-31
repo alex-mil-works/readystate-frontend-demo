@@ -1,0 +1,11 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: зачем generics в тестовых коллекциях и что такое erasure.
+rubric: |
+  - type-safety
+  - erasure
+  - пример List<UserDto>
+sampleAnswer: |
+  Generics дают проверки на компиляции: List<UserDto> не примет String. На runtime параметры стираются. Для тестов это меньше ClassCastException при работе с фикстурами.

@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Чем `void`-метод отличается от метода с return type?
+options:
+  - id: a
+    text: '`void` не возвращает значение вызывающему коду'
+    correct: true
+  - id: b
+    text: '`void` нельзя вызывать из тестов'
+  - id: c
+    text: '`void` всегда static'
+  - id: d
+    text: 'Только `void` может бросать exceptions'
+explain: |
+  `void` — нет return value; side effects (лог, click) допустимы. Assert-методы часто void или возвращают fluent this.
+hints:
+  - title: Helpers in tests
+    markdown: |
+      `void setupData()` — подготовка; `User createUser()` — factory с return для assert в тесте.

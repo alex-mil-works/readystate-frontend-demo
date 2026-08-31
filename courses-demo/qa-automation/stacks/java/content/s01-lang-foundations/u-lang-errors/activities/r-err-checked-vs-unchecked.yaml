@@ -1,0 +1,24 @@
+id: r-err-checked-vs-unchecked
+kind: single_choice
+phase: revision
+tags: [exceptions]
+reinforces: [L010-java-errors-checked]
+source: original
+prompt: |
+  Почему в автотестах чаще бросают unchecked (RuntimeException), а не checked?
+options:
+  - id: a
+    text: Не заставляют тащить throws по всему стеку вызовов тестов
+    correct: true
+  - id: b
+    text: Checked нельзя поймать try/catch
+  - id: c
+    text: Unchecked компилируется только в preview
+  - id: d
+    text: JUnit игнорирует RuntimeException
+explain: |
+  Checked полезны на границах I/O API. В тест-коде доменные сбои обычно RuntimeException / AssertionError-наследники.
+hints:
+  - title: catch (Exception e) {}
+    markdown: |
+      Пустой catch — anti-pattern: глотает причину падения теста.

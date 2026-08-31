@@ -1,5 +1,16 @@
 {
-  // Solution-style root: aggregates app (browser) and node (tooling) projects.
+  // Root project references. Paths are duplicated here for the shadcn CLI.
   "files": [],
-  "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.vitest.json" }
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@courses/*": ["./.courses/*"]
+    }
+  }
 }

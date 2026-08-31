@@ -1,10 +1,17 @@
-import type { ReactNode } from 'react';
+import { RouterProvider } from 'react-router';
 
-type AppProvidersProps = {
-  children: ReactNode;
-};
+import { router } from '../router';
+import { ProgressHydration } from './ProgressHydration';
+import { SitePasswordGate } from './SitePasswordGate';
+import { ThemeSync } from './ThemeSync';
 
-/** Composition root for app-wide providers (router, theme, etc.). */
-export function AppProviders({ children }: AppProvidersProps) {
-  return children;
+/** Composition root: theme sync + progress hydrate + optional site gate + React Router. */
+export function AppProviders() {
+  return (
+    <SitePasswordGate expectedPassword={import.meta.env.VITE_SITE_PASSWORD}>
+      <ThemeSync />
+      <ProgressHydration />
+      <RouterProvider router={router} />
+    </SitePasswordGate>
+  );
 }

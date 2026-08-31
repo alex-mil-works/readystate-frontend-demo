@@ -1,0 +1,15 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: различие между primitive и reference в Java и почему это влияет на сравнение `==` vs `equals()`.
+rubric: |
+  - primitive vs reference
+  - `==` для объектов = сравнение ссылок
+  - `equals()` обычно сравнивает содержимое
+  - один короткий пример
+sampleAnswer: |
+  Primitive типы хранят значение напрямую.
+  Reference типы хранят адрес в heap.
+  Поэтому `==` для объектов сравнивает identity (ссылки), а `equals()` — value (содержимое), если метод переопределён.
+  Для тестовых DTO обычно сравнивают через `equals()` / `assertThat(...).isEqualTo(...)`, а не через `==`.

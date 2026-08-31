@@ -1,0 +1,20 @@
+id: r-mod-erasure
+kind: single_choice
+phase: revision
+tags: [generics]
+reinforces: [L014-java-generics]
+source: original
+prompt: |
+  Почему нельзя написать `new T()` и `list instanceof List<String>` в generic-методе?
+options:
+  - id: a
+    text: Type erasure — параметры типа стираются до raw types в runtime
+    correct: true
+  - id: b
+    text: Generics всегда reified как в C#
+  - id: c
+    text: Только для примитивов
+  - id: d
+    text: Запрещено только в records
+explain: |
+  Нужен `Class<T>` токен или factory, если создавать экземпляр. `instanceof` работает с raw `List`, не с `List<String>`.

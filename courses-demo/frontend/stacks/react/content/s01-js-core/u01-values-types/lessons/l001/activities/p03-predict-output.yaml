@@ -1,0 +1,22 @@
+id: p03
+kind: predict_output
+phase: practice
+code: |
+  let count = 10;
+  const holder = { count: 10 };
+  count = 20;
+  holder.count = 20;
+  console.log(count, holder.count);
+question: Что выведет `console.log`?
+choices:
+  - id: a
+    text: '20 20'
+    correct: true
+  - id: b
+    text: '10 20'
+  - id: c
+    text: '20 10'
+  - id: d
+    text: '10 10'
+explain: |
+  `count` — примитив, переприсваивание меняет binding. `holder` — ссылка на объект; мутация поля видна через ту же ссылку.

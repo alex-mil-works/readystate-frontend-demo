@@ -1,0 +1,17 @@
+id: p01
+kind: single_choice
+phase: practice
+prompt: |
+  Dynamic dispatch означает, что…
+options:
+  - id: a
+    text: Выбирается реализация по runtime-типу объекта
+    correct: true
+  - id: b
+    text: Всегда вызывается метод суперкласса
+  - id: c
+    text: Компилятор запрещает override
+  - id: d
+    text: Работает только для static
+explain: |
+  Виртуальный вызов смотрит на фактический класс объекта.

@@ -1,0 +1,28 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  `NaN === NaN` и `Object.is(NaN, NaN)`?
+options:
+  - id: a
+    text: false, false
+  - id: b
+    text: false, true
+    correct: true
+  - id: c
+    text: true, true
+  - id: d
+    text: true, false
+explain: |
+  IEEE-754: NaN не равен сам себе через `===`. `Object.is` — исключение для SameValue.
+hints:
+  - title: Object.is и SameValueZero
+    markdown: |
+      `Object.is` как `===`, но:
+      - `Object.is(NaN, NaN) === true`
+      - `Object.is(+0, -0) === false`
+
+      В React / Map / Set чаще **SameValueZero** (как `Object.is`, но `+0` и `-0` равны).
+  - title: Strict vs loose
+    markdown: |
+      В продуктовом коде по умолчанию **`===`**. `==` — только для узких idiom вроде `value == null`.

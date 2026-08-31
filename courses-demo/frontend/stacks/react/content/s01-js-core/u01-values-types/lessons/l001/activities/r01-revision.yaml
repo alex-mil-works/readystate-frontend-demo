@@ -1,0 +1,32 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Почему `const obj = {}; obj.x = 1` не вызывает ошибку?
+options:
+  - id: a
+    text: '`const` запрещает только переприсваивание binding, не мутацию объекта по ссылке'
+    correct: true
+  - id: b
+    text: '`const` в JS означает shallow immutable object'
+  - id: c
+    text: Поля объекта можно менять только через `let` на том же объекте
+  - id: d
+    text: Это баг strict mode, в sloppy mode запрещено
+explain: |
+  `const` фиксирует **ссылку**. Содержимое heap-объекта менять можно, пока не делаешь `obj = other`.
+hints:
+  - title: Значение vs переменная
+    markdown: |
+      Тип принадлежит **значению**, не имени переменной. `const` фиксирует binding (ссылку), а не делает объект immutable.
+
+      ```js
+      const a = { n: 1 };
+      const b = a;
+      b.n = 2;
+      console.log(a.n); // 2 — одна ссылка
+      ```
+  - title: Примитивы и объекты
+    markdown: |
+      Примитив копируется по значению; object — по **ссылке**. Мутация через одну переменную видна через другую.
+      В React мутация props/state по ссылке — антипаттерн; обновляйте иммутабельно.

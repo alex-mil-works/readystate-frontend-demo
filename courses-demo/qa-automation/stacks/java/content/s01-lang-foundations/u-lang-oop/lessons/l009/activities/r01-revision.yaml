@@ -1,0 +1,21 @@
+id: r01
+kind: single_choice
+phase: revision
+prompt: |
+  Можно ли создать экземпляр abstract class через `new AbstractFoo()`?
+options:
+  - id: a
+    text: Нет, только через конкретный подкласс
+    correct: true
+  - id: b
+    text: Да, всегда
+  - id: c
+    text: Да, если все методы default
+  - id: d
+    text: Только в static main
+explain: |
+  Abstract class не инстанциируется напрямую.
+hints:
+  - title: Abstract
+    markdown: |
+      Нужен concrete subclass, который реализует abstract методы.

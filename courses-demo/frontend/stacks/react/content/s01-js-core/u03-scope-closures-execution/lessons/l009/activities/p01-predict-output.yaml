@@ -1,0 +1,24 @@
+id: p01
+kind: predict_output
+phase: practice
+code: |
+  function outer() {
+    let x = 10;
+    function inner() { return x; }
+    x = 20;
+    return inner;
+  }
+  console.log(outer()());
+question: Что выведет `outer()()`?
+choices:
+  - id: a
+    text: '10'
+  - id: b
+    text: '20'
+    correct: true
+  - id: c
+    text: undefined
+  - id: d
+    text: ReferenceError
+explain: |
+  Замыкание захватывает ссылку на binding, а не значение. К моменту вызова `inner()` переменная `x` уже равна 20.

@@ -1,0 +1,25 @@
+id: r-u01-nullish-vs-or
+kind: single_choice
+phase: revision
+tags: [nullish, falsy, defaults]
+reinforces: [L004]
+source: original
+prompt: |
+  Что вернёт `const n = 0 ?? 10;`?
+options:
+  - id: a
+    text: '10'
+  - id: b
+    text: '0'
+    correct: true
+  - id: c
+    text: 'null'
+  - id: d
+    text: Ошибку TypeError
+explain: |
+  `0` не nullish. `??` не смотрит на truthiness.
+hints:
+  - title: '?? vs ||'
+    markdown: |
+      `||` возвращает первый truthy; `??` — только если слева `null` / `undefined`.
+      Best practice для дефолтов props/API, где `0` или `''` валидны: **`??`**.

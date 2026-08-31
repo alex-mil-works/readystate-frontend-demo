@@ -1,0 +1,10 @@
+id: U-lang-core
+stageId: S01
+title: Ядро языка Java
+titleEn: Java Language Core
+
+lessons:
+  - lessons/l001
+  - lessons/l002
+
+activities: activities

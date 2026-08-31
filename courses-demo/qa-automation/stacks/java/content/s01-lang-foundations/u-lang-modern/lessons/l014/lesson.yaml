@@ -1,0 +1,22 @@
+id: L014-java-generics
+order: 14
+title: Generics, wildcards, erasure
+titleEn: Generics, Wildcards & Erasure
+essence: >-
+  Типобезопасные коллекции и API. В тестах — List<UserDto>, generic assert helpers. Erasure на runtime.
+depth: mechanism
+required: true
+
+insights:
+  - insights/01-generics.md
+  - insights/02-wildcards.md
+
+activities:
+  - activities/p01-single-choice.yaml
+  - activities/p02-single-choice.yaml
+  - activities/p03-single-choice.yaml
+  - activities/p04-predict-output.yaml
+  - activities/p05-single-choice.yaml
+  - activities/r01-revision.yaml
+  - activities/r02-revision.yaml
+  - activities/i01-phrasing.yaml

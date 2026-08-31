@@ -1,0 +1,15 @@
+id: i01
+kind: interview_phrasing
+phase: phrasing
+prompt: |
+  Объясните вслух: как вы используете if/switch/loops в тестовом helper-коде и зачем нужен ранний return.
+rubric: |
+  - if vs switch — когда что
+  - break/continue — кратко
+  - ранний return для читаемости
+  - один пример из automation
+sampleAnswer: |
+  Для простых условий — if/else; для выбора по одному значению — switch.
+  В циклах break выходит из цикла, continue пропускает итерацию.
+  Ранний return в helper сокращает вложенность: сначала guard-ы (null, invalid input), затем основная логика.
+  В тестах это снижает шум и облегчает отладку падений.
