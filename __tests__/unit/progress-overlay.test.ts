@@ -49,6 +49,7 @@ describe('overlayCourseProgress', () => {
       completedLessonIds: ['L001'],
       lessonTimes: { L001: { startedAt: 1, completedAt: 2 } },
       shownRecallKeys: [],
+      recallItems: {},
       updatedAt: 1,
     });
 

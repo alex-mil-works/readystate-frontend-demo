@@ -40,13 +40,13 @@ yarn format
 yarn test             # Vitest watch
 yarn test:run
 yarn test:coverage
-yarn test:e2e              # Playwright smoke (system Chrome; starts vite if needed)
-yarn content:compile       # local: .courses → generated/
-yarn content:compile:demo  # public slice: courses-demo → generated/
-yarn content:sync-demo     # copy S01 (+ skeleton) from .courses → courses-demo/
+yarn test:e2e              # Playwright smoke (mock content API + vite; system Chrome on macOS)
 yarn check                 # typecheck + lint + format:check + test:run
 yarn ui:add <name>         # shadcn add → shared/ui/primary
 ```
+
+Content authoring/compile lives in **readystate-backend-demo** (committed `.courses/`).
+This app loads courses via `VITE_CONTENT_API_URL` → `GET /v1/disciplines` + `/v1/courses/:role/:stack`.
 
 ## Requirements
 
@@ -66,7 +66,7 @@ Public demo: [readystate-frontend-demo.vercel.app](https://readystate-frontend-d
 
 Full checklist: [`.github/DEPLOY.md`](.github/DEPLOY.md)
 
-Local authoring uses `.env` (see [`.env.example`](.env.example)). Demo production builds use GitHub Variables (`CONTENT_SOURCE`, `VITE_*`) and Secrets (`VITE_SITE_PASSWORD`, `VERCEL_*`).
+Local authoring uses `.env` (see [`.env.example`](.env.example)). Production builds use GitHub Variables (`VITE_CONTENT_API_URL`) and Secrets (`VITE_SITE_PASSWORD`, `VERCEL_*`).
 
 ## Feature-Sliced Design
 
@@ -92,7 +92,7 @@ Inside a slice: `ui/` · `model/` · `api/` · `lib/` as needed.
 - `shared/lib/validation` — Valibot on trust boundaries
 - `shared/lib/store` — Zustand for ephemeral UI only
 - `shared/config` — app constants + course meta; maps from compiled JSON
-- `tools/content-compiler` — loads `.courses/` YAML/MD manifests → JSON
+- Content compiler + `.courses/` — **backend repo** (`readystate-backend-demo`)
 
 ```text
 src/
@@ -104,9 +104,8 @@ src/
   shared/
     ui/primary | ui/kit
     lib/store | theme | validation | engine | content | progress | utils
-    api/ config/ content/generated/
+    api/ config/ content/generated/   # runtime registry only (no committed JSON)
 __tests__/
-tools/content-compiler/
 ```
 
 ## App routes
@@ -114,7 +113,7 @@ tools/content-compiler/
 | Route                                         | Screen                                    |
 | --------------------------------------------- | ----------------------------------------- |
 | `/`                                           | Primary workspace map, or `/onboarding`   |
-| `/onboarding`                                 | Mini pick role/stack → first lesson       |
+| `/onboarding`                                 | Mini pick role/stack → course map         |
 | `/courses/:roleId/:stackId`                   | Map (requires saved primary workspace)    |
 | `/courses/:roleId/:stackId/lessons/:lessonId` | Lesson (requires saved primary workspace) |
 | `/settings`                                   | Progress + transfer (same gate)           |
@@ -145,19 +144,12 @@ Query params are reserved for other UI state (not role/stack).
 - Unknown `/courses/:role/:stack` ids → «Курс не найден» (no silent redirect to default).
 - Warmth legend strip under role/stack («Повторение» + phrases).
 - Playwright smoke: `yarn test:e2e` (system Chrome on macOS 12; Vite binds `127.0.0.1:5173`).
-- **Two curriculum roots:**
-  - `.courses/` — full local authoring (**gitignored**)
-  - `courses-demo/` — public S01 slice (**committed**); refresh with `yarn content:sync-demo`
-- Flags: `VITE_DEMO` / `VITE_CONTENT_SOURCE` (`local` | `demo` | `remote`). Compiler uses the same via `CONTENT_SOURCE` / `COURSES_DIR` / `--demo`. **CI/deploy** set these in GitHub Variables — see [`.github/DEPLOY.md`](.github/DEPLOY.md).
-- Authoring layout (discipline = role skeleton + stack fill):
-  - `<root>/<role>/discipline.yaml` — role + stacks
-  - `<root>/<role>/skeleton.yaml` — stage titles (form of the map)
-  - `<root>/<role>/stacks/<stack>/course.yaml` — stack meta + stage folders
-  - `stacks/<stack>/content/<stage>/stage.yaml` — units in stack
-  - `<unit>/unit.yaml` — lessons (**2–6** per unit); units are silent groups in UI
-  - Lesson ids are semantic: `L001-js-values-model`, `L001-java-syntax-primitives`
-- Authoring flow: curriculum root → `yarn content:compile` → `src/shared/content/generated/<roleId>/<stackId>/course.json` (gitignored) → UI.
-  See `courses-demo/README.md` and (locally) `.courses/*/README.md`.
+- **Content pipeline:**
+  - Backend owns committed `.courses/` + compiler → `artifacts/`
+  - FE loads the full curriculum at runtime (`ContentBootstrap`); Dexie unchanged
+  - Access limits on the API come later
+  - Unit tests seed `__tests__/fixtures/courses/` (no live API required)
+- Flag: `VITE_CONTENT_API_URL`. See [`.github/DEPLOY.md`](.github/DEPLOY.md).
 - Tests: external `vitest.config.ts`, environment `happy-dom`, `__tests__/`; e2e in `e2e/`.
 
 ## Worklog
@@ -180,11 +172,13 @@ Query params are reserved for other UI state (not role/stack).
 | 2026-08 | FSD: AppChromeLayout in router; drop empty catalog; archive seed script                   |
 | 2026-08 | YAML quote-lint: bare `null`/`~`/`{}` fail compile early with file:line                   |
 | 2026-08 | Dexie progress + Progress Document v1 JSON export/import (replace-all) in Settings        |
-| 2026-08 | `courses-demo` + `content:sync-demo`; `VITE_DEMO` / `contentSource`; Demo pill            |
+| 2026-08 | `courses-demo` + `content:sync-demo`; Demo pill                                           |
 | 2026-08 | Missing-JSON alert vs «Скоро»; bonus red bar; expand/collapse; soft gate + robots         |
 | 2026-08 | Soft 404; brand inline + narrow slogan hide; view toolbar pill; Playwright smoke          |
 | 2026-08 | Warmth indicator (hot/warm/cold) on map lessons + stages; `lessonTimes` in progress       |
 | 2026-08 | Warmth legend; invalid role/stack page; mobile header settings icon                       |
 | 2026-08 | Onboarding; workspace prefs; settings (progress / primary / session); soft gate UX        |
 | 2026-08 | GitHub Actions CI + manual Vercel deploy; env in GitHub (not Vercel dashboard)            |
-| Next    | Review/Continue (due pools) → S02 content                                                 |
+| 2026-10 | React S02 (L017–L028): async, event loop, DOM, fetch; S01 `this` + `reinforces` fixes     |
+| 2026-10 | Authoring + compiler on BE; FE fetches `/v1/courses`; dropped `courses-demo`              |
+| Next    | Host private BE; access limits later; then S03 TypeScript                                 |

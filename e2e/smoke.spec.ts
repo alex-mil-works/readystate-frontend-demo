@@ -45,7 +45,7 @@ test.describe('smoke', () => {
     await expect(firstLessonLink(page)).toBeVisible();
   });
 
-  test('onboarding starts the first lesson', async ({ page }) => {
+  test('onboarding opens the course map', async ({ page }) => {
     await clearWorkspace(page);
     await page.goto('/');
 
@@ -53,8 +53,9 @@ test.describe('smoke', () => {
     const start = page.getByRole('button', { name: 'Начать' });
     await expect(start).toBeEnabled();
     await start.click();
-    await expect(page).toHaveURL(/\/courses\/frontend\/react\/lessons\/L001-js-values-model/);
-    await expect(page.getByRole('button', { name: 'Далее' })).toBeVisible();
+    await expect(page).toHaveURL(/\/courses\/frontend\/react\/?$/);
+    await expect(firstLessonLink(page)).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Далее' })).toHaveCount(0);
   });
 
   test('map and settings require onboarding', async ({ page }) => {
@@ -97,11 +98,20 @@ test.describe('smoke', () => {
     await expect(page.getByRole('button', { name: /настройки/i })).toHaveCount(0);
   });
 
-  test('unknown role/stack shows invalid workspace', async ({ page }) => {
+  test('opens review from the map CTA and returns to the map', async ({ page }) => {
     await seedLastWorkspace(page);
-    await page.goto('/courses/nope/missing');
+    await page.goto('/courses/frontend/react');
 
-    await expect(page.getByRole('heading', { name: 'Курс не найден' })).toBeVisible();
-    await expect(page.getByText(/nope\/missing/)).toBeVisible();
+    const review = page.getByRole('button', { name: /Повторение \(\d+\)/ });
+    await expect(review).toBeVisible();
+    await review.click();
+
+    await expect(page).toHaveURL(/\/courses\/frontend\/react\/review\/?$/);
+    await expect(page.getByText('Повторение').first()).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Далее' })).toBeVisible();
+
+    await page.getByRole('button', { name: 'Закрыть' }).click();
+    await expect(page).toHaveURL(/\/courses\/frontend\/react\/?$/);
+    await expect(page.getByRole('button', { name: /Повторение \(\d+\)/ })).toBeVisible();
   });
 });

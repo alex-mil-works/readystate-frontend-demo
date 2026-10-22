@@ -4,6 +4,7 @@ export {
   DISCIPLINE_ROLES,
   firstAvailableStack,
   getRoleById,
+  replaceDisciplineRoles,
   resolveRoleStack,
   type DisciplineRole,
   type DisciplineStack,

@@ -9,14 +9,7 @@ export const APP_TAGLINE_EN = 'Your knowledge, interview-ready.';
 
 export { APP_SHELL_WIDTH_CLASS } from './layout';
 
-export {
-  CONTENT_SOURCE,
-  IS_DEMO_BUILD,
-  type ContentSource,
-  coursesDirForSource,
-  resolveContentSource,
-  resolveCoursesDirRelative,
-} from './content-source';
+export { CONTENT_API_URL } from './content-source';
 
 export {
   resolveProgressStatus,

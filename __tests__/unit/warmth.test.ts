@@ -51,6 +51,7 @@ describe('lessonActivityAt', () => {
         L002: { startedAt: 30 },
       },
       shownRecallKeys: [],
+      recallItems: {},
       updatedAt: 99,
     };
 

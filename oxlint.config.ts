@@ -1,6 +1,6 @@
 import { defineConfig } from 'oxlint';
 
-/** Lint rules for app + tools. Formatting stays with Prettier. */
+/** Lint rules for the app. Formatting stays with Prettier. */
 export default defineConfig({
   plugins: ['react', 'typescript', 'oxc', 'import', 'unicorn'],
 
@@ -76,13 +76,7 @@ export default defineConfig({
       },
     },
     {
-      files: [
-        'vite.config.ts',
-        'vitest.config.ts',
-        'oxlint.config.ts',
-        'prettier.config.js',
-        'tools/**/*.ts',
-      ],
+      files: ['vite.config.ts', 'vitest.config.ts', 'oxlint.config.ts', 'prettier.config.js'],
       env: {
         node: true,
       },

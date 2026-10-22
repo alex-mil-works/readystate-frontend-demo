@@ -4,7 +4,7 @@ export const CourseStatusSchema = v.picklist(['preview', 'coming-soon']);
 
 export type CourseStatus = v.InferOutput<typeof CourseStatusSchema>;
 
-/** Top-level course manifest (`.courses/<id>/course.yaml`). */
+/** Top-level course manifest (`<root>/<id>/course.yaml` on backend). */
 export const CourseManifestSchema = v.object({
   id: v.string(),
   title: v.string(),

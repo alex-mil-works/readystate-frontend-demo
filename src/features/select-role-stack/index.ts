@@ -12,6 +12,7 @@ export {
   lessonPathForRoleStack,
   resolveCourseWorkspace,
   resolveRoleStackParams,
+  reviewPathForRoleStack,
   stackAfterRoleChange,
 } from './model/search';
 export type { CourseWorkspaceState } from './model/search';

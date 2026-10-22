@@ -1,47 +1,24 @@
-/** Where lesson bundles come from at build / runtime. */
-export type ContentSource = 'local' | 'demo' | 'remote';
+/** Backend origin for curriculum JSON (`GET /v1/...`). */
 
-type ContentSourceEnv = {
-  CONTENT_SOURCE?: string;
-  VITE_CONTENT_SOURCE?: string;
-  VITE_DEMO?: string;
-  COURSES_DIR?: string;
-};
-
-/** Resolve content source from env (Node compile or Vite). */
-export function resolveContentSource(env: ContentSourceEnv = {}): ContentSource {
-  const explicit = env.CONTENT_SOURCE ?? env.VITE_CONTENT_SOURCE;
-  if (explicit === 'local' || explicit === 'demo' || explicit === 'remote') return explicit;
-  if (env.VITE_DEMO === 'true') return 'demo';
-  return 'local';
+function trimSlash(url: string): string {
+  return url.replace(/\/+$/, '');
 }
 
 /**
- * Repo-relative authoring root for the compiler.
- * `remote` falls back to `courses-demo` until a backend exists.
+ * Local default: 127.0.0.1:3001. Production builds must set `VITE_CONTENT_API_URL`
+ * (GitHub Variable → CI → `vercel build`); never ship localhost to Vercel.
  */
-export function coursesDirForSource(source: ContentSource): string {
-  if (source === 'demo' || source === 'remote') return 'courses-demo';
-  return '.courses';
+const configuredApiUrl = (import.meta.env.VITE_CONTENT_API_URL as string | undefined)?.trim();
+
+if (import.meta.env.PROD) {
+  if (!configuredApiUrl) {
+    throw new Error('VITE_CONTENT_API_URL is required for production builds');
+  }
+  if (/^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?\/?$/i.test(configuredApiUrl)) {
+    throw new Error(
+      `VITE_CONTENT_API_URL must not be localhost in production (got ${configuredApiUrl})`,
+    );
+  }
 }
 
-/** Prefer explicit `COURSES_DIR`, else derive from content source flags. */
-export function resolveCoursesDirRelative(env: ContentSourceEnv = {}): string {
-  if (env.COURSES_DIR && env.COURSES_DIR.trim() !== '') return env.COURSES_DIR.trim();
-  return coursesDirForSource(resolveContentSource(env));
-}
-
-function viteEnvBag(): ContentSourceEnv {
-  // Vite defines `import.meta.env`; Node/tsx leaves it undefined.
-  const env = (import.meta as ImportMeta & { env?: ImportMetaEnv }).env;
-  return {
-    VITE_CONTENT_SOURCE: env?.VITE_CONTENT_SOURCE,
-    VITE_DEMO: env?.VITE_DEMO,
-  };
-}
-
-/** Browser / Vite build flags (safe to import from the compiler for pure helpers). */
-export const CONTENT_SOURCE: ContentSource = resolveContentSource(viteEnvBag());
-
-/** True when this build is the public demo slice. */
-export const IS_DEMO_BUILD = CONTENT_SOURCE === 'demo';
+export const CONTENT_API_URL = trimSlash(configuredApiUrl || 'http://127.0.0.1:3001');

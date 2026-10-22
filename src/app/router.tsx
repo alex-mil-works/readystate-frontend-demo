@@ -4,6 +4,7 @@ import { HomePage, IndexRedirect } from '@/pages/home';
 import { LessonPage } from '@/pages/lesson';
 import { NotFoundPage } from '@/pages/not-found';
 import { OnboardingPage } from '@/pages/onboarding';
+import { ReviewPage } from '@/pages/review';
 import { SettingsPage } from '@/pages/settings';
 
 import { AppChromeLayout } from './layouts/AppChromeLayout';
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
           {
             path: 'courses/:roleId/:stackId/lessons/:lessonId',
             element: <LessonPage />,
+          },
+          {
+            path: 'courses/:roleId/:stackId/review',
+            element: <ReviewPage />,
           },
           {
             element: <AppChromeLayout />,

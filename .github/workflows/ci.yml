@@ -10,11 +10,9 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
-# Demo build flags: Repository Variables (Settings → Variables).
+# Content API URL for runtime fetch (Repository Variable).
 env:
-  CONTENT_SOURCE: ${{ vars.CONTENT_SOURCE }}
-  VITE_CONTENT_SOURCE: ${{ vars.VITE_CONTENT_SOURCE }}
-  VITE_DEMO: ${{ vars.VITE_DEMO }}
+  VITE_CONTENT_API_URL: ${{ vars.VITE_CONTENT_API_URL }}
 
 jobs:
   lint:
@@ -111,9 +109,6 @@ jobs:
       - name: Install Playwright Chromium
         run: yarn exec playwright install chromium --with-deps
 
-      - name: Compile demo content
-        run: yarn content:compile:demo
-
       - name: Playwright smoke
         run: yarn test:e2e
         env:
@@ -141,15 +136,10 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Compile demo content
-        run: yarn content:compile:demo
-
       - name: Build
         run: yarn build
         env:
-          CONTENT_SOURCE: demo
-          VITE_CONTENT_SOURCE: demo
-          VITE_DEMO: 'true'
+          VITE_CONTENT_API_URL: ${{ vars.VITE_CONTENT_API_URL }}
           VITE_SITE_PASSWORD: ${{ secrets.VITE_SITE_PASSWORD }}
 
       - name: Upload dist
@@ -229,18 +219,29 @@ jobs:
       - name: Verify Vercel link
         run: test -f .vercel/project.json
 
-      - name: Compile demo content
-        run: yarn content:compile:demo
+      - name: Verify content test fixtures
+        run: test -f __tests__/fixtures/courses/frontend-react.json
 
-      - name: Verify compiled bundles
-        run: test -f src/shared/content/generated/frontend/react/course.json
+      - name: Verify production content API URL
+        env:
+          VITE_CONTENT_API_URL: ${{ vars.VITE_CONTENT_API_URL }}
+        run: |
+          test -n "$VITE_CONTENT_API_URL" || {
+            echo "::error::Set repository Variable VITE_CONTENT_API_URL to the BE origin (e.g. https://readystate-backend-demo.vercel.app)"
+            exit 1
+          }
+          case "$VITE_CONTENT_API_URL" in
+            *localhost*|*127.0.0.1*)
+              echo "::error::VITE_CONTENT_API_URL must not be localhost (got $VITE_CONTENT_API_URL)"
+              exit 1
+              ;;
+          esac
+          echo "VITE_CONTENT_API_URL=$VITE_CONTENT_API_URL"
 
       - name: Build for Vercel
         env:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          CONTENT_SOURCE: demo
-          VITE_CONTENT_SOURCE: demo
-          VITE_DEMO: 'true'
+          VITE_CONTENT_API_URL: ${{ vars.VITE_CONTENT_API_URL }}
           VITE_SITE_PASSWORD: ${{ secrets.VITE_SITE_PASSWORD }}
         run: vercel build --prod --token="$VERCEL_TOKEN"
 

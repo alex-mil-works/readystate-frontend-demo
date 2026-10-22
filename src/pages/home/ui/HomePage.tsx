@@ -1,6 +1,12 @@
+import { useEffect, useMemo } from 'react';
 import { useNavigate, useParams } from 'react-router';
 
+import { getCourseReviewPoolByRoleStack } from '@/shared/content/generated';
+import { countDueReviewCards } from '@/shared/lib/engine';
+import { courseCompositeId } from '@/shared/lib/progress';
+import { useProgressStore } from '@/shared/lib/store/progress-store';
 import { useDocumentTitle } from '@/shared/lib/use-document-title';
+import { Button } from '@/shared/ui/kit';
 
 import { DISCIPLINE_ROLES, getRoleById } from '@/entities/discipline';
 
@@ -8,10 +14,12 @@ import {
   RoleStackSelector,
   coursePathForRoleStack,
   resolveCourseWorkspace,
+  reviewPathForRoleStack,
   stackAfterRoleChange,
 } from '@/features/select-role-stack';
 
 import { CourseMap, CourseMapViewToolbar, WarmthLegend } from '@/widgets/course-map';
+import { findContinueLessonTarget, lessonDomId } from '@/widgets/course-map/lib/continue-lesson';
 
 import { InvalidWorkspacePage } from '@/pages/not-found';
 
@@ -66,6 +74,45 @@ function HomeWorkspace({
   onStackSelect: (stackId: string) => void;
 }) {
   useDocumentTitle(heading);
+  const navigate = useNavigate();
+
+  const courseId = courseCompositeId(role.id, stack.id);
+  const progressRecord = useProgressStore((s) => s.byCourseId[courseId]);
+
+  const dueCount = useMemo(() => {
+    if (workspace.kind !== 'ready') return 0;
+    const pool = getCourseReviewPoolByRoleStack(role.id, stack.id);
+    return countDueReviewCards({
+      pool,
+      scheduleByKey: progressRecord?.recallItems ?? {},
+    });
+  }, [workspace.kind, role.id, stack.id, progressRecord?.recallItems]);
+
+  const continueTarget = useMemo(() => {
+    if (workspace.kind !== 'ready') return null;
+    return findContinueLessonTarget(workspace.course, progressRecord);
+  }, [workspace, progressRecord]);
+
+  useEffect(() => {
+    if (!continueTarget) return;
+    const id = lessonDomId(continueTarget.lessonId);
+    let frames = 0;
+    let frame = 0;
+    const tick = () => {
+      const node = document.getElementById(id);
+      if (node) {
+        node.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        return;
+      }
+      frames += 1;
+      if (frames < 6) frame = window.requestAnimationFrame(tick);
+    };
+    frame = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(frame);
+  }, [continueTarget]);
+
+  const reviewPath = reviewPathForRoleStack(role.id, stack.id);
+  const canReview = dueCount > 0;
 
   return (
     <div>
@@ -82,24 +129,59 @@ function HomeWorkspace({
           />
         </div>
         {workspace.kind === 'ready' ? (
-          <CourseMapViewToolbar course={workspace.course} className="self-end sm:self-center" />
+          <div className="flex flex-wrap items-center justify-end gap-2 self-end sm:self-center">
+            <CourseMapViewToolbar course={workspace.course} />
+          </div>
         ) : null}
       </div>
 
-      <div className="mt-4">
-        <WarmthLegend />
-      </div>
+      {workspace.kind === 'ready' ? (
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <WarmthLegend className="min-w-0 sm:max-w-[min(100%,36rem)]" />
+          <div className="flex w-full shrink-0 justify-stretch sm:w-auto sm:justify-end">
+            {canReview ? (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="w-full sm:w-auto"
+                onClick={() => void navigate(reviewPath)}
+              >
+                Повторение ({dueCount})
+              </Button>
+            ) : (
+              <Button
+                type="button"
+                variant="outline"
+                size="sm"
+                className="w-full sm:w-auto"
+                disabled
+                title="Пока нечего повторять. Пройдите уроки или загляните позже."
+              >
+                Повторение
+              </Button>
+            )}
+          </div>
+        </div>
+      ) : null}
+
+      {!canReview && workspace.kind === 'ready' ? (
+        <p className="text-muted-foreground mt-2 mb-0 text-sm" role="status">
+          Пока нечего повторять. Пройдите уроки или загляните позже.
+        </p>
+      ) : null}
 
       <div className="mt-6">
         {workspace.kind === 'ready' ? (
-          <CourseMap course={workspace.course} />
+          <CourseMap course={workspace.course} continueStageId={continueTarget?.stageId} />
         ) : workspace.kind === 'coming_soon' ? (
           <p className="text-muted-foreground m-0 text-sm leading-relaxed">
             Этот стек скоро появится.
           </p>
         ) : (
           <p className="text-destructive m-0 text-sm leading-relaxed" role="alert">
-            Курс не загружен. Скомпилируйте контент (`yarn content:compile`) и обновите страницу.
+            Курс не загружен. Проверьте backend (`GET /v1/courses/...`) и `VITE_CONTENT_API_URL`,
+            затем обновите страницу.
           </p>
         )}
       </div>

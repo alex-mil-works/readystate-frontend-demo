@@ -9,7 +9,11 @@ import {
   loadAllRecords,
   saveCourseRecord,
 } from '@/shared/lib/progress/repository';
-import { flushProgressWrites, useProgressStore } from '@/shared/lib/store/progress-store';
+import {
+  flushProgressWrites,
+  hasPendingProgressWrites,
+  useProgressStore,
+} from '@/shared/lib/store/progress-store';
 
 const sample: CourseProgressRecord = {
   courseId: 'frontend/react',
@@ -23,6 +27,7 @@ const sample: CourseProgressRecord = {
     'L002-coercion': { startedAt: 1_700_000_000_000 },
   },
   shownRecallKeys: ['uid-a', 'uid-b'],
+  recallItems: {},
   updatedAt: 1_700_000_000_000,
 };
 
@@ -145,7 +150,9 @@ describe('dexie repository + export/import', () => {
       lessonId: 'L001-js-values-model',
     });
     store.markRecallShown('frontend/react', ['pool-uid-1']);
+    expect(hasPendingProgressWrites()).toBe(true);
     await flushProgressWrites();
+    expect(hasPendingProgressWrites()).toBe(false);
 
     const json = await store.exportToJson();
     store.resetAll();

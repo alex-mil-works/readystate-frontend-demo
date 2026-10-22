@@ -9,7 +9,7 @@ export const DisciplineStackEntrySchema = v.object({
 
 export type DisciplineStackEntry = v.InferOutput<typeof DisciplineStackEntrySchema>;
 
-/** Role discipline manifest (`.courses/<role>/discipline.yaml`). */
+/** Role discipline manifest (`<root>/<role>/discipline.yaml` on backend). */
 export const DisciplineManifestSchema = v.object({
   roleId: v.string(),
   title: v.string(),

@@ -13,13 +13,14 @@ describe('OnboardingPage', () => {
     useWorkspacePrefsStore.setState({ lastRoleId: null, lastStackId: null });
   });
 
-  it('saves last workspace and opens the first lesson', async () => {
+  it('saves last workspace and opens the course map', async () => {
     const user = userEvent.setup();
 
     render(
       <MemoryRouter initialEntries={['/onboarding']}>
         <Routes>
           <Route path="/onboarding" element={<OnboardingPage />} />
+          <Route path="/courses/:roleId/:stackId" element={<div>map stub</div>} />
           <Route
             path="/courses/:roleId/:stackId/lessons/:lessonId"
             element={<div>lesson stub</div>}
@@ -39,7 +40,8 @@ describe('OnboardingPage', () => {
 
     expect(useWorkspacePrefsStore.getState().lastRoleId).toBe('frontend');
     expect(useWorkspacePrefsStore.getState().lastStackId).toBe('react');
-    expect(screen.getByText('lesson stub')).toBeInTheDocument();
+    expect(screen.getByText('map stub')).toBeInTheDocument();
+    expect(screen.queryByText('lesson stub')).not.toBeInTheDocument();
   });
 
   it('offers return to primary map when primary already exists', async () => {

@@ -1,4 +1,4 @@
-/** Parsed content types and schemas. Runtime FS loading lives in tools/content-compiler. */
+/** Parsed content types and schemas (player). Authoring/compile lives in readystate-backend-demo. */
 
 export type {
   Activity,

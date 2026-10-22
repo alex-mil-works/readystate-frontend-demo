@@ -1,19 +1,12 @@
 import { defineConfig } from '@playwright/test';
 
 /**
- * Smoke / e2e against the Vite dev server.
+ * Smoke / e2e against Vite + a local mock content API (fixtures).
  * macOS: system Google Chrome (`channel: 'chrome'`) — bundled Chromium is unsupported on macOS 12.
  * CI / Linux: Playwright's bundled Chromium (`playwright install chromium`).
- * CI compiles `courses-demo` before tests and runs `yarn vite` (skip predev re-compile without env).
  */
 const useSystemChrome = process.platform === 'darwin';
-
-const demoWebServerEnv: Record<string, string> = {
-  CONTENT_SOURCE: 'demo',
-  VITE_CONTENT_SOURCE: 'demo',
-  VITE_DEMO: 'true',
-  ...(process.env.VITE_SITE_PASSWORD ? { VITE_SITE_PASSWORD: process.env.VITE_SITE_PASSWORD } : {}),
-};
+const mockApiOrigin = 'http://127.0.0.1:3001';
 
 export default defineConfig({
   testDir: 'e2e',
@@ -27,11 +20,24 @@ export default defineConfig({
     ...(useSystemChrome ? { channel: 'chrome' as const } : {}),
     viewport: { width: 1280, height: 720 },
   },
-  webServer: {
-    command: process.env.CI ? 'yarn vite' : 'yarn dev',
-    url: 'http://127.0.0.1:5173',
-    reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
-    env: process.env.CI ? demoWebServerEnv : undefined,
-  },
+  webServer: [
+    {
+      command: 'node e2e/mock-content-api.mjs',
+      url: `${mockApiOrigin}/v1/health`,
+      reuseExistingServer: !process.env.CI,
+      timeout: 60_000,
+    },
+    {
+      command: process.env.CI ? 'yarn vite' : 'yarn dev',
+      url: 'http://127.0.0.1:5173',
+      reuseExistingServer: !process.env.CI,
+      timeout: 120_000,
+      env: {
+        VITE_CONTENT_API_URL: mockApiOrigin,
+        ...(process.env.VITE_SITE_PASSWORD
+          ? { VITE_SITE_PASSWORD: process.env.VITE_SITE_PASSWORD }
+          : {}),
+      },
+    },
+  ],
 });

@@ -1,4 +1,4 @@
-import { APP_NAME, APP_TAGLINE, IS_DEMO_BUILD } from '@/shared/config';
+import { APP_NAME, APP_TAGLINE } from '@/shared/config';
 
 import { Badge } from './badge';
 
@@ -54,12 +54,8 @@ export function AppBrand({
       >
         {APP_TAGLINE}
       </span>
-      {showDemoBadge && IS_DEMO_BUILD ? (
-        <Badge
-          variant="secondary"
-          title="Публичная демо-сборка (S01)"
-          className="shrink-0 self-center"
-        >
+      {showDemoBadge ? (
+        <Badge variant="secondary" title="Публичная демо-сборка" className="shrink-0 self-center">
           Demo
         </Badge>
       ) : null}

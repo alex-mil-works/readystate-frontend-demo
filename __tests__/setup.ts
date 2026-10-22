@@ -6,6 +6,8 @@ import { afterEach } from 'vitest';
 import { resetProgressDbForTests } from '@/shared/lib/progress/db';
 import { useProgressStore } from '@/shared/lib/store/progress-store';
 
+import './setup-content';
+
 // Reset the DOM between tests (globals: false).
 afterEach(async () => {
   cleanup();

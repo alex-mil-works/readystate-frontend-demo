@@ -5,6 +5,8 @@ import type { PoolActivity } from '@/shared/lib/content';
 import { Button, Icon } from '@/shared/ui/kit';
 
 import { ActivityStep } from './ActivityStep';
+import { TheoryHintsButton } from './TheoryHintsButton';
+import { getActivityTheoryHints } from './get-activity-theory-hints';
 
 /** Post-lesson bonus: answer up to 2 unit-pool Recall cards. */
 export function PostLessonRecall({
@@ -30,6 +32,7 @@ export function PostLessonRecall({
   const answered = card.kind === 'interview_phrasing' ? true : selectedId !== undefined;
   const isLast = index >= cards.length - 1;
   const nextLabel = isLast ? 'Готово' : 'Далее';
+  const theory = getActivityTheoryHints(card);
 
   return (
     <div className="flex flex-1 flex-col">
@@ -54,21 +57,26 @@ export function PostLessonRecall({
         />
       </section>
 
-      <div className="bg-background sticky bottom-0 mt-4 flex items-center justify-between gap-3 py-2">
-        <Button
-          type="button"
-          variant="ghost"
-          disabled={index <= 0}
-          aria-label="Назад"
-          onClick={onBack}
-        >
-          <Icon icon={ArrowLeft01Icon} size={16} />
-          Назад
-        </Button>
-        <Button type="button" disabled={!answered} aria-label={nextLabel} onClick={onNext}>
-          {nextLabel}
-          <Icon icon={ArrowRight01Icon} size={16} />
-        </Button>
+      <div className="bg-background sticky bottom-0 mt-5 pt-1 pb-1">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <Button
+            type="button"
+            variant="ghost"
+            disabled={index <= 0}
+            aria-label="Назад"
+            onClick={onBack}
+          >
+            <Icon icon={ArrowLeft01Icon} size={16} />
+            Назад
+          </Button>
+          <div className="flex min-w-0 flex-1 justify-center">
+            {theory ? <TheoryHintsButton hints={theory} /> : null}
+          </div>
+          <Button type="button" disabled={!answered} aria-label={nextLabel} onClick={onNext}>
+            {nextLabel}
+            <Icon icon={ArrowRight01Icon} size={16} />
+          </Button>
+        </div>
       </div>
     </div>
   );

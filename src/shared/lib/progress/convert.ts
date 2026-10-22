@@ -1,4 +1,8 @@
-import type { CourseProgressRecord, LessonTimeEntry } from '@/shared/lib/progress/progress-types';
+import type {
+  CourseProgressRecord,
+  LessonTimeEntry,
+  RecallItemState,
+} from '@/shared/lib/progress/progress-types';
 
 import {
   PROGRESS_DOCUMENT_VERSION,
@@ -52,14 +56,22 @@ export function recordToCourse(record: CourseProgressRecord): ProgressCourse {
     });
   }
 
-  const items: ProgressItem[] = record.shownRecallKeys.map((contentUid, index) => ({
-    contentUid,
-    kind: 'pool_activity' as const,
-    // Newer keys are prepended in the store — approximate recency.
-    lastShownAt: record.updatedAt - index,
-    showCount: 1,
-    dueAt: null,
-  }));
+  const recallItems = record.recallItems ?? {};
+  const itemUids = new Set<string>([...Object.keys(recallItems), ...record.shownRecallKeys]);
+
+  const items: ProgressItem[] = [...itemUids].map((contentUid) => {
+    const scheduled = recallItems[contentUid];
+    const shownIndex = record.shownRecallKeys.indexOf(contentUid);
+    return {
+      contentUid,
+      kind: 'pool_activity' as const,
+      lastShownAt:
+        scheduled?.lastShownAt ??
+        (shownIndex >= 0 ? record.updatedAt - shownIndex : record.updatedAt),
+      showCount: scheduled?.showCount ?? 1,
+      dueAt: scheduled?.dueAt ?? null,
+    };
+  });
 
   return {
     courseId: record.courseId,
@@ -108,6 +120,15 @@ export function courseToRecord(course: ProgressCourse): CourseProgressRecord {
     .filter((uid, index, all) => all.indexOf(uid) === index)
     .slice(0, MAX_SHOWN_RECALL_KEYS);
 
+  const recallItems: Record<string, RecallItemState> = {};
+  for (const item of course.items) {
+    recallItems[item.contentUid] = {
+      lastShownAt: item.lastShownAt ?? course.updatedAt ?? Date.now(),
+      showCount: item.showCount ?? 1,
+      dueAt: item.dueAt ?? null,
+    };
+  }
+
   return {
     courseId: course.courseId,
     roleId: course.roleId,
@@ -117,6 +138,7 @@ export function courseToRecord(course: ProgressCourse): CourseProgressRecord {
     completedLessonIds,
     lessonTimes,
     shownRecallKeys,
+    recallItems,
     updatedAt: course.updatedAt ?? Date.now(),
   };
 }

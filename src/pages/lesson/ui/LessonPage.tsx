@@ -1,9 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Link, Navigate, useParams } from 'react-router';
+import { Link, Navigate, useNavigate, useParams } from 'react-router';
 
 import ArrowLeft01Icon from '@hugeicons/core-free-icons/ArrowLeft01Icon';
-import ArrowRight01Icon from '@hugeicons/core-free-icons/ArrowRight01Icon';
-import Cancel01Icon from '@hugeicons/core-free-icons/Cancel01Icon';
 import CheckmarkCircle02Icon from '@hugeicons/core-free-icons/CheckmarkCircle02Icon';
 
 import { getCourseByRoleStack } from '@/shared/config';
@@ -20,11 +18,19 @@ import { Button, Icon } from '@/shared/ui/kit';
 
 import { homePathForRoleStack, legacyLessonIdRedirect } from '@/features/select-role-stack';
 
+import {
+  ActivitySessionShell,
+  choiceOptionIds,
+  useSessionKeyboard,
+} from '@/widgets/activity-session';
+
 import { type LessonStep, activityAnswerTone, lessonToSteps, stepAnswerTone } from '../model/steps';
 import { ActivityStep } from './ActivityStep';
 import { InsightStep } from './InsightStep';
 import { PostLessonRecall } from './PostLessonRecall';
 import { StepProgress } from './StepProgress';
+import { TheoryHintsButton } from './TheoryHintsButton';
+import { getActivityTheoryHints } from './get-activity-theory-hints';
 
 const POST_LESSON_RECALL_COUNT = 2;
 
@@ -38,6 +44,7 @@ const EMPTY_RECALL_KEYS: string[] = [];
 
 /** Full-screen lesson player: one step card at a time. */
 export function LessonPage() {
+  const navigate = useNavigate();
   const { roleId, stackId, lessonId } = useParams();
 
   const redirectTo = useMemo(() => {
@@ -209,38 +216,44 @@ export function LessonPage() {
     scrollerRef.current?.scrollTo({ top: 0 });
   }, [index, finished, bonusIndex, bonusCards]);
 
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      const target = event.target;
-      if (
-        target instanceof HTMLElement &&
-        (target.tagName === 'TEXTAREA' || target.tagName === 'INPUT' || target.isContentEditable)
-      ) {
-        return;
-      }
-      if (bonusCards) {
-        if (event.key === 'ArrowLeft') {
-          event.preventDefault();
-          goBack();
-        }
-        if (event.key === 'ArrowRight') {
-          event.preventDefault();
-          goNextBonus();
-        }
-        return;
-      }
-      if (event.key === 'ArrowLeft') {
-        event.preventDefault();
-        goBack();
-      }
-      if (event.key === 'ArrowRight') {
-        event.preventDefault();
-        goNext();
-      }
-    };
-    window.addEventListener('keydown', onKeyDown);
-    return () => window.removeEventListener('keydown', onKeyDown);
-  }, [bonusCards, goBack, goNext, goNextBonus]);
+  const exitToCourse = useCallback(() => {
+    void navigate(coursePath);
+  }, [coursePath, navigate]);
+
+  const selectLessonAnswer = useCallback(
+    (optionId: string) => {
+      if (!current || current.kind !== 'activity') return;
+      if (answers[current.id] !== undefined) return;
+      setAnswers((currentAnswers) => ({ ...currentAnswers, [current.id]: optionId }));
+    },
+    [answers, current],
+  );
+
+  const selectBonusAnswer = useCallback(
+    (optionId: string) => {
+      const id = bonusCards?.[bonusIndex]?.id;
+      if (!id || bonusAnswers[id] !== undefined) return;
+      setBonusAnswers((currentAnswers) => ({ ...currentAnswers, [id]: optionId }));
+    },
+    [bonusAnswers, bonusCards, bonusIndex],
+  );
+
+  const lessonOptionIds = useMemo(() => {
+    if (finished || inBonus || !current || current.kind !== 'activity') return [];
+    return choiceOptionIds(current.activity);
+  }, [current, finished, inBonus]);
+
+  const bonusOptionIds = useMemo(() => {
+    if (!inBonus || !bonusCards) return [];
+    return choiceOptionIds(bonusCards[bonusIndex]);
+  }, [bonusCards, bonusIndex, inBonus]);
+
+  useSessionKeyboard({
+    onBack: goBack,
+    onNext: inBonus ? goNextBonus : goNext,
+    optionIds: inBonus ? bonusOptionIds : lessonOptionIds,
+    onChooseOption: inBonus ? selectBonusAnswer : selectLessonAnswer,
+  });
 
   if (redirectTo) return <Navigate to={redirectTo} replace />;
 
@@ -290,181 +303,134 @@ export function LessonPage() {
   const bonusTones = (bonusCards ?? []).map((card) =>
     activityAnswerTone(card, bonusAnswers[card.id]),
   );
+  const theoryHints =
+    current?.kind === 'activity' ? getActivityTheoryHints(current.activity) : null;
+  const theoryCenter = theoryHints ? <TheoryHintsButton hints={theoryHints} /> : null;
 
   if (!finished && !current) {
     return null;
   }
 
   return (
-    <div className="bg-background flex min-h-svh flex-col">
-      <header className="border-border bg-background/90 sticky top-0 z-10 border-b backdrop-blur-sm">
-        <div className="mx-auto flex w-full max-w-xl items-center gap-2 px-3 py-2.5 sm:px-4">
-          <Button
-            type="button"
-            size="icon-sm"
-            variant="ghost"
-            aria-label="Предыдущий шаг"
-            disabled={!canGoBack}
-            onClick={goBack}
-          >
-            <Icon icon={ArrowLeft01Icon} size={18} />
-          </Button>
-          <div className="min-w-0 flex-1 text-center">
-            <div className="text-foreground truncate text-sm font-medium">
-              {inBonus ? 'Ещё Recall' : lesson.title}
-            </div>
+    <ActivitySessionShell
+      title={inBonus ? 'Ещё Recall' : lesson.title}
+      exitAriaLabel="Закрыть урок"
+      onExit={exitToCourse}
+      canGoBack={canGoBack}
+      onBack={goBack}
+      scrollerRef={scrollerRef}
+      progress={
+        inBonus && bonusCards ? (
+          <StepProgress
+            steps={bonusSteps}
+            index={bonusIndex}
+            maxReached={bonusMaxReached}
+            tones={bonusTones}
+            label="Bonus Recall"
+            onSelect={(stepIndex) => {
+              if (stepIndex <= bonusMaxReached) setBonusIndex(stepIndex);
+            }}
+          />
+        ) : (
+          <StepProgress
+            steps={steps}
+            index={finished ? steps.length - 1 : index}
+            maxReached={finished ? steps.length - 1 : maxReached}
+            tones={stepTones}
+            onSelect={(stepIndex) => {
+              if (stepIndex <= maxReached) {
+                setFinished(false);
+                setIndex(stepIndex);
+              }
+            }}
+          />
+        )
+      }
+      footer={
+        inBonus || finished || !current
+          ? null
+          : {
+              canGoBack,
+              canGoNext,
+              nextLabel,
+              onBack: goBack,
+              onNext: goNext,
+              center: theoryCenter,
+            }
+      }
+    >
+      {inBonus && bonusCards ? (
+        <PostLessonRecall
+          cards={bonusCards}
+          index={bonusIndex}
+          selectedId={bonusAnswers[bonusCards[bonusIndex]?.id ?? '']}
+          onSelect={selectBonusAnswer}
+          onBack={goBack}
+          onNext={goNextBonus}
+          onSkip={finishBonusRecall}
+        />
+      ) : finished ? (
+        <section className="bg-card ring-foreground/10 rounded-2xl p-6 ring-1">
+          <div className="text-success mb-3">
+            <Icon icon={CheckmarkCircle02Icon} size={36} />
           </div>
-          <Button
-            type="button"
-            size="icon-sm"
-            variant="ghost"
-            aria-label="Закрыть урок"
-            nativeButton={false}
-            render={<Link to={coursePath} />}
-          >
-            <Icon icon={Cancel01Icon} size={18} />
-          </Button>
-        </div>
-        <div className="mx-auto w-full max-w-xl px-4 pb-3">
-          {inBonus && bonusCards ? (
-            <StepProgress
-              steps={bonusSteps}
-              index={bonusIndex}
-              maxReached={bonusMaxReached}
-              tones={bonusTones}
-              label="Bonus Recall"
-              onSelect={(stepIndex) => {
-                if (stepIndex <= bonusMaxReached) setBonusIndex(stepIndex);
+          <h1 className="text-foreground m-0 text-2xl font-medium tracking-tight">Урок пройден</h1>
+          <p className="text-foreground/90 mt-3 mb-0 text-sm leading-relaxed">{lesson.essence}</p>
+          <p className="text-muted-foreground mt-4 mb-0 text-sm">
+            {steps.length} шагов · прогресс сохранён на этом устройстве
+          </p>
+          <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+            {availableBonus.length > 0 ? (
+              <Button type="button" onClick={startBonusRecall}>
+                Ещё {availableBonus.length} Recall
+              </Button>
+            ) : null}
+            <Button
+              type="button"
+              variant={availableBonus.length > 0 ? 'outline' : 'default'}
+              onClick={exitToCourse}
+            >
+              К курсу
+            </Button>
+            <Button
+              type="button"
+              variant="outline"
+              onClick={() => {
+                setFinished(false);
+                setIndex(0);
+                setMaxReached(0);
+                setAnswers({});
+                setPhrasingDrafts({});
+                setSampleOpen({});
+                setBonusCards(null);
+                setBonusIndex(0);
+                setBonusMaxReached(0);
+                setBonusAnswers({});
               }}
-            />
+            >
+              Пройти ещё раз
+            </Button>
+          </div>
+        </section>
+      ) : (
+        <section className="bg-card ring-foreground/10 rounded-2xl p-5 ring-1 sm:p-6">
+          {current.kind === 'insight' ? (
+            <InsightStep step={current} />
           ) : (
-            <StepProgress
-              steps={steps}
-              index={finished ? steps.length - 1 : index}
-              maxReached={finished ? steps.length - 1 : maxReached}
-              tones={stepTones}
-              onSelect={(stepIndex) => {
-                if (stepIndex <= maxReached) {
-                  setFinished(false);
-                  setIndex(stepIndex);
-                }
-              }}
+            <ActivityStep
+              activity={current.activity}
+              selectedId={answers[current.id]}
+              phrasingDraft={phrasingDrafts[current.id] ?? ''}
+              sampleOpen={sampleOpen[current.id] === true}
+              onSelect={selectLessonAnswer}
+              onPhrasingDraft={(value) =>
+                setPhrasingDrafts((drafts) => ({ ...drafts, [current.id]: value }))
+              }
+              onRevealSample={() => setSampleOpen((open) => ({ ...open, [current.id]: true }))}
             />
           )}
-        </div>
-      </header>
-
-      <main ref={scrollerRef} className="flex flex-1 flex-col overflow-y-auto">
-        <div className="mx-auto flex w-full max-w-xl flex-1 flex-col px-4 py-4 sm:py-6">
-          {inBonus && bonusCards ? (
-            <PostLessonRecall
-              cards={bonusCards}
-              index={bonusIndex}
-              selectedId={bonusAnswers[bonusCards[bonusIndex]?.id ?? '']}
-              onSelect={(optionId) => {
-                const id = bonusCards[bonusIndex]?.id;
-                if (!id) return;
-                setBonusAnswers((currentAnswers) => ({ ...currentAnswers, [id]: optionId }));
-              }}
-              onBack={goBack}
-              onNext={goNextBonus}
-              onSkip={finishBonusRecall}
-            />
-          ) : finished ? (
-            <section className="bg-card ring-foreground/10 flex flex-1 flex-col rounded-2xl p-6 ring-1">
-              <div className="text-success mb-3">
-                <Icon icon={CheckmarkCircle02Icon} size={36} />
-              </div>
-              <h1 className="text-foreground m-0 text-2xl font-medium tracking-tight">
-                Урок пройден
-              </h1>
-              <p className="text-foreground/90 mt-3 mb-0 text-sm leading-relaxed">
-                {lesson.essence}
-              </p>
-              <p className="text-muted-foreground mt-4 mb-0 text-sm">
-                {steps.length} шагов · прогресс сохранён на этом устройстве
-              </p>
-              <div className="mt-8 flex flex-col gap-2 sm:flex-row sm:flex-wrap">
-                {availableBonus.length > 0 ? (
-                  <Button type="button" onClick={startBonusRecall}>
-                    Ещё {availableBonus.length} Recall
-                  </Button>
-                ) : null}
-                <Button
-                  type="button"
-                  variant={availableBonus.length > 0 ? 'outline' : 'default'}
-                  nativeButton={false}
-                  render={<Link to={coursePath} />}
-                >
-                  К курсу
-                </Button>
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => {
-                    setFinished(false);
-                    setIndex(0);
-                    setMaxReached(0);
-                    setAnswers({});
-                    setPhrasingDrafts({});
-                    setSampleOpen({});
-                    setBonusCards(null);
-                    setBonusIndex(0);
-                    setBonusMaxReached(0);
-                    setBonusAnswers({});
-                  }}
-                >
-                  Пройти ещё раз
-                </Button>
-              </div>
-            </section>
-          ) : (
-            <>
-              <section className="bg-card ring-foreground/10 rounded-2xl p-5 ring-1 sm:p-6">
-                {current.kind === 'insight' ? (
-                  <InsightStep step={current} />
-                ) : (
-                  <ActivityStep
-                    activity={current.activity}
-                    selectedId={answers[current.id]}
-                    phrasingDraft={phrasingDrafts[current.id] ?? ''}
-                    sampleOpen={sampleOpen[current.id] === true}
-                    onSelect={(optionId) =>
-                      setAnswers((currentAnswers) => ({
-                        ...currentAnswers,
-                        [current.id]: optionId,
-                      }))
-                    }
-                    onPhrasingDraft={(value) =>
-                      setPhrasingDrafts((drafts) => ({ ...drafts, [current.id]: value }))
-                    }
-                    onRevealSample={() =>
-                      setSampleOpen((open) => ({ ...open, [current.id]: true }))
-                    }
-                  />
-                )}
-              </section>
-
-              <div className="bg-background sticky bottom-0 mt-4 flex items-center justify-between gap-3 py-2">
-                <Button
-                  type="button"
-                  variant="ghost"
-                  disabled={!canGoBack}
-                  aria-label="Назад"
-                  onClick={goBack}
-                >
-                  <Icon icon={ArrowLeft01Icon} size={16} />
-                  Назад
-                </Button>
-                <Button type="button" disabled={!canGoNext} aria-label={nextLabel} onClick={goNext}>
-                  {nextLabel}
-                  <Icon icon={ArrowRight01Icon} size={16} />
-                </Button>
-              </div>
-            </>
-          )}
-        </div>
-      </main>
-    </div>
+        </section>
+      )}
+    </ActivitySessionShell>
   );
 }

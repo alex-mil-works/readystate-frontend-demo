@@ -32,11 +32,11 @@ Copy IDs from **Project → Settings → General** (Project ID) and team/org ID 
 
 **Settings → Secrets and variables → Actions → Variables**:
 
-| Name                  | Value  |
-| --------------------- | ------ |
-| `CONTENT_SOURCE`      | `demo` |
-| `VITE_CONTENT_SOURCE` | `demo` |
-| `VITE_DEMO`           | `true` |
+| Name                   | Value                                                                             |
+| ---------------------- | --------------------------------------------------------------------------------- |
+| `VITE_CONTENT_API_URL` | `https://readystate-backend-demo.vercel.app` (no trailing `/`; **not** localhost) |
+
+Also set that API’s `CORS_ORIGIN` to this site’s production URL (see backend `DEPLOY.md`).
 
 ## 4. GitHub Secrets (repository)
 
@@ -56,8 +56,10 @@ Repository-level secrets are enough. **Important:** if the same secret names exi
 1. CI runs: lint → typecheck → Vitest → e2e → build
 2. Job **Deploy to Vercel (approval)** waits on environment **Production**
 3. Open the workflow run → **Review deployments** → **Approve and deploy**
-4. Job compiles `courses-demo` (`yarn content:compile:demo`), runs `vercel build --prod` + `vercel deploy --prebuilt --prod`
+4. Job runs `vercel build --prod` + `vercel deploy --prebuilt --prod` with `VITE_CONTENT_API_URL`
 5. Live site: [readystate-frontend-demo.vercel.app](https://readystate-frontend-demo.vercel.app) (URL in job Summary)
+
+Content updates happen in **readystate-backend-demo** (`.courses/` → `yarn content:compile`). The FE only needs a reachable API URL.
 
 Deploy always uses `--prod` (production Vercel alias).
 
@@ -98,7 +100,10 @@ Not synced. Vercel project env should be empty; Actions passes env at `vercel bu
    The workflow runs an API check before `vercel pull` — if that step fails, fix secrets first.
 
 **Курс не загружен** on the live site?
-Deploy build must compile `courses-demo` before Vite bundles JSON. The workflow runs `yarn content:compile:demo` and `vercel.json` uses the same in `buildCommand`. Re-deploy after a green CI run.
+The SPA fetches the private content API. Set `VITE_CONTENT_API_URL` and ensure the backend is up with compiled `artifacts/`.
+
+**E2E in CI?**  
+Playwright starts `e2e/mock-content-api.mjs` (fixtures) — it does not call the production API.
 
 **`VITE_SITE_PASSWORD` security?**  
 Embedded in the client bundle after build (soft gate only).

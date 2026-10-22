@@ -4,6 +4,13 @@ export type LessonTimeEntry = {
   completedAt?: number;
 };
 
+/** Per pool-card schedule (A1 intervals). Key = contentUid. */
+export type RecallItemState = {
+  lastShownAt: number;
+  showCount: number;
+  dueAt: number | null;
+};
+
 /** Local lesson progress shape shared by store, Dexie adapter, and export. */
 export type CourseProgressRecord = {
   courseId: string;
@@ -16,5 +23,7 @@ export type CourseProgressRecord = {
   lessonTimes: Record<string, LessonTimeEntry>;
   /** Recently shown pool Recall/Speak keys (contentUid preferred). Cap ~40. */
   shownRecallKeys: string[];
+  /** Due schedule by contentUid (survives export/import via Progress items). */
+  recallItems: Record<string, RecallItemState>;
   updatedAt: number;
 };

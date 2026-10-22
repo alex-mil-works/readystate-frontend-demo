@@ -15,7 +15,6 @@ import {
 import {
   RoleStackSelector,
   coursePathForRoleStack,
-  firstLessonPathForCourse,
   resolveCourseWorkspace,
 } from '@/features/select-role-stack';
 
@@ -30,7 +29,7 @@ function initialRoleStack(): { roleId: string; stackId: string } {
   return { roleId: role.id, stackId: firstAvailableStack(role).id };
 }
 
-/** Mini onboarding: role → stack → first lesson (or back to primary map). */
+/** Mini onboarding: role → stack → course map (or back to the primary map). */
 export function OnboardingPage() {
   useDocumentTitle('Старт');
   const navigate = useNavigate();
@@ -61,7 +60,7 @@ export function OnboardingPage() {
   const handleStart = () => {
     if (workspace.kind !== 'ready') return;
     setLastWorkspace(role.id, stack.id);
-    void navigate(firstLessonPathForCourse(workspace.course), { replace: true });
+    void navigate(coursePathForRoleStack(role.id, stack.id), { replace: true });
   };
 
   const handleGoToPrimaryMap = () => {

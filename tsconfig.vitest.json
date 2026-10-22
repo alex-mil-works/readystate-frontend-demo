@@ -1,5 +1,5 @@
 {
-  // Tests + content-compiler (Node APIs + happy-dom)
+  // Tests (Node APIs + happy-dom)
   "extends": "./tsconfig.app.json",
   "compilerOptions": {
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.vitest.tsbuildinfo",

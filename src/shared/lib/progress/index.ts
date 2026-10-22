@@ -22,7 +22,7 @@ export {
 
 export { documentToRecords, recordsToDocument, recordToCourse, courseToRecord } from './convert';
 
-export type { CourseProgressRecord, LessonTimeEntry } from './progress-types';
+export type { CourseProgressRecord, LessonTimeEntry, RecallItemState } from './progress-types';
 
 export {
   WARMTH_COLOR,

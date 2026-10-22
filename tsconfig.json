@@ -9,8 +9,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@courses/*": ["./.courses/*"]
+      "@/*": ["./src/*"]
     }
   }
 }

@@ -9,7 +9,7 @@ export const SkeletonStageSchema = v.object({
 
 export type SkeletonStage = v.InferOutput<typeof SkeletonStageSchema>;
 
-/** Role skeleton manifest (`.courses/<role>/skeleton.yaml`). */
+/** Role skeleton manifest (`<root>/<role>/skeleton.yaml` on backend). */
 export const SkeletonManifestSchema = v.object({
   roleId: v.string(),
   stages: v.pipe(v.array(SkeletonStageSchema), v.minLength(1)),

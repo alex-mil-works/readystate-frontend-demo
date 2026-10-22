@@ -2,7 +2,7 @@ import * as v from 'valibot';
 
 import { CourseStatusSchema } from './course';
 
-/** Stack course manifest (`.courses/<role>/stacks/<stack>/course.yaml`). */
+/** Stack course manifest (`<root>/<role>/stacks/<stack>/course.yaml` on backend). */
 export const StackCourseManifestSchema = v.object({
   stackId: v.string(),
   title: v.string(),

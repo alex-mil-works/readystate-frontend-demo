@@ -22,6 +22,14 @@ export function homePathForRoleStack(roleId = DEFAULT_ROLE_ID, stackId = DEFAULT
   return coursePathForRoleStack(roleId, stackId);
 }
 
+/** Review session: `/courses/:roleId/:stackId/review`. */
+export function reviewPathForRoleStack(
+  roleId = DEFAULT_ROLE_ID,
+  stackId = DEFAULT_STACK_ID,
+): string {
+  return `${coursePathForRoleStack(roleId, stackId)}/review`;
+}
+
 export function homePathForCourse(course: Pick<CoursePreview, 'roleId' | 'stackId'>): string {
   return coursePathForRoleStack(
     course.roleId ?? DEFAULT_ROLE_ID,

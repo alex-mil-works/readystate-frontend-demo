@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { useEffect, useRef } from 'react';
 import { Link } from 'react-router';
 
 import ArrowDown01Icon from '@hugeicons/core-free-icons/ArrowDown01Icon';
@@ -32,6 +33,7 @@ import { Icon } from '@/shared/ui/kit';
 
 import { lessonPathForCourse } from '@/features/select-role-stack';
 
+import { lessonDomId } from '../lib/continue-lesson';
 import { resolveDisplayStages } from './display-stages';
 
 /** Hard cap matching unit.yaml maxLength(6). */
@@ -283,7 +285,12 @@ function UnitItemCard({
 
   if (playable) {
     return (
-      <Link to={lessonPath} className={`${layoutClass} no-underline`} title={label}>
+      <Link
+        id={lessonDomId(item.id)}
+        to={lessonPath}
+        className={`${layoutClass} no-underline`}
+        title={label}
+      >
         {body}
       </Link>
     );
@@ -362,12 +369,14 @@ function StageBlock({
   course,
   progressRecord,
   now,
+  forceExpanded,
 }: {
   stage: StagePreview;
   layout: UnitItemsLayout;
   course: CoursePreview;
   progressRecord: CourseProgressRecord | undefined;
   now: number;
+  forceExpanded?: boolean;
 }) {
   const empty = stage.empty === true;
   const { done, total } = stageProgress(stage);
@@ -376,6 +385,17 @@ function StageBlock({
   const expandedOverride = useUiPrefsStore((s) => s.stageExpanded[stageKey]);
   const setStageExpanded = useUiPrefsStore((s) => s.setStageExpanded);
   const expanded = expandedOverride ?? !empty;
+  const continueOpened = useRef(false);
+
+  useEffect(() => {
+    if (forceExpanded !== true) {
+      continueOpened.current = false;
+      return;
+    }
+    if (continueOpened.current) return;
+    continueOpened.current = true;
+    setStageExpanded(stageKey, true);
+  }, [forceExpanded, setStageExpanded, stageKey]);
 
   return (
     <li className={empty ? 'opacity-50' : undefined}>
@@ -443,7 +463,14 @@ function StageBlock({
 }
 
 /** Stages and lesson tiles for the selected role/stack. Units are silent visual groups. */
-export function CourseMap({ course }: { course: CoursePreview }) {
+export function CourseMap({
+  course,
+  continueStageId,
+}: {
+  course: CoursePreview;
+  /** When set (Continue scroll), expand this stage even if collapsed by default. */
+  continueStageId?: string;
+}) {
   const unitItemsLayout = useUiPrefsStore((s) => s.unitItemsLayout);
   const progressRecord = useProgressStore((s) => s.byCourseId[course.id]);
   const mapped = overlayCourseProgress(course, progressRecord);
@@ -453,7 +480,8 @@ export function CourseMap({ course }: { course: CoursePreview }) {
   if (displayStages.length === 0) {
     return (
       <p className="text-destructive m-0 text-sm leading-relaxed" role="alert">
-        Курс не загружен. Скомпилируйте контент (`yarn content:compile`) и обновите страницу.
+        Курс не загружен. Проверьте backend (`GET /v1/courses/...`) и `VITE_CONTENT_API_URL`, затем
+        обновите страницу.
       </p>
     );
   }
@@ -468,6 +496,7 @@ export function CourseMap({ course }: { course: CoursePreview }) {
           course={mapped}
           progressRecord={progressRecord}
           now={now}
+          forceExpanded={continueStageId === stage.id}
         />
       ))}
     </ul>

@@ -13,7 +13,6 @@ export default mergeConfig(
     test: {
       environment: 'happy-dom',
       globals: false,
-      globalSetup: ['./__tests__/global-setup.ts'],
       setupFiles: ['./__tests__/setup.ts'],
       include: ['__tests__/**/*.{test,spec}.{ts,tsx}'],
       css: true,
@@ -27,7 +26,6 @@ export default mergeConfig(
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
-        '@courses': path.resolve(__dirname, './.courses'),
       },
     },
   }),

@@ -1,17 +1,5 @@
-import type { Activity, ActivityHint, ChoiceOption } from '@/shared/lib/content';
-import {
-  Badge,
-  Button,
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-  Textarea,
-} from '@/shared/ui/kit';
+import type { Activity, ChoiceOption } from '@/shared/lib/content';
+import { Badge, Textarea } from '@/shared/ui/kit';
 
 import { LessonMarkdown } from './LessonMarkdown';
 
@@ -69,50 +57,6 @@ function ChoiceList({
   );
 }
 
-function RecallHints({ hints }: { hints: ActivityHint[] }) {
-  return (
-    <Dialog>
-      <DialogTrigger
-        render={
-          <Button type="button" variant="outline" size="sm" className="mt-4 w-full sm:w-auto" />
-        }
-      >
-        Подсказка
-      </DialogTrigger>
-      <DialogContent className="gap-5">
-        <DialogHeader>
-          <DialogTitle>Теория</DialogTitle>
-          <DialogDescription>
-            Короткий инсайт по теме — можно закрыть и ответить снова.
-          </DialogDescription>
-        </DialogHeader>
-        <div className="flex flex-col gap-5">
-          {hints.map((hint) => (
-            <article
-              key={hint.title}
-              className="border-border border-t pt-4 first:border-t-0 first:pt-0"
-            >
-              <h3 className="text-foreground m-0 text-sm font-medium tracking-tight">
-                {hint.title}
-              </h3>
-              <div className="mt-2">
-                <LessonMarkdown compact>{hint.markdown}</LessonMarkdown>
-              </div>
-            </article>
-          ))}
-        </div>
-        <DialogFooter>
-          <DialogClose
-            render={<Button type="button" variant="outline" className="w-full sm:w-auto" />}
-          >
-            Закрыть
-          </DialogClose>
-        </DialogFooter>
-      </DialogContent>
-    </Dialog>
-  );
-}
-
 export function ActivityStep({
   activity,
   selectedId,
@@ -131,10 +75,6 @@ export function ActivityStep({
   onRevealSample: () => void;
 }) {
   const answered = selectedId !== undefined;
-  const recallHints =
-    activity.phase === 'revision' && activity.hints && activity.hints.length > 0
-      ? activity.hints
-      : null;
 
   if (activity.kind === 'interview_phrasing') {
     return (
@@ -202,7 +142,6 @@ export function ActivityStep({
           <LessonMarkdown>{activity.explain}</LessonMarkdown>
         </div>
       ) : null}
-      {recallHints ? <RecallHints hints={recallHints} /> : null}
     </div>
   );
 }
